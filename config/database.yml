@@ -88,7 +88,10 @@ production:
 #---SQLite für lokales rumprobieren ---------------------------------
 
 # Bei Bedarf Postgres-Konfiguration auskommentieren und diese einkommentieren
-# Vor dem Pushen bitte wieder richtige Konf. einkommentieren! :)
+# Im Gemfile muss dafür das sqlite3 plugin einkommentiert und bundle install ausgeführt werden
+
+# Vor dem Pushen bitte wieder richtige Konf. einkommentieren und gem auskommentieren! :)
+
 
 # SQLite version 3.x
 
