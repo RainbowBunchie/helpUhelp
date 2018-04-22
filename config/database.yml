@@ -83,3 +83,30 @@ production:
   database: helpUhelp_production
   username: helpUhelp
   password: <%= ENV['HELPUHELP_DATABASE_PASSWORD'] %>
+
+
+#---SQLite für lokales rumprobieren ---------------------------------
+
+# Bei Bedarf Postgres-Konfiguration auskommentieren und diese einkommentieren
+# Vor dem Pushen bitte wieder richtige Konf. einkommentieren! :)
+
+# SQLite version 3.x
+
+
+# default: &default
+#   adapter: sqlite3
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
+
+# development:
+#   <<: *default
+#   database: db/development.sqlite3
+
+
+# test:
+#   <<: *default
+#   database: db/test.sqlite3
+
+# production:
+#   <<: *default
+#   database: db/production.sqlite3

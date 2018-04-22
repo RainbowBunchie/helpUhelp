@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  date: 2018-04-21
+  time: 2018-04-21 20:06:59
+  place: MyString
+  assined: false
+  no_of_people: 1
+
+two:
+  description: MyText
+  date: 2018-04-21
+  time: 2018-04-21 20:06:59
+  place: MyString
+  assined: false
+  no_of_people: 1
