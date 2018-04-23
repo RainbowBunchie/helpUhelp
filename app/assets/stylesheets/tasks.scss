@@ -1,3 +1,52 @@
 // Place all the styles related to the tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.task-card * {
+  text-decoration: none;
+}
+
+.task-card{
+  border-style: solid;
+  border-width: 2px;
+  width: 15em;
+  padding: 1em;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.admin-options{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1em;
+}
+.admin-options * {
+  color: black;
+}
+
+.info{
+}
+
+.info :hover{
+  color: black;
+}
+
+.task-description{
+  font-size: 1.5em;
+  padding-bottom: 1em;
+}
+
+.tasks{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.assigned{
+  background-color: #8fe57b;
+}
+
+.unassigned{
+  background-color: #f55254;
+}
