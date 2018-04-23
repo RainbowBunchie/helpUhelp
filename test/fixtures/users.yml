@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  role_id: one
+  role: one
   first_name: MyString
   last_name: MyString
   email: MyString
@@ -9,7 +9,7 @@ one:
   password_digest: MyString
 
 two:
-  role_id: two
+  role: two
   first_name: MyString
   last_name: MyString
   email: MyString
