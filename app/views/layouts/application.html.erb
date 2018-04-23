@@ -17,13 +17,15 @@
   <body>
 
     <nav class="navbar">
-      <a class="navbar-brand" href="/">
-        <%= image_tag('help-U-help.png', size: "168x50", alt: "Aufgaben", class: 'd-inline-block') %>
-      </a>
-      <span class="navbar-text float-xs-right">
+      <div class="containet">
 
-      </span>
+        <a class="navbar-brand" href="/">
+          <%= image_tag('help-U-help.png', size: "168x50", alt: "Aufgaben", class: 'd-inline-block') %>
+        </a>
+        <span class="navbar-text float-xs-right">
 
+        </span>
+    </div>
     </nav>
     <%= yield %>
   </body>
