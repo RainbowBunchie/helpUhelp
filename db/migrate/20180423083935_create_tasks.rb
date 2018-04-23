@@ -7,7 +7,6 @@ class CreateTasks < ActiveRecord::Migration[5.1]
       t.string :place
       t.boolean :assigned
       t.integer :no_of_people
-
       t.timestamps
     end
   end
