@@ -17,13 +17,17 @@
   <body>
 
     <nav class="navbar">
-      <div class="containet">
+      <div class="container">
 
         <a class="navbar-brand" href="/">
           <%= image_tag('help-U-help.png', size: "168x50", alt: "Aufgaben", class: 'd-inline-block') %>
         </a>
         <span class="navbar-text float-xs-right">
-
+          <ul>
+          	<li><%= link_to "Users", users_path %></li>
+          	<li><%= link_to "Roles", roles_path %></li>
+          	<li><%= link_to "Tasks", tasks_path %></li>
+          </ul>
         </span>
     </div>
     </nav>

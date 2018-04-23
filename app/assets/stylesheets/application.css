@@ -23,4 +23,7 @@
 .navbar{
     background-color: #333232;
     height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
