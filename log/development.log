@@ -815,3 +815,176 @@ Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
 ActiveModel::UnknownAttributeError (unknown attribute 'assined' for Task.):
   
 app/controllers/tasks_controller.rb:27:in `create'
+Started GET "/users" for 127.0.0.1 at 2018-04-23 10:14:36 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/index.html.erb within layouts/application (47.5ms)
+Completed 200 OK in 285ms (Views: 264.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-23 10:14:40 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 27ms (Views: 23.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-23 10:14:41 +0200
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  Rendered tasks/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 44ms (Views: 25.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2018-04-23 10:14:42 +0200
+Processing by TasksController#new as HTML
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (36.2ms)
+  Rendered tasks/new.html.erb within layouts/application (40.3ms)
+Completed 200 OK in 90ms (Views: 70.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2018-04-23 10:14:49 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0P9L+yH/Z0xA8LkBcVH72olO/MEZ+L84NPVMOgJu6/GaD1ujf5qkbWaPocmC7GGnSFcq+9gOuGI2wUdeNKsHfg==", "task"=>{"description"=>"df", "date(1i)"=>"2018", "date(2i)"=>"4", "date(3i)"=>"23", "time(1i)"=>"2018", "time(2i)"=>"4", "time(3i)"=>"23", "time(4i)"=>"08", "time(5i)"=>"14", "place"=>"dfg", "assined"=>"1", "no_of_people"=>"1"}, "commit"=>"Create Task"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'assined' for Task.):
+  
+app/controllers/tasks_controller.rb:27:in `create'
+Started POST "/tasks" for 127.0.0.1 at 2018-04-23 10:17:11 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0P9L+yH/Z0xA8LkBcVH72olO/MEZ+L84NPVMOgJu6/GaD1ujf5qkbWaPocmC7GGnSFcq+9gOuGI2wUdeNKsHfg==", "task"=>{"description"=>"df", "date(1i)"=>"2018", "date(2i)"=>"4", "date(3i)"=>"23", "time(1i)"=>"2018", "time(2i)"=>"4", "time(3i)"=>"23", "time(4i)"=>"08", "time(5i)"=>"14", "place"=>"dfg", "assined"=>"1", "no_of_people"=>"1"}, "commit"=>"Create Task"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'assined' for Task.):
+  
+app/controllers/tasks_controller.rb:27:in `create'
+Started POST "/tasks" for 127.0.0.1 at 2018-04-23 10:17:16 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ucVZdRG8oXjLQLIf2soTbKSBVG9QLV4TO1CwDGhUaBwgLzN9Mr/95k5vjOP1+PGLHOQEqAPeqUSykuIXa3crKQ==", "task"=>{"description"=>"df", "date(1i)"=>"2018", "date(2i)"=>"4", "date(3i)"=>"23", "time(1i)"=>"2018", "time(2i)"=>"4", "time(3i)"=>"23", "time(4i)"=>"08", "time(5i)"=>"14", "place"=>"dfg", "assined"=>"1", "no_of_people"=>"1"}, "commit"=>"Create Task"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'assined' for Task.):
+  
+app/controllers/tasks_controller.rb:27:in `create'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_users_on_task_id_and_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_users_on_task_id_and_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_users_on_user_id_and_task_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_users_on_user_id_and_task_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+Started POST "/tasks" for 127.0.0.1 at 2018-04-23 10:18:03 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ucVZdRG8oXjLQLIf2soTbKSBVG9QLV4TO1CwDGhUaBwgLzN9Mr/95k5vjOP1+PGLHOQEqAPeqUSykuIXa3crKQ==", "task"=>{"description"=>"df", "date(1i)"=>"2018", "date(2i)"=>"4", "date(3i)"=>"23", "time(1i)"=>"2018", "time(2i)"=>"4", "time(3i)"=>"23", "time(4i)"=>"08", "time(5i)"=>"14", "place"=>"dfg", "assined"=>"1", "no_of_people"=>"1"}, "commit"=>"Create Task"}
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.5ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'assined' for Task.):
+  
+app/controllers/tasks_controller.rb:27:in `create'
+Started POST "/tasks" for 127.0.0.1 at 2018-04-23 10:22:11 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ucVZdRG8oXjLQLIf2soTbKSBVG9QLV4TO1CwDGhUaBwgLzN9Mr/95k5vjOP1+PGLHOQEqAPeqUSykuIXa3crKQ==", "task"=>{"description"=>"df", "date(1i)"=>"2018", "date(2i)"=>"4", "date(3i)"=>"23", "time(1i)"=>"2018", "time(2i)"=>"4", "time(3i)"=>"23", "time(4i)"=>"08", "time(5i)"=>"14", "place"=>"dfg", "assined"=>"1", "no_of_people"=>"1"}, "commit"=>"Create Task"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'assined' for Task.):
+  
+app/controllers/tasks_controller.rb:27:in `create'
+Started POST "/tasks" for 127.0.0.1 at 2018-04-23 10:22:18 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ucVZdRG8oXjLQLIf2soTbKSBVG9QLV4TO1CwDGhUaBwgLzN9Mr/95k5vjOP1+PGLHOQEqAPeqUSykuIXa3crKQ==", "task"=>{"description"=>"df", "date(1i)"=>"2018", "date(2i)"=>"4", "date(3i)"=>"23", "time(1i)"=>"2018", "time(2i)"=>"4", "time(3i)"=>"23", "time(4i)"=>"08", "time(5i)"=>"14", "place"=>"dfg", "assined"=>"1", "no_of_people"=>"1"}, "commit"=>"Create Task"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'assined' for Task.):
+  
+app/controllers/tasks_controller.rb:27:in `create'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_users_on_task_id_and_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_users_on_task_id_and_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_users_on_user_id_and_task_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_users_on_user_id_and_task_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+Started POST "/tasks" for 127.0.0.1 at 2018-04-23 10:23:52 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ucVZdRG8oXjLQLIf2soTbKSBVG9QLV4TO1CwDGhUaBwgLzN9Mr/95k5vjOP1+PGLHOQEqAPeqUSykuIXa3crKQ==", "task"=>{"description"=>"df", "date(1i)"=>"2018", "date(2i)"=>"4", "date(3i)"=>"23", "time(1i)"=>"2018", "time(2i)"=>"4", "time(3i)"=>"23", "time(4i)"=>"08", "time(5i)"=>"14", "place"=>"dfg", "assined"=>"1", "no_of_people"=>"1"}, "commit"=>"Create Task"}
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.7ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'assined' for Task.):
+  
+app/controllers/tasks_controller.rb:27:in `create'
+Started POST "/tasks" for 127.0.0.1 at 2018-04-23 10:23:57 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ucVZdRG8oXjLQLIf2soTbKSBVG9QLV4TO1CwDGhUaBwgLzN9Mr/95k5vjOP1+PGLHOQEqAPeqUSykuIXa3crKQ==", "task"=>{"description"=>"df", "date(1i)"=>"2018", "date(2i)"=>"4", "date(3i)"=>"23", "time(1i)"=>"2018", "time(2i)"=>"4", "time(3i)"=>"23", "time(4i)"=>"08", "time(5i)"=>"14", "place"=>"dfg", "assined"=>"1", "no_of_people"=>"1"}, "commit"=>"Create Task"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'assined' for Task.):
+  
+app/controllers/tasks_controller.rb:27:in `create'
