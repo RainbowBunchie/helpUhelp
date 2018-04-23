@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :role_id %>
-    <%= form.text_field :role_id, id: :user_role_id %>
+    <%= form.label :role_id_id %>
+    <%= form.text_field :role_id_id, id: :user_role_id_id %>
   </div>
 
   <div class="field">
@@ -34,6 +34,11 @@
   <div class="field">
     <%= form.label :telephone %>
     <%= form.text_field :telephone, id: :user_telephone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_digest %>
+    <%= form.text_field :password_digest, id: :user_password_digest %>
   </div>
 
   <div class="actions">

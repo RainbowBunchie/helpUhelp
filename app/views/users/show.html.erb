@@ -2,7 +2,7 @@
 
 <p>
   <strong>Role:</strong>
-  <%= @user.role %>
+  <%= @user.role_id %>
 </p>
 
 <p>
@@ -23,6 +23,11 @@
 <p>
   <strong>Telephone:</strong>
   <%= @user.telephone %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @user.password_digest %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
