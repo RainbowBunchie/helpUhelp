@@ -438,3 +438,78 @@ Processing by StaticPagesController#home as HTML
 Completed 200 OK in 198ms (Views: 189.8ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-04-23 09:58:08 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 246ms (Views: 234.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-23 10:01:39 +0200
+Processing by StaticPagesController#home as HTML
+Started GET "/users" for 127.0.0.1 at 2018-04-23 10:01:49 +0200
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 23ms (Views: 21.5ms)
+
+
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 3ms
+
+
+  
+SyntaxError (/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/models/user.rb:4: syntax error, unexpected tSYMBEG, expecting keyword_do or '{' or '('
+  validates_confirmation_of :password
+                             ^):
+  
+app/models/user.rb:4: syntax error, unexpected tSYMBEG, expecting keyword_do or '{' or '('
+app/controllers/users_controller.rb:7:in `index'
+Started GET "/roles" for 127.0.0.1 at 2018-04-23 10:01:52 +0200
+Processing by RolesController#index as HTML
+  Rendering roles/index.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  Rendered roles/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 63ms (Views: 28.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-04-23 10:01:55 +0200
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/models/user.rb:4: syntax error, unexpected tSYMBEG, expecting keyword_do or '{' or '('
+  validates_confirmation_of :password
+                             ^):
+  
+app/models/user.rb:4: syntax error, unexpected tSYMBEG, expecting keyword_do or '{' or '('
+app/controllers/users_controller.rb:7:in `index'
+Started GET "/users" for 127.0.0.1 at 2018-04-23 10:02:08 +0200
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 15ms
+
+
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:1:in `<top (required)>'
+app/controllers/users_controller.rb:7:in `index'
+Started GET "/users" for 127.0.0.1 at 2018-04-23 10:03:21 +0200
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 207ms (Views: 191.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-04-23 10:04:08 +0200
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (18.3ms)
+  Rendered users/new.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 56ms (Views: 41.1ms | ActiveRecord: 1.0ms)
+
+
