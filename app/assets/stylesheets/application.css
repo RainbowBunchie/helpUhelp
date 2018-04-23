@@ -35,11 +35,18 @@
   align-items: center;
   justify-content: space-between;
 }
-
+.navbar-ul{
+  width: 280px;
+  display: flex;
+  justify-content: space-between;
+}
 .navbar-li{
   display: inline;
 }
 .navbar-li a{
   color: #f0f0f0;
   text-decoration: none;
+}
+.navbar-li a:hover{
+  color: #45ac35;
 }
