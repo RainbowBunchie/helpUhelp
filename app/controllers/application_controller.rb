@@ -7,5 +7,13 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :current_user
+
+  private
+
+  def require_login
+    unless current_user
+      redirect_to root_path
+    end
+  end
   
 end
