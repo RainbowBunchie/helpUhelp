@@ -1,40 +1,51 @@
-<p id="notice"><%= notice %></p>
+<section class="tasks-page">
 
-<h1>Tasks</h1>
+  <div class="tasks-container">
 
-<div class="tasks">
-<% @tasks.each do |task| %>
-  <% if task.assigned %>
-  <div class="task-card assigned">
-  <% else %>
-  <div class="task-card unassigned">
-  <% end %>
-    <div class="info">
-      <%= link_to task do%>
-        <div class="task-description"><%= task.description%></div>
-        <div><%= task.date.strftime("%d.%m.%y") %></div>
-        <div><%= task.time.strftime("%H:%M")%></div>
-        <div><%= task.place %></div>
-        <div><%# task.assigned %></div>
-        <div><%# task.no_of_people %></div>
-      <% end %>
+    <p id="notice"><%= notice %></p>
+
+    <h1>Meine Aufgaben</h1>
+    <div class="tasks-listing">
+
     </div>
 
+    <h1>Alle Aufgaben</h1>
+
+    <div class="tasks">
+    <% @tasks.each do |task| %>
+      <% if task.assigned %>
+      <div class="task-card assigned">
+      <% else %>
+      <div class="task-card unassigned">
+      <% end %>
+        <div class="info">
+          <%= link_to task do%>
+            <div class="task-description"><%= task.description%></div>
+            <div><%= task.date.strftime("%d.%m.%y") %></div>
+            <div><%= task.time.strftime("%H:%M")%></div>
+            <div><%= task.place %></div>
+            <div><%# task.assigned %></div>
+            <div><%# task.no_of_people %></div>
+          <% end %>
+        </div>
+
+
+        <% if current_user && current_user.role.title == "admin" %>
+        <div class ="admin-options">
+          <div><%= link_to 'Edit', edit_task_path(task) %></div>
+          <div><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        </div>
+        <% end %>
+
+      </div>
+    <% end %>
+    </div>
+
+
+    <br>
 
     <% if current_user && current_user.role.title == "admin" %>
-    <div class ="admin-options">
-      <div><%= link_to 'Edit', edit_task_path(task) %></div>
-      <div><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-    </div>
+    <%= link_to 'New Task', new_task_path %>
     <% end %>
-    
   </div>
-<% end %>
-</div>
-
-
-<br>
-
-<% if current_user && current_user.role.title == "admin" %>
-<%= link_to 'New Task', new_task_path %>
-<% end %>
+</section>
