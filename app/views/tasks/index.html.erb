@@ -19,10 +19,13 @@
         <div><%# task.no_of_people %></div>
       <% end %>
     </div>
+
+    <% if current_user && current_user.role.title == "admin" %>
     <div class ="admin-options">
       <div><%= link_to 'Edit', edit_task_path(task) %></div>
       <div><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></div>
     </div>
+    <% end %>
   </div>
 <% end %>
 </div>
@@ -30,4 +33,6 @@
 
 <br>
 
+<% if current_user && current_user.role.title == "admin" %>
 <%= link_to 'New Task', new_task_path %>
+<% end %>
