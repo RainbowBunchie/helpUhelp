@@ -17,19 +17,18 @@
   <body>
 
     <nav class="navbar">
-      <div class="container">
+      <div class="navbar-container">
 
         <a class="navbar-brand" href="/">
           <%= image_tag('help-U-help.png', size: "168x50", alt: "Aufgaben", class: 'd-inline-block') %>
         </a>
-        <span class="navbar-text float-xs-right">
-          <ul>
-          	<li><%= link_to "Users", users_path %></li>
-          	<li><%= link_to "Roles", roles_path %></li>
-          	<li><%= link_to "Tasks", tasks_path %></li>
+          <ul class="navbar-ul">
+          	<li class="navbar-li"><%= link_to "Users", users_path %></li>
+          	<li class="navbar-li"><%= link_to "Aufgaben", tasks_path %></li>
+
+            <li class="navbar-li"> <a> ausloggen </a> </li>
           </ul>
-        </span>
-    </div>
+        </div>
     </nav>
     <%= yield %>
   </body>

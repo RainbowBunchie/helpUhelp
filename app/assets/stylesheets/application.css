@@ -24,6 +24,22 @@
     background-color: #333232;
     height: 5em;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.navbar-container{
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-li{
+  display: inline;
+}
+.navbar-li a{
+  color: #f0f0f0;
+  text-decoration: none;
 }
