@@ -278,3 +278,48 @@ Processing by StaticPagesController#home as HTML
 Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-04-23 11:23:50 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 247ms (Views: 235.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-23 11:30:03 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 10ms
+
+
+  
+SyntaxError (/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/views/layouts/application.html.erb:34: syntax error, unexpected keyword_class, expecting keyword_do or '{' or '('
+...e_append='            <li class="navbar-li"> <a> einloggen <...
+...                               ^
+/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/views/layouts/application.html.erb:34: syntax error, unexpected '<'
+...       <li class="navbar-li"> <a> einloggen </a> </li>
+...                               ^
+/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/views/layouts/application.html.erb:34: unknown regexp option - l
+/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/views/layouts/application.html.erb:38: syntax error, unexpected '<', expecting ')'
+          </ul>
+           ^
+/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/views/layouts/application.html.erb:39: unknown regexp options - dv
+/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/views/layouts/application.html.erb:40: syntax error, unexpected '<'
+    </nav>
+     ^
+/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/views/layouts/application.html.erb:42: unknown regexp options - bdy
+/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/views/layouts/application.html.erb:43: syntax error, unexpected '<'
+</html>
+ ^
+/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/views/layouts/application.html.erb:43: unterminated regexp meets end of file):
+  
+app/views/layouts/application.html.erb:34: syntax error, unexpected keyword_class, expecting keyword_do or '{' or '('
+app/views/layouts/application.html.erb:34: syntax error, unexpected '<'
+app/views/layouts/application.html.erb:34: unknown regexp option - l
+app/views/layouts/application.html.erb:38: syntax error, unexpected '<', expecting ')'
+app/views/layouts/application.html.erb:39: unknown regexp options - dv
+app/views/layouts/application.html.erb:40: syntax error, unexpected '<'
+app/views/layouts/application.html.erb:42: unknown regexp options - bdy
+app/views/layouts/application.html.erb:43: syntax error, unexpected '<'
+app/views/layouts/application.html.erb:43: unterminated regexp meets end of file
