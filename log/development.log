@@ -323,3 +323,11 @@ app/views/layouts/application.html.erb:40: syntax error, unexpected '<'
 app/views/layouts/application.html.erb:42: unknown regexp options - bdy
 app/views/layouts/application.html.erb:43: syntax error, unexpected '<'
 app/views/layouts/application.html.erb:43: unterminated regexp meets end of file
+Started GET "/" for 127.0.0.1 at 2018-04-23 11:31:34 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 199ms (Views: 190.1ms | ActiveRecord: 0.0ms)
+
+
