@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 	
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   resources :tasks
   root 'static_pages#home'
   resources :users
