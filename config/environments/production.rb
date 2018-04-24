@@ -70,9 +70,7 @@ Rails.application.configure do
     :password             => "HongdaeIpGu",
     :authentication       => "login",
     :enable_starttls_auto => true,
-    :tls                  => false,
-    #:openssl_verify_mode  => 'peer'
-
+    :tls                  => false
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
