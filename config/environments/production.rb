@@ -64,13 +64,13 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :enable               => true,
     :address              => "mail.gmx.net",
-    :port                 => 587,
+    :port                 => 465,
     :domain               => "mail.gmx.net",
     :user_name            => "alexander.tischhart@gmx.at",
     :password             => "HongdaeIpGu",
     :authentication       => "login",
     :enable_starttls_auto => true,
-    :tls                  => false
+    :tls                  => true
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
