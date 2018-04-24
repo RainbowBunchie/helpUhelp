@@ -5,11 +5,11 @@
 
     <p id="notice"><%= notice %></p>
 
-    <h1>Meine Aufgaben</h1>
-      <% if @usertasks.size > 0 %>
+    <h1>Meine bestätigten Aufgaben</h1>
+      <% if @assigned_usertasks.size > 0 %>
       <div class="tasks">
 
-      <% @usertasks.each do |task| %>
+      <% @assigned_usertasks.each do |task| %>
         <% if task.assigned %>
         <div class="task-card assigned">
         <% else %>
@@ -40,6 +40,47 @@
       <% else %>
         Du hast keine zugewiesenen Aufgaben.
       <% end %>
+
+
+      <h1>Meine beworbenen Aufgaben</h1>
+      Es muss noch auf die Bestätigung des Managers gewartet werden.
+        <% if @pending_usertasks.size > 0 %>
+        <div class="tasks">
+
+        <% @pending_usertasks.each do |task| %>
+          <% if task.assigned %>
+          <div class="task-card assigned">
+          <% else %>
+          <div class="task-card unassigned">
+          <% end %>
+            <div class="info">
+              <%= link_to task do%>
+                <div class="task-description"><%= task.description%></div>
+                <div><%= task.date.strftime("%d.%m.%y") %></div>
+                <div><%= task.time.strftime("%H:%M")%></div>
+                <div><%= task.place %></div>
+                <div><%# task.assigned %></div>
+                <div><%# task.no_of_people %></div>
+              <% end %>
+            </div>
+
+
+            <% if current_user && current_user.role.title == "admin" %>
+            <div class ="admin-options">
+              <div><%= link_to 'Edit', edit_task_path(task) %></div>
+              <div><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+            </div>
+          </div>
+
+            <% end %>
+          </div>
+        <% end %>
+        <% else %>
+          Du hast keine beworbenen Aufgaben. Bewirb dich doch für eine Aufgabe.
+        <% end %>
+
+
+
     <h1>Alle Aufgaben</h1>
 
     <div class="tasks">

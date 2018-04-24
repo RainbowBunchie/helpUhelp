@@ -1,3 +1,5 @@
+#require "randomstring"
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_login
@@ -15,6 +17,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    @roles = Role.all
     @user = User.new
   end
 
@@ -25,6 +28,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    @roles = Role.all
     @user = User.new(user_params)
 
     respond_to do |format|

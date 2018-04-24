@@ -6,7 +6,8 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
-    @usertasks = current_user.tasks
+    @assigned_usertasks = current_user.tasks.where(:assigned => true)
+    @pending_usertasks = current_user.tasks.where(:assigned => false)
   end
 
   # GET /tasks/1
