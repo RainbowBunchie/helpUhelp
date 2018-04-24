@@ -62,12 +62,12 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "helpUhelp_#{Rails.env}"
   config.action_mailer.perform_caching = false
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
+    :address              => "smtp-relay.gmail.com",
     :port                 => 587,
-    :domain               => "",
-    :user_name            => "tiscal95",
+    :domain               => "gmail.com",
+    :user_name            => "tiscal95@gmail.com",
     :password             => "HongdaeIpGu",
-    :authentication       => "plain",
+    :authentication       => "Login",
     :enable_starttls_auto => true
   }
 
