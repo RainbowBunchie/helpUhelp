@@ -44,8 +44,8 @@ a {
 }
 
 .users-table{
-  border: #333232 0.2em solid;
   border-radius: 0.3em;
+  border: #333232 0.2em solid;
   width:100%;
   box-sizing:border-box;
 }
@@ -56,9 +56,13 @@ a {
 }
 
 .first-row {
-	background: #333232;
+  background: #333232;
 	color: #FFF;
 	height:1rem;
+}
+
+.first-row th{
+  padding: 1em;
 }
 
 

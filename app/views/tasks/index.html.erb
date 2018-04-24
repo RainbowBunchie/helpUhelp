@@ -18,11 +18,11 @@
           <div class="info">
             <%= link_to task do%>
               <div class="task-description"><%= task.description%></div>
-              <div><%= task.date.strftime("%d.%m.%y") %></div>
-              <div><%= task.time.strftime("%H:%M")%></div>
-              <div><%= task.place %></div>
-              <div><%# task.assigned %></div>
-              <div><%# task.no_of_people %></div>
+              <div class="task-info">
+                <%= task.date.strftime("%d.%m.%y") %> <br />
+                <%= task.time.strftime("%H:%M")%> <br />
+                <%= task.place %>
+              </div>
             <% end %>
           </div>
 
@@ -56,11 +56,11 @@
             <div class="info">
               <%= link_to task do%>
                 <div class="task-description"><%= task.description%></div>
-                <div><%= task.date.strftime("%d.%m.%y") %></div>
-                <div><%= task.time.strftime("%H:%M")%></div>
-                <div><%= task.place %></div>
-                <div><%# task.assigned %></div>
-                <div><%# task.no_of_people %></div>
+                <div class="task-info">
+                  <%= task.date.strftime("%d.%m.%y") %> <br />
+                  <%= task.time.strftime("%H:%M")%> <br />
+                  <%= task.place %>
+                </div>
               <% end %>
             </div>
 
@@ -79,7 +79,7 @@
           Du hast keine beworbenen Aufgaben. Bewirb dich doch für eine Aufgabe.
         <% end %>
 
-
+</div>
 
     <h1>Alle Aufgaben</h1>
 
@@ -93,11 +93,13 @@
         <div class="info">
           <%= link_to task do%>
             <div class="task-description"><%= task.description%></div>
-            <div><%= task.date.strftime("%d.%m.%y") %></div>
-            <div><%= task.time.strftime("%H:%M")%></div>
-            <div><%= task.place %></div>
-            <div><%# task.assigned %></div>
-            <div><%# task.no_of_people %></div>
+            <div class="task-info">
+              <%= task.date.strftime("%d.%m.%y") %> <br />
+              <%= task.time.strftime("%H:%M")%> <br />
+              <%= task.place %>
+            </div>
+            <!--<div><%# task.assigned %></div>
+            <div><%# task.no_of_people %></div> -->
           <% end %>
         </div>
 
