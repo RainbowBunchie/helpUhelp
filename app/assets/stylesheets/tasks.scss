@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.new-task{
+  margin-top: 1em;
+  display: flex;
+  color: #45ac35;
+  //justify-content: flex-end;
+}
 .tasks-page{
   display: flex;
   flex-direction: column;
@@ -36,7 +42,7 @@
 .admin-options{
   display: flex;
   justify-content: space-between;
-  padding-top: 1em;
+  //padding-top: 1em;
 }
 .admin-options * {
   color: black;
@@ -49,10 +55,38 @@
   //color: black;
 }
 
+.task-show-description{
+  width: 100%;
+  border-top: #333232 0.2em solid;
+}
+
+.task-show-description{
+  padding-top: 1em;
+  line-height: 1.4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .task-info{
   padding: 1em;
 }
 
+.task-option{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #333232;
+}
+
+.task-option img{
+  padding-top: 0.5em;
+  margin-right: 0.5em;
+  height: 20px;
+  width: auto;
+}
 .task-description{
   display: flex;
   justify-content: center;
@@ -62,7 +96,7 @@
   color: white;
   line-height: 1.4em;
   font-size: 1.4em;
-  padding: 0.5em;
+  padding: 0 0.5em 0.5em 0.5em;
 }
 
 .tasks{
