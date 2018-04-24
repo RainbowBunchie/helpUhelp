@@ -62,15 +62,14 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "helpUhelp_#{Rails.env}"
   config.action_mailer.perform_caching = false
   config.action_mailer.smtp_settings = {
-    :enable               => true,
-    :address              => "mail.gmx.net",
-    :port                 => 465,
-    :domain               => "mail.gmx.net",
-    :user_name            => "alexander.tischhart@gmx.at",
-    :password             => "HongdaeIpGu",
-    :authentication       => "login",
-    :enable_starttls_auto => true,
-    :tls                  => true
+    enable:               true,
+    address:              "smtp.gmail.com",
+    port:                 587,
+    domain:               "smtp.gmail.com",
+    user_name:            "tiscal95@gmail.com",
+    password:             "HongdaeIpGu",
+    authentication:       "plain",
+    enable_starttls_auto: true
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
