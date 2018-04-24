@@ -63,11 +63,11 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.smtp_settings = {
     :enable               => true,
-    :address              => "smtp.gmail.com",
+    :address              => "mail.gmx.net",
     :port                 => 587,
-    :domain               => "smtp.gmail.com",
-    :user_name            => "christophmaol@gmail.com",
-    :password             => "helpuhelp",
+    :domain               => "mail.gmx.net",
+    :user_name            => "alexander.tischhart@gmx.at",
+    :password             => "HongdaeIpGu",
     :authentication       => "login",
     :enable_starttls_auto => true,
     :tls                  => false
