@@ -1,11 +1,18 @@
 <section class="tasks-page">
-
   <div class="tasks-container">
 
     <p id="notice"><%= notice %></p>
 
+    <% if current_user && current_user.role.title == "admin" %>
+    <div class ="new-task">
+      <%= link_to 'Neue Aufgabe erstellen', new_task_path %>
+    </div>
+    <% end %>
+
     <h1>Meine bestätigten Aufgaben</h1>
+
       <% if @assigned_usertasks.size > 0 %>
+
       <div class="tasks">
 
       <% @assigned_usertasks.each do |task| %>
@@ -16,34 +23,34 @@
         <% end %>
           <div class="info">
             <%= link_to task do%>
+            <% if current_user && current_user.role.title == "admin" %>
+            <div class ="admin-options task-option">
+              <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
+              <%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), task, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+            <%end%>
               <div class="task-description"><%= task.description%></div>
               <div class="task-info">
-                <%= task.date.strftime("%d.%m.%y") %> <br />
-                <%= task.time.strftime("%H:%M")%> <br />
-                <%= task.place %>
+                <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
+                <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
+                <strong>Ort: </strong><%= task.place %>
               </div>
             <% end %>
           </div>
-
-
-          <% if current_user && current_user.role.title == "admin" %>
-          <div class ="admin-options">
-            <div><%= link_to 'Edit', edit_task_path(task) %></div>
-            <div><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-          </div>
-        </div>
-
-          <% end %>
         </div>
       <% end %>
       <% else %>
         Du hast keine zugewiesenen Aufgaben.
       <% end %>
+      </div>
 
 
       <h1>Meine beworbenen Aufgaben</h1>
-      Es muss noch auf die Bestätigung des Managers gewartet werden.
+
         <% if @pending_usertasks.size > 0 %>
+
+        Es muss noch auf die Bestätigung des Managers gewartet werden.
+
         <div class="tasks">
 
         <% @pending_usertasks.each do |task| %>
@@ -54,77 +61,65 @@
           <% end %>
             <div class="info">
               <%= link_to task do%>
+              <% if current_user && current_user.role.title == "admin" %>
+              <div class ="admin-options task-option">
+                <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
+                <%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), task, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+              <%end%>
                 <div class="task-description"><%= task.description%></div>
                 <div class="task-info">
-                  <%= task.date.strftime("%d.%m.%y") %> <br />
-                  <%= task.time.strftime("%H:%M")%> <br />
-                  <%= task.place %>
+                  <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
+                  <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
+                  <strong>Ort: </strong><%= task.place %>
                 </div>
               <% end %>
             </div>
-
-
-            <% if current_user && current_user.role.title == "admin" %>
-            <div class ="admin-options">
-              <div><%= link_to 'Edit', edit_task_path(task) %></div>
-              <div><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-            </div>
-          </div>
-
-            <% end %>
           </div>
         <% end %>
         <% else %>
           Du hast keine beworbenen Aufgaben. Bewirb dich doch für eine Aufgabe.
         <% end %>
-
-</div>
+        </div>
 
     <h1>Alle Aufgaben</h1>
 
     <div class="tasks">
-    <% @tasks.each do |task| %>
-      <% if task.assigned %>
-      <div class="task-card assigned">
-      <% else %>
-      <div class="task-card unassigned">
-      <% end %>
-        <div class="info">
-          <%= link_to task do%>
-            <div class="task-description"><%= task.description%></div>
-            <div class="task-info">
-              <%= task.date.strftime("%d.%m.%y") %> <br />
-              <%= task.time.strftime("%H:%M")%> <br />
-              <%= task.place %>
-            </div>
-            <!--<div><%# task.assigned %></div>
-            <div><%# task.no_of_people %></div> -->
-          <% end %>
-        </div>
-
-
-        <% if current_user && current_user.role.title == "user" %>
-        <div class ="admin-options">
-          <div><%= link_to 'Edit', edit_task_path(task) %></div>
-          <div><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        </div>
-        <% elsif current_user && current_user.role.title == "admin"%>
-        <div class="admin-options">
-          <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
-        </div>
+      <% @tasks.each do |task| %>
+        <% if task.assigned %>
+        <div class="task-card assigned">
+        <% else %>
+        <div class="task-card unassigned">
         <% end %>
+          <div class="info">
 
+            <% if current_user && current_user.role.title == "admin" %>
+              <div class ="admin-options task-option">
+                <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
+                <%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), task, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            <%end%>
+              <div class="task-description"><%= task.description%></div>
+              <%= link_to task do%>
+              <div class="task-info">
+                <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
+                <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
+                <strong>Ort: </strong><%= task.place %>
+              </div>
+            <% end %>
+          </div>
+  
+          <div class ="admin-options">
+          <% if current_user && current_user.role.title == "user" %>
+            <div><%= link_to 'Edit', edit_task_path(task) %></div>
+            <div><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+          <% elsif current_user && current_user.role.title == "admin"%>
+            <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
+          <% end %>
+          </div>
 
-      </div>
-    <% end %>
+        </div>
+      <% end %>
     </div>
-
-    <br>
-
-    <% if current_user && current_user.role.title == "admin" %>
-    <%= link_to 'New Task', new_task_path %>
-    <% end %>
-    </div>
-  </div>
   </div>
 </section>
