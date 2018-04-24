@@ -1,10 +1,13 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :addUser]
+  before_action :require_login
 
   # GET /tasks
   # GET /tasks.json
   def index
     @tasks = Task.all
+    @assigned_usertasks = current_user.tasks.where(:assigned => true)
+    @pending_usertasks = current_user.tasks.where(:assigned => false)
   end
 
   # GET /tasks/1
