@@ -5,27 +5,21 @@
 //--------OVERVIEW---------
 
 .user-page{
-  width: 100%;
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.user-container{
-  line-height: 2em;
-  margin-top: 7vw;
-  width: 30vw;
-  border: #333232 0.2em solid;
+.user-page img{
+  padding-left: 15px;
+  height: 23px;
+  width: auto;
 }
 
-.user-container h1{
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  padding: 0.7em;
-  margin-top: -1px;
-  background-color: #333232;
-  color: white;
+.user-page p{
+  margin-top: 1em;
+}
+
+.user-page p:last-child{
+  margin-bottom: 1em;
 }
 
 .users-page{
