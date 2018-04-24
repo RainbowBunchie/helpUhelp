@@ -71,6 +71,7 @@ Rails.application.configure do
     :authentication       => "login",
     :enable_starttls_auto => true,
     :tls                  => false,
+    #:openssl_verify_mode  => 'peer'
 
   }
 

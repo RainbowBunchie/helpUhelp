@@ -42,6 +42,7 @@
   </div>
 
   <% random_password = Randomstring.generate(20) %>
+  
   <div class="field">
     <%= form.label :passowrd, "Password" %>
     <%= form.password_field :password, id: :password %>
