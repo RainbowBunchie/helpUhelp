@@ -1,34 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Telephone:</strong>
-  <%= @user.telephone %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="form-edit user-page">
+	<div class="form-container">
+      <h1> <%= @user.first_name + " " + @user.last_name%>
+        <%= link_to  image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_user_path(@user) %>
+      </h1>
+			<p>
+      <strong>Rolle: </strong>
+      <%= @user.role.title.capitalize %>
+			</p>
+			<p>
+	      <strong>Email: </strong>
+      <%= @user.email %> <br />
+		</p>
+		<p>
+      <strong>Telephone: </strong>
+      <%= @user.telephone %>
+		</p>
+  </div>
+</div>

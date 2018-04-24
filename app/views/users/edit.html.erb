@@ -4,8 +4,7 @@
 
 		<%= render 'form', user: @user %>
 
-		<%= link_to 'Zurück', users_path %>
+		<%= link_to 'Zurück', user_path(@user.id) %>
 		<br>
 	</div>
 </div>
-

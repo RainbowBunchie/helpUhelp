@@ -48,6 +48,10 @@
     <%= form.password_field :password, id: :password %>
   </div>
 
+  <% form.hidden_field :password
+    hidden_field_tag 'selected', random_password
+  %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

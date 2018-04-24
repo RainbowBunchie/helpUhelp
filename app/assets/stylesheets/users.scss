@@ -3,6 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //--------OVERVIEW---------
+
+.user-page{
+  flex-direction: column;
+  align-items: center;
+}
+.user-page img{
+  padding-left: 15px;
+  height: 23px;
+  width: auto;
+}
+
+.user-page p{
+  margin-top: 1em;
+}
+
+.user-page p:last-child{
+  margin-bottom: 1em;
+}
+
 .users-page{
   display: flex;
   flex-direction: column;
@@ -25,8 +44,8 @@ a {
 }
 
 .users-table{
-  border: #333232 0.2em solid;
   border-radius: 0.3em;
+  border: #333232 0.2em solid;
   width:100%;
   box-sizing:border-box;
 }
@@ -37,9 +56,13 @@ a {
 }
 
 .first-row {
-	background: #333232;
+  background: #333232;
 	color: #FFF;
 	height:1rem;
+}
+
+.first-row th{
+  padding: 1em;
 }
 
 
