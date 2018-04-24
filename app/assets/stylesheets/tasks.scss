@@ -22,10 +22,11 @@
 }
 
 .task-card{
+  border-radius: 0.3em;
   border-style: solid;
   border-width: 2px;
   width: 15em;
-  padding: 1em;
+  //padding: 1em;
   margin: 1em;
   display: flex;
   flex-direction: column;
@@ -45,12 +46,23 @@
 }
 
 .info :hover{
-  color: black;
+  //color: black;
+}
+
+.task-info{
+  padding: 1em;
 }
 
 .task-description{
-  font-size: 1.5em;
-  padding-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: #333232;
+  color: white;
+  line-height: 1.4em;
+  font-size: 1.4em;
+  padding: 0.5em;
 }
 
 .tasks{

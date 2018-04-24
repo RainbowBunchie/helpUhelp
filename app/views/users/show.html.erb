@@ -1,16 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<section class="user-page">
-  <div class="user-container">
-      <h1> <%= @user.first_name + " " + @user.last_name%> </h1>
-      Rolle:
-      <%= @user.role.title %> <br />
-      Email:
+<div class="form-edit user-page">
+	<div class="form-container">
+      <h1> <%= @user.first_name + " " + @user.last_name%>
+        <%= link_to  image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_user_path(@user) %>
+      </h1>
+			<p>
+      <strong>Rolle: </strong>
+      <%= @user.role.title.capitalize %>
+			</p>
+			<p>
+	      <strong>Email: </strong>
       <%= @user.email %> <br />
-
-      Telephone:
+		</p>
+		<p>
+      <strong>Telephone: </strong>
       <%= @user.telephone %>
-    <%= link_to 'Bearbeiten', edit_user_path(@user) %>
+		</p>
   </div>
-</section>
-<%= link_to 'Zurück', users_path %>
+</div>
