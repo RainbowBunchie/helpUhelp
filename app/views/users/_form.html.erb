@@ -38,11 +38,12 @@
     <%= form.label :telephone, "Telefon" %>
     <%= form.text_field :telephone, id: :user_telephone %>
   </div>
-
-  <div class="field">
-    <%= form.label :password_digest, "Passwort" %>
-    <%= form.password_field :password, id: :password %>
-  </div>
+  <% if current_user.id == user.id %>
+    <div class="field">
+      <%= form.label :password_digest, "Passwort" %>
+      <%= form.password_field :password, id: :password %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

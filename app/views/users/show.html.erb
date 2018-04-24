@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<% if current_user.id == @user.id || current_user.role.title == "admin" %>
 <div class="form-edit user-page">
 	<div class="form-container">
       <h1> <%= @user.first_name + " " + @user.last_name%>
@@ -19,3 +20,9 @@
 		</p>
   </div>
 </div>
+
+<% else %>
+<p class="notification">
+	Du kannst keine Profile von anderen Nutzern ansehen.
+</p>
+<%end %>
