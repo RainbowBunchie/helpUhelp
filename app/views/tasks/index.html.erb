@@ -103,17 +103,16 @@
         </div>
 
 
-        <% if current_user && current_user.role.title == "admin" %>
+        <% if current_user && current_user.role.title == "user" %>
         <div class ="admin-options">
           <div><%= link_to 'Edit', edit_task_path(task) %></div>
           <div><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></div>
         </div>
         <% elsif current_user && current_user.role.title == "admin"%>
         <div class="admin-options">
-          <%= link_to 'addUser', task, method: :addUser%>
-
-          <%# link_to 'addUser', addUser_path(task) %>
-          <input type="button" onClick="window.location = '/addUser'">
+          <%# link_to 'addUser', task, method: :addUser%>
+          <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
+          <input type="button" onClick="window.location = '/addUser/#{task}'">
         </div>
         <% end %>
 
@@ -128,5 +127,6 @@
     <%= link_to 'New Task', new_task_path %>
     <% end %>
     </div>
+  </div>
   </div>
 </section>
