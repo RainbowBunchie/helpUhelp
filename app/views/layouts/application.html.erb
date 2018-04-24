@@ -27,10 +27,12 @@
           <ul class="navbar-ul">
 
             <% if current_user %>
-            <li class="navbar-li"><%= link_to "Users", users_path %></li>
+              <% if current_user.role.title == "admin" %>
+                <li class="navbar-li"><%= link_to "Users", users_path %></li>
+              <% end %>
             <li class="navbar-li"><%= link_to "Aufgaben", tasks_path %></li>
             <li class="navbar-li">
-              <%= link_to current_user.first_name , user_path(current_user.id) %>
+              <%= link_to "Mein Profil", user_path(current_user.id) %>
             </li>
             <li class="navbar-li"><%= link_to "ausloggen", logout_path %></li>
             <% end %>

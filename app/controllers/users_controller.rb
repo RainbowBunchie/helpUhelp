@@ -1,8 +1,6 @@
-#require "randomstring"
-
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_login
+  #before_action :require_login
 
   # GET /users
   # GET /users.json
@@ -17,8 +15,8 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @roles = Role.all
     @user = User.new
+    @roles = Role.all
   end
 
   # GET /users/1/edit
@@ -34,7 +32,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         # Deliver the signup email
-        UserNotifier.send_signup_email(@user).deliver
+        ApplicationMailer.send_signup_email(@user).deliver_now
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
 

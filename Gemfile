@@ -11,6 +11,8 @@ gem 'rails', '~> 5.1.4'
 
 gem 'bcrypt'
 
+gem 'certified'
+
 gem 'randomstring'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'

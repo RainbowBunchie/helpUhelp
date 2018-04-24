@@ -110,9 +110,7 @@
         </div>
         <% elsif current_user && current_user.role.title == "admin"%>
         <div class="admin-options">
-          <%# link_to 'addUser', task, method: :addUser%>
           <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
-          <input type="button" onClick="window.location = '/addUser/#{task}'">
         </div>
         <% end %>
 
