@@ -41,7 +41,7 @@ Rails.application.configure do
     :password             => "HongdaeIpGu",
     :authentication       => "login",
     :enable_starttls_auto => true,
-    :tls                  => false,
+    :tls                  => false
   }
 
   # Print deprecation notices to the Rails logger.
