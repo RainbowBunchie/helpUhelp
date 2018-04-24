@@ -1,34 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+<section class="user-page">
+  <div class="user-container">
+      <h1> <%= @user.first_name + " " + @user.last_name%> </h1>
+      Rolle:
+      <%= @user.role.title %> <br />
+      Email:
+      <%= @user.email %> <br />
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Telephone:</strong>
-  <%= @user.telephone %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+      Telephone:
+      <%= @user.telephone %>
+    <%= link_to 'Bearbeiten', edit_user_path(@user) %>
+  </div>
+</section>
+<%= link_to 'Zurück', users_path %>

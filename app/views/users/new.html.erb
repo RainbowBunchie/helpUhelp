@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :role_id, "Rolle" %>
-    <%= select_tag 'user_id', options_for_select(@roles.collect{ |r| r.title.capitalize }) %>
+    <%= form.select :role_id, options_for_select(@roles.collect{ |r| [r.title, r.id]}) %>
   </div>
 
   <div class="field">
@@ -42,6 +42,10 @@
   </div>
 
   <% random_password = Randomstring.generate(20) %>
+
+  <% form.hidden_field :password
+    hidden_field_tag 'selected', random_password
+  %>
 
   <div class="actions">
     <%= form.submit %>
