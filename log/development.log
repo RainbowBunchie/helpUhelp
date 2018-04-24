@@ -5739,3 +5739,366 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 116ms (Views: 113.9ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/login" for 127.0.0.1 at 2018-04-24 09:36:01 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 238ms (Views: 229.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-04-24 09:36:05 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ynq/29oblNbmImxx62zDg+xbOP063GYwdAA1nr3ijNnUasqJuNxT2N0ZyjR9VHLi/sqr1WokCfl9sZ6rN7gWyA==", "email"=>"d.buder@sbg.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 86ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-04-24 09:36:05 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 29ms (Views: 26.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-04-24 09:36:13 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"w8lNXQhrsngm84AxFlyNgWHKHEV0r+qAIECWyBilbB9iGdDslsE/58C2sFEyD1zBT3MskPVJBHOujlv5eG8eKw==", "email"=>"d.buder@sbg.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 65ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-04-24 09:36:14 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 26ms (Views: 24.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-04-24 09:36:21 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Kx/SfXmYNBkoZpP4ARIM86dZ9LJ4xgmzdr3arPPyreevCdAkNe1T1xu0vV2xchhd74r7zd8ipFuU7EP48h2pUQ==", "email"=>"d.buder@sbg.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 67ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:36:21 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  Rendered tasks/index.html.erb within layouts/application (47.1ms)
+Completed 200 OK in 108ms (Views: 69.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/tasks/1" for 127.0.0.1 at 2018-04-24 09:37:14 +0200
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 41ms (Views: 30.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:37:21 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  Rendered tasks/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 59ms (Views: 52.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/tasks/1" for 127.0.0.1 at 2018-04-24 09:39:13 +0200
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 44ms (Views: 37.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tasks/1" for 127.0.0.1 at 2018-04-24 09:40:38 +0200
+  
+SyntaxError (/Users/denisebuder/Documents/FH/4.Semester/mmp/helpUhelp/app/controllers/tasks_controller.rb:9: syntax error, unexpected '=', expecting ')'
+...t_user.tasks.where('assigned' = false);
+...                               ^):
+  
+app/controllers/tasks_controller.rb:9: syntax error, unexpected '=', expecting ')'
+Started GET "/tasks/1" for 127.0.0.1 at 2018-04-24 09:42:39 +0200
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 58ms (Views: 26.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:42:43 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tasks/index.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     9:       <% if @assigned_usertasks.size > 0 %>
+    10:       <div class="tasks">
+    11: 
+    12:       <% @usertasks.each do |task| %>
+    13:         <% if task.assigned %>
+    14:         <div class="task-card assigned">
+    15:         <% else %>
+  
+app/views/tasks/index.html.erb:12:in `_app_views_tasks_index_html_erb__3881387780822483670_70233923238740'
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:42:57 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  Rendered tasks/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 41ms (Views: 36.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/tasks/1" for 127.0.0.1 at 2018-04-24 09:43:00 +0200
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 32ms (Views: 27.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks/1" for 127.0.0.1 at 2018-04-24 09:43:25 +0200
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 63ms (Views: 30.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-24 09:43:27 +0200
+Processing by SessionsController#create as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-04-24 09:43:27 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 31ms (Views: 28.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-04-24 09:43:32 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cageOPDEeQ85tSB75yNmxkPRO9cBKC/8h7tlR3DG9AwdCP3s1SX23+nS+Kj1lkpQZI/P18/TlIC1XwIdrkCQow==", "email"=>"d.buder@sbg.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 65ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:43:32 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms)
+
+
+  
+ArgumentError (Unsupported argument type: true (TrueClass)):
+  
+app/controllers/tasks_controller.rb:9:in `index'
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:43:48 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..2)):
+  
+app/controllers/tasks_controller.rb:9:in `index'
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:44:25 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.9ms)
+
+
+  
+ArgumentError (Unsupported argument type: true (TrueClass)):
+  
+app/controllers/tasks_controller.rb:9:in `index'
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:44:33 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 2.2ms)
+
+
+  
+ArgumentError (Unsupported argument type: 1 (Fixnum)):
+  
+app/controllers/tasks_controller.rb:9:in `index'
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:44:40 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  Rendered tasks/index.html.erb within layouts/application (20.9ms)
+Completed 200 OK in 75ms (Views: 45.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/tasks/1" for 127.0.0.1 at 2018-04-24 09:44:51 +0200
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 30ms (Views: 24.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tasks/1" for 127.0.0.1 at 2018-04-24 09:45:05 +0200
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 54ms (Views: 24.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:45:07 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.6ms)
+
+
+  
+ArgumentError (Unsupported argument type: true (TrueClass)):
+  
+app/controllers/tasks_controller.rb:9:in `index'
+Started GET "/tasks/new" for 127.0.0.1 at 2018-04-24 09:45:40 +0200
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (32.7ms)
+  Rendered tasks/new.html.erb within layouts/application (35.2ms)
+Completed 200 OK in 67ms (Views: 63.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:45:49 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms)
+
+
+  
+ArgumentError (Unsupported argument type: true (TrueClass)):
+  
+app/controllers/tasks_controller.rb:9:in `index'
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:47:10 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND (assigned = true)[0m  [["user_id", 1]]
+  Rendered tasks/index.html.erb within layouts/application (5.3ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 3.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: true: SELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND (assigned = true)):
+     6:     <p id="notice"><%= notice %></p>
+     7: 
+     8:     <h1>Meine Aufgaben</h1>
+     9:       <% if @assigned_usertasks.size > 0 %>
+    10:       <div class="tasks">
+    11: 
+    12:       <% @assigned_usertasks.each do |task| %>
+  
+app/views/tasks/index.html.erb:9:in `_app_views_tasks_index_html_erb__3881387780822483670_70233882655580'
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:47:27 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND (assigned = t)[0m  [["user_id", 1]]
+  Rendered tasks/index.html.erb within layouts/application (5.4ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 2.3ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: t: SELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND (assigned = t)):
+     6:     <p id="notice"><%= notice %></p>
+     7: 
+     8:     <h1>Meine Aufgaben</h1>
+     9:       <% if @assigned_usertasks.size > 0 %>
+    10:       <div class="tasks">
+    11: 
+    12:       <% @assigned_usertasks.each do |task| %>
+  
+app/views/tasks/index.html.erb:9:in `_app_views_tasks_index_html_erb__3881387780822483670_70233978756640'
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:48:18 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 1], ["assigned", "t"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered tasks/index.html.erb within layouts/application (22.3ms)
+Completed 200 OK in 75ms (Views: 43.9ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:51:07 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 1], ["assigned", "t"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 1], ["assigned", "f"]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 1], ["assigned", "f"]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  Rendered tasks/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 80ms (Views: 50.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-24 09:51:48 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 1], ["assigned", "t"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 1], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 1], ["assigned", "f"]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  Rendered tasks/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 35ms (Views: 29.4ms | ActiveRecord: 1.0ms)
+
+
