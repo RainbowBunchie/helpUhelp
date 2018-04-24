@@ -42,6 +42,11 @@
   </div>
 
   <% random_password = Randomstring.generate(20) %>
+  
+  <div class="field">
+    <%= form.label :passowrd, "Password" %>
+    <%= form.password_field :password, id: :password %>
+  </div>
 
   <% form.hidden_field :password
     hidden_field_tag 'selected', random_password

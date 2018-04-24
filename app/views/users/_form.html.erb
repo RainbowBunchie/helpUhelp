@@ -15,10 +15,10 @@
 
   <div class="field">
     <%= form.label :role_id, "Rolle" %>
-    <%= form.text_field :role_id, id: :user_role_id %>
+    <%= form.select :role_id, options_for_select(@roles.collect{ |r| [r.title, r.id]}) %>
   </div>
 
-  <% end %> 
+  <% end %>
   <div class="field">
     <%= form.label :first_name, "Vorname" %>
     <%= form.text_field :first_name, id: :user_first_name %>
