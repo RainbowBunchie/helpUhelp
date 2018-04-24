@@ -3,4 +3,5 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :tasks
   belongs_to :role
   has_secure_password
+  validates :password, presence: true, allow_nil: true
 end
