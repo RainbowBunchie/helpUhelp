@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     random_password = Randomstring.generate(20)
     p = user_params
     p[:password] = random_password;
-    @user = User.new(p)
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save

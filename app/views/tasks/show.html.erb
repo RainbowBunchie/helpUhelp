@@ -8,7 +8,7 @@
 			<%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), @task, method: :delete, data: { confirm: 'Are you sure?' } %>
 		</div>
 		<%end%>
-    <h1> title </h1>
+    <h1> <%= @task.title %> </h1>
 
       <p>
         <strong>Datum:</strong>
@@ -39,7 +39,20 @@
 				<%= @task.description %>
 			</p>
     </div>
-		<%= link_to 'Back', tasks_path %>
+		<h1> Bewerber </h1>
+  <div class="tasks">
+    <% @task.users.each do |user| %>
+      <div class="task-card" >
+        <p><%= user.first_name %> <%= user.last_name %></p>
+        <p><%= user.telephone %></p>
+      </div>
+    <% end %>
+  </div>
+
+	<%= link_to 'Zurück', tasks_path %>
+
 </div>
 
-  <%= link_to  image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(@task) %>
+
+
+<%= link_to  image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(@task) %>
