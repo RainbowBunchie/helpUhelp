@@ -35,7 +35,20 @@ class TasksController < ApplicationController
 
   # add user to task
   def add_user
+<<<<<<< HEAD
 
+=======
+    @stu = StatusTaskUser.new({:user_id => current_user.id, :task_id => @task.id, :status_id => 1})
+    respond_to do |format|
+      if @stu.save
+        format.html { redirect_to tasks_url, notice: 'Für die Aufgabe beworben!' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to tasks_url, notice: 'Nix Passiert!' }
+        format.json { head :no_content }
+      end
+    end
+>>>>>>> a5cd6eccb2101ad6a82d9a59dc6ce8c85cb88cab
   end
 
   # remove user from task
