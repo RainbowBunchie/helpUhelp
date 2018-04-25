@@ -33,15 +33,14 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :enable               => true,
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => "smtp.gmail.com",
-    :user_name            => "tiscal95@gmail.com",
-    :password             => "HongdaeIpGu",
-    :authentication       => "login",
-    :enable_starttls_auto => true,
-    :tls                  => false,
+    enable:               true,
+    address:              "smtp.gmail.com",
+    port:                 587,
+    domain:               "smtp.gmail.com",
+    user_name:            "tiscal95@gmail.com",
+    password:             "HongdaeIpGu",
+    authentication:       "plain",
+    enable_starttls_auto: true
   }
 
   # Print deprecation notices to the Rails logger.

@@ -13,6 +13,8 @@ gem 'bcrypt'
 
 gem 'certified'
 
+gem 'mail'
+
 gem 'randomstring'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'

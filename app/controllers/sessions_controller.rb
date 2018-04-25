@@ -2,7 +2,9 @@ class SessionsController < ApplicationController
 # displays login form
 
   def new
-    @test = "hallo"
+  	if current_user
+  		redirect_to tasks_path
+  	end
   end
 
   # checks login data and starts session
@@ -24,9 +26,8 @@ class SessionsController < ApplicationController
 
   # deletes sesssion
   def destroy
-    @test = "tschüss"
     reset_session
-    redirect_to login_path, notice: 'Logged out'
+    redirect_to login_path, notice: 'Du wurdest ausgeloggt'
   end
 
 private
