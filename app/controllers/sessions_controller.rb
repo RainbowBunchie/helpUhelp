@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
 # displays login form
 
   def new
+  	if current_user
+  		redirect_to tasks_path
+  	end
   end
 
   # checks login data and starts session
