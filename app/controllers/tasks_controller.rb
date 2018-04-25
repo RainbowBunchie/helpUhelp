@@ -7,6 +7,12 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
     @assigned_usertasks = current_user.tasks.where(:assigned => true)
+
+
+    @all_statustaskuser_entries = StatusTaskUser.all
+    @pending_usertasks= Task.find(@all_statustaskuser_entries.where("user_id = ? and status_id = 1", current_user.id).pluck(:task_id))
+
+
     @pending_usertasks = current_user.tasks.where(:assigned => false)
     @open_usertasks = Task.all
     @unassigned_tasks = @tasks.where(:assigned => false)
@@ -29,11 +35,7 @@ class TasksController < ApplicationController
 
   # add user to task
   def add_user
-    @task.users << @current_user
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Für die Aufgabe beworben!' }
-      format.json { head :no_content }
-    end
+
   end
 
   # remove user from task
