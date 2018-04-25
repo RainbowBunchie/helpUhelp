@@ -130,6 +130,6 @@ table {
 }
 
 .field_with_errors {
-  @extend .control-group;
+  /*@extend .control-group;*/
   @extend .error;
  }
