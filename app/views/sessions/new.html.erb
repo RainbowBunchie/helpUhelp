@@ -3,8 +3,8 @@
     <% if notice %>
       <p id="notice"><%= notice %></p>
     <% end %>
-    <% if alert && !notice %>
-      <p id="alert"><%= alert %></p>
+    <% if @alert%>
+      <p id="alert"><%= @alert %></p>
     <% end %>
   <div class="form-container">
     <h1>Einloggen</h1>
