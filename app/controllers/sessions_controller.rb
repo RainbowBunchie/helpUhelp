@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to tasks_path
     else
+      @alert = "Falsche E-Mail Adresse und/oder Passwort"
       render :new
       #session[:email] = @email
       #redirect_to login_path, alert: 'Falsches Passwort und/oder falsche E-Mail Adresse'
