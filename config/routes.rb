@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :tasks do
     member do
       post 'add_user'
+      post 'remove_user'
     end
   end
   #root 'static_pages#home'
@@ -14,5 +15,4 @@ Rails.application.routes.draw do
   post '/login',  to: 'sessions#create'
   get  '/logout', to: 'sessions#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  # get  '/add_user', to: 'tasks#addUser'
 end
