@@ -1,3 +1,5 @@
+<% if current_user.role.title == "admin" %>
+
 <div class="form-edit">
   <div class="form-container">
     <h1>Aufgabe Bearbeiten</h1>
@@ -8,3 +10,9 @@
     <%= link_to 'Back', tasks_path %>
   </div>
 </div>
+
+<% else %>
+  <p class="notification">
+    Diese Seite ist nur dem Admin zugänglich.
+  </p>
+<%end %>
