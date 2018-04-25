@@ -23790,3 +23790,596 @@ Migrating to AddTitleToTasks (20180425093345)
             WHERE name='index_users_on_role_id' AND type='index'
 [0m
 >>>>>>> 8b60eb02a950742f92acadad4d4cb9d0e7709057
+Started GET "/users/new" for 127.0.0.1 at 2018-04-25 12:38:54 +0200
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.4) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.4) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRoles (20180421175429)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180421175429"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateJoinTable (20180422115811)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "tasks_users" ("user_id" integer NOT NULL, "task_id" integer NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_tasks_users_on_user_id" ON "tasks_users" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_users_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_users_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_tasks_users_on_task_id" ON "tasks_users" ("task_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180422115811"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTasks (20180423083935)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" text, "date" date, "time" time, "place" varchar, "assigned" boolean, "no_of_people" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180423083935"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20180423102221)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" integer, "first_name" varchar, "last_name" varchar, "email" varchar, "telephone" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_642f17018b"
+FOREIGN KEY ("role_id")
+  REFERENCES "roles" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_role_id" ON "users" ("role_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180423102221"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddTitleToTasks (20180425093345)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tasks" ADD "title" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180425093345"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-04-25 10:39:08.691701"], ["updated_at", "2018-04-25 10:39:08.691701"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_users_on_task_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_users_on_task_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tasks_users_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tasks_users_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+Started GET "/users/new" for 127.0.0.1 at 2018-04-25 12:39:19 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  Rendered users/new.html.erb within layouts/application (15.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 343ms (Views: 303.4ms | ActiveRecord: 1.7ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."title" = ? LIMIT ?[0m  [["title", "admin"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "roles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "admin"], ["created_at", "2018-04-25 10:39:43.230084"], ["updated_at", "2018-04-25 10:39:43.230084"]]
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/new" for 127.0.0.1 at 2018-04-25 12:39:55 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  Rendered users/new.html.erb within layouts/application (22.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 261ms (Views: 226.5ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-04-25 12:40:06 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hoqhpxZ3/SANFvKYyxhsHwfeA9DULJGIxXpolZEM8Ct19oMnk05Rg5u0HzEKduBzl0e/NiRT6LlSF5nsvyp/3Q==", "user"=>{"role_id"=>"1", "first_name"=>"Denise", "last_name"=>"Buder", "email"=>"d.buder@sbg.at", "telephone"=>"239u4938^", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("role_id", "first_name", "last_name", "email", "telephone", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["role_id", 1], ["first_name", "Denise"], ["last_name", "Buder"], ["email", "d.buder@sbg.at"], ["telephone", "239u4938^"], ["password_digest", "$2a$10$3XzwzvRb8ToMo78yLfX/9u0hzmpGL4nE1Vmcmg9cBoz7sDmz2JaVK"], ["created_at", "2018-04-25 10:40:06.839819"], ["updated_at", "2018-04-25 10:40:06.839819"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  Rendering application_mailer/send_signup_email.html.erb within layouts/mailer
+  Rendered application_mailer/send_signup_email.html.erb within layouts/mailer (0.5ms)
+  Rendering application_mailer/send_signup_email.text.erb within layouts/mailer
+  Rendered application_mailer/send_signup_email.text.erb within layouts/mailer (0.2ms)
+ApplicationMailer#send_signup_email: processed outbound mail in 357.6ms
+Sent mail to d.buder@sbg.at (541.6ms)
+Date: Wed, 25 Apr 2018 12:40:07 +0200
+From: tiscal95@gmail.com
+To: d.buder@sbg.at
+Message-ID: <5ae05b0732d9b_14eb3ff2a1e0492085d5@c78-104-169-63.fh-salzburg.ac.at.mail>
+Subject: Registrierung bei helpUhelp
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5ae05b07317a0_14eb3ff2a1e04920848c";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5ae05b07317a0_14eb3ff2a1e04920848c
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5ae05b07317a0_14eb3ff2a1e04920848c
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Best=C3=A4tigunsmail f=C3=BCr Denise Buder
+</h1>
+<p>Bitte loggen Sie sich mit ihrer E-Mail-Adresse und dem dem Passwort $2=
+a$10$3XzwzvRb8ToMo78yLfX/9u0hzmpGL4nE1Vmcmg9cBoz7sDmz2JaVK auf der helpUh=
+elp Startseite ein!</p>
+
+  </body>
+</html>
+
+----==_mimepart_5ae05b07317a0_14eb3ff2a1e04920848c--
+
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 987ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-04-25 12:40:07 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (3.5ms)
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 26.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2018-04-25 12:40:10 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/login
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-04-25 12:40:10 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 38ms (Views: 34.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-04-25 12:40:14 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2Z8uOXsgFfyMZdMlhWxjx2PWYuVWy0zx63KTmXX3uuvU8iVqvaakmzoFcBub1KQNbo4Xc/P4FPzO1eZzfCVJBA==", "email"=>"d.buder@sbg.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 67ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-04-25 12:40:14 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-04-25 12:40:16 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cIgCdxdCJfV222KByHdSACfc1hrh5m1SEDFZyvt9k8F0kF4TUi7Q5c1Xa6C1OWBjuuwgmT8BzlEoK6kHhi3MOQ==", "email"=>"d.buder@sbg.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 61ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-04-25 12:40:17 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-04-25 12:40:22 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"k3MybAAVvN/FWSJLbZPV4pL8rSLyi5Ar6jqdWmRSNRt228go3BhBPzsRdbq+1UQsGl0rUHKMZTHXJyZwDpU3Vg==", "email"=>"d.buder@sbg.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 63ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-04-25 12:40:22 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-04-25 12:40:32 +0200
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 29ms (Views: 26.8ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/users/1" for 127.0.0.1 at 2018-04-25 12:40:35 +0200
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ikl8kloIZNJoyS3psbNsOAr/LtXZ3xSXSivoBYT2aSYq0Nm7bnR6yB/c9Lq6arJ3nJmmpBUMxnxkcMTm8i1F5Q==", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "tasks_users" WHERE "tasks_users"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 22ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-04-25 12:40:35 +0200
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 26ms (Views: 23.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2018-04-25 12:40:36 +0200
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  Rendered users/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 39ms (Views: 36.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-04-25 12:41:16 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Fb+ywQhR3rfzWTTPXiy1oHX61uVSkZ8rab+4KPRjGh03pnUvkWLzf853bCx4Ybt2GkvzxucWtUBK9KO/BDSBGw==", "user"=>{"role_id"=>"1", "first_name"=>"Denise", "last_name"=>"Buder", "email"=>"d.buder@sbg.at", "telephone"=>"989", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  Rendered users/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 134ms (Views: 38.0ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-04-25 12:41:20 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nq82jS0SJK9sjsfPoYv3eJnfmi0YiDchwinRdc3OFcA+NpOkGW46tRubHpyqUik3D7kSXNRb5crscv2WuxU5Aw==", "user"=>{"role_id"=>"1", "first_name"=>"Denise", "last_name"=>"Buder", "email"=>"d.buder@sbg.at", "telephone"=>"98992389", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  Rendered users/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 34ms (Views: 28.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-04-25 12:41:23 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/GAtNpF18D1ThzdwycfAOWbNwvbnUMYUWZgKz6jWQpFc+YgfpQnuJySS7iPCHh528KtKhyuDFP93wyYs3g1uUg==", "user"=>{"role_id"=>"1", "first_name"=>"Denise", "last_name"=>"Buder", "email"=>"d.buder@sbg.at", "telephone"=>"98992389", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("role_id", "first_name", "last_name", "email", "telephone", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["role_id", 1], ["first_name", "Denise"], ["last_name", "Buder"], ["email", "d.buder@sbg.at"], ["telephone", "98992389"], ["password_digest", "$2a$10$zkdUxkzZjZQXllCicQvFdORJnKyKFlAk6ryKsxp2VQ6OlAHwj1Dxa"], ["created_at", "2018-04-25 10:41:23.360236"], ["updated_at", "2018-04-25 10:41:23.360236"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  Rendering application_mailer/send_signup_email.html.erb within layouts/mailer
+  Rendered application_mailer/send_signup_email.html.erb within layouts/mailer (0.4ms)
+  Rendering application_mailer/send_signup_email.text.erb within layouts/mailer
+  Rendered application_mailer/send_signup_email.text.erb within layouts/mailer (0.2ms)
+ApplicationMailer#send_signup_email: processed outbound mail in 25.9ms
+Sent mail to d.buder@sbg.at (494.7ms)
+Date: Wed, 25 Apr 2018 12:41:23 +0200
+From: tiscal95@gmail.com
+To: d.buder@sbg.at
+Message-ID: <5ae05b5360254_14eb3ff2a1e04830873f@c78-104-169-63.fh-salzburg.ac.at.mail>
+Subject: Registrierung bei helpUhelp
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5ae05b535f762_14eb3ff2a1e04830866d";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5ae05b535f762_14eb3ff2a1e04830866d
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5ae05b535f762_14eb3ff2a1e04830866d
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Best=C3=A4tigunsmail f=C3=BCr Denise Buder
+</h1>
+<p>Bitte loggen Sie sich mit ihrer E-Mail-Adresse und dem dem Passwort $2=
+a$10$zkdUxkzZjZQXllCicQvFdORJnKyKFlAk6ryKsxp2VQ6OlAHwj1Dxa auf der helpUh=
+elp Startseite ein!</p>
+
+  </body>
+</html>
+
+----==_mimepart_5ae05b535f762_14eb3ff2a1e04830866d--
+
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 596ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-04-25 12:41:23 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    1: <p id="notice"><%= notice %></p>
+    2: 
+    3: <% if current_user.id == @user.id || current_user.role.title == "admin" %>
+    4: <div class="form-edit user-page">
+    5: 	<div class="form-container">
+    6:       <h1> <%= @user.first_name + " " + @user.last_name%>
+  
+app/views/users/show.html.erb:3:in `_app_views_users_show_html_erb__3152946965487051827_70311446397060'
+Started GET "/" for 127.0.0.1 at 2018-04-25 12:41:29 +0200
+Processing by SessionsController#create as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-04-25 12:41:29 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 26ms (Views: 23.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-04-25 12:41:33 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8fyoJcOOWY8xVVZZ6tWFwhLeQSdT9CKUe/J66+M5/8Jzd+YcythFJ8ADmiIwT0YXBDacc+mntpzygiYWEwHLvg==", "email"=>"d.buder@sbg.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "d.buder@sbg.at"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 67ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-25 12:41:33 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "t"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "t"]]
+  Rendered tasks/index.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 50ms (Views: 33.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2018-04-25 12:41:51 +0200
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tasks/new.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered tasks/_form.html.erb (13.2ms)
+  Rendered tasks/new.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 57ms (Views: 41.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2018-04-25 12:42:04 +0200
+Processing by TasksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hl19+QarP7CbBqnLMItSlSsAXwtGW/1ooHfvxEVjoK2t6G3W331ohOTAzxTPp4zQGmeu12uxh2E5e2u3SeR/2g==", "task"=>{"title"=>"Babysitter gesucht", "description"=>"sdfn sdjfn sdjkfn skjdfn jskdnfjksdnfjsdnfjsdbfjsbdf", "date(1i)"=>"2018", "date(2i)"=>"4", "date(3i)"=>"25", "time(1i)"=>"2018", "time(2i)"=>"4", "time(3i)"=>"25", "time(4i)"=>"10", "time(5i)"=>"41", "place"=>"djhsdjsd", "assigned"=>"0", "no_of_people"=>"1"}, "commit"=>"Create Task"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "assigned", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "sdfn sdjfn sdjkfn skjdfn jskdnfjksdnfjsdnfjsdbfjsbdf"], ["date", "2018-04-25"], ["time", "2018-04-25 10:41:00"], ["place", "djhsdjsd"], ["assigned", "f"], ["no_of_people", 1], ["created_at", "2018-04-25 10:42:04.992291"], ["updated_at", "2018-04-25 10:42:04.992291"], ["title", "Babysitter gesucht"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tasks/1
+Completed 302 Found in 7ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/tasks/1" for 127.0.0.1 at 2018-04-25 12:42:04 +0200
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tasks/show.html.erb within layouts/application
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks_users" ON "users"."id" = "tasks_users"."user_id" WHERE "tasks_users"."task_id" = ?[0m  [["task_id", 1]]
+  Rendered tasks/show.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 39ms (Views: 34.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-25 12:42:20 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "t"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "t"]]
+  Rendered tasks/index.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 38ms (Views: 33.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/tasks/1/add_user" for 127.0.0.1 at 2018-04-25 12:42:28 +0200
+Processing by TasksController#add_user as HTML
+  Parameters: {"authenticity_token"=>"FoZbrRYsNTlAR04rM/ugWr6sLUiFvcEX0gJZ6vfXyL9Kh/3QDehKd04QtR/m6b4dcpIFtlinqAXTkNPgGRhLhA==", "id"=>"1"}
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tasks_users" ("user_id", "task_id") VALUES (?, ?)[0m  [["user_id", 2], ["task_id", 1]]
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 14ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-25 12:42:28 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "t"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "f"]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "t"]]
+  Rendered tasks/index.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 39ms (Views: 32.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-25 12:42:39 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "t"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "f"]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "t"]]
+  Rendered tasks/index.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 37ms (Views: 31.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-25 12:43:27 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "t"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "t"]]
+  Rendered tasks/index.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 36ms (Views: 30.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-25 12:43:30 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "t"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "f"]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "t"]]
+  Rendered tasks/index.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 38ms (Views: 31.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-25 12:44:49 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "t"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN "tasks_users" ON "tasks"."id" = "tasks_users"."task_id" WHERE "tasks_users"."user_id" = ? AND "tasks"."assigned" = ?[0m  [["user_id", 2], ["assigned", "f"]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "f"]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."assigned" = ?[0m  [["assigned", "t"]]
+  Rendered tasks/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 35ms (Views: 30.0ms | ActiveRecord: 1.2ms)
+
+
