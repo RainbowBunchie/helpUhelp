@@ -10,7 +10,6 @@
 
     <% if current_user && current_user.role.title == "admin" %>
 
-
       <h1>This part can only be viewed by user. Delete this h1 later... just for orientation purposes</h1>
 
       <%# Users can view their assigned tasks here%>
@@ -21,7 +20,7 @@
         <div class="task-card assigned">
           <div class="info">
             <%= link_to task do%>
-              <div class="task-description"><%= task.description%></div>
+              <div class="task-description"><%= task.title%></div>
               <div class="task-info">
                 <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
                 <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
@@ -50,7 +49,7 @@
 
           <div class="info">
             <%= link_to task do%>
-              <div class="task-description"><%= task.description%></div>
+              <div class="task-description"><%= task.title%></div>
               <div class="task-info">
                 <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
                 <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
@@ -72,11 +71,11 @@
       <%# Users can view unassigned tasks here and can apply for them %>
       <h1>Unzugewiesene Aufgaben</h1>
       <div class="tasks">
-        <% @tasks.each do |task| %>
+        <% @open_usertasks.each do |task| %>
           <% if !task.assigned %>
             <div class="task-card unassigned">
               <div class="info">
-                <div class="task-description"><%= task.description%></div>
+                <div class="task-description"><%= task.title%></div>
                 <%= link_to task do%>
                   <div class="task-info">
                     <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
@@ -113,7 +112,7 @@
               <%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), task, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
 
-            <div class="task-description"><%= task.description%></div>
+            <div class="task-description"><%= task.title%></div>
             <%= link_to task do%>
               <div class="task-info">
                 <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
@@ -138,7 +137,7 @@
               <%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), task, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
 
-            <div class="task-description"><%= task.description%></div>
+            <div class="task-description"><%= task.title%></div>
             <%= link_to task do%>
             <div class="task-info">
               <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />

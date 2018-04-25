@@ -67,17 +67,18 @@ table {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+   font-size:1rem;
  }
 
 .notification{
-  margin-top: 2em;
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
 }
 
 .navbar{
     background-color: #333232;
-    height: 5em;
+    height: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -105,3 +106,30 @@ table {
 .navbar-li a:hover{
   color: #45ac35;
 }
+
+#error_explanation_own {
+  min-width: 50%;
+}
+
+#error-title {
+  background-color: #d62121;
+  color: white;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  width:100%;
+}
+
+#error-message {
+  list-style-type: circle;
+  margin: 10px 0 18px 20px;
+  color:#333232;
+  line-height: 150%;
+  font-size:0.9rem;
+  width:100%;
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+ }

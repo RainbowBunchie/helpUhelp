@@ -1,21 +1,25 @@
 <% require "randomstring"
 %>
 <% if true #current_user.role.title == "admin" %>
+<div class="form-edit">
 
-  <h1>Neuen User anlegen</h1>
-
-  <%= form_with(model: @user, local: true) do |form|%>
     <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <div id="error_explanation_own">
+        <h2 id="error-title"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-        <ul>
+        <ul id="error-message">
         <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>
       </div>
     <% end %>
+
+
+  <div class="form-container">
+  <h1>Neuen User anlegen</h1>
+
+  <%= form_with(model: @user, local: true) do |form|%>
 
     <div class="field">
       <%= form.label :role_id, "Rolle" %>
@@ -70,4 +74,6 @@
     Diese Seite ist nur dem Admin zugänglich.
   </p>
 <%end %>
+</div>
+</div>
 

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :status_task_users
+  resources :statuses
   resources :users
   resources :tasks do
     member do
