@@ -1,5 +1,21 @@
 de:
+  hello: "Hallo Welt!"
   activerecord:
+    attributes:
+      user:
+        first_name: 'Vorname'
+        last_name: 'Nachname'
+        password: 'Passwort'
+        email: 'E-Mail-Adresse'
+        telephone: 'Telefonnummer'
+      task:
+        titel: 'Titel'
+        description: 'Beschreibung'
+        date: 'Datum'
+        time: 'Zeit'
+        place: 'Ort'
+        assigned: 'Zugewiesen'
+        no_of_people: 'Anzahl der Personen'
     errors:
       messages:
         record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
@@ -17,7 +33,6 @@ de:
     - Fr
     - Sa
     abbr_month_names:
-    -
     - Jan
     - Feb
     - Mär

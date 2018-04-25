@@ -15,6 +15,8 @@ gem 'certified'
 
 gem 'mail'
 
+gem 'rails-i18n'
+
 gem 'randomstring'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'

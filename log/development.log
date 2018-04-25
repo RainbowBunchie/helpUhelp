@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Started GET "/tasks" for 127.0.0.1 at 2018-04-24 15:47:57 +0200
   
 ActiveRecord::StatementInvalid (SQLite3::CorruptException: database disk image is malformed: SELECT name FROM sqlite_master WHERE name <> 'sqlite_sequence' AND name = 'schema_migrations' AND type IN ('table')):
@@ -31437,3 +31438,5 @@ Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.8ms)
 NoMethodError (undefined method `id' for nil:NilClass):
   
 app/controllers/tasks_controller.rb:32:in `add_user'
+=======
+>>>>>>> 62ca94ef1dbd688af5d8b57864915b9639f66ff0

@@ -1,5 +1,23 @@
-<h1>New Role</h1>
+<div class="form-edit">
+    
+    <% if @role.errors.any? %>
+      <div id="error_explanation_own">
+        <h2 id="error-title">Bitte beachten Sie folgende Anforderungen!</h2>
 
-<%= render 'form', role: @role %>
+        <ul id="error-message">
+        <% @role.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<%= link_to 'Back', roles_path %>
+    <div class="form-container">
+
+	<h1>New Role</h1>
+
+	<%= render 'form', role: @role %>
+
+	<%= link_to 'Back', roles_path %>
+	</div>
+</div>
