@@ -8,6 +8,8 @@ class TasksController < ApplicationController
     @tasks = Task.all
     @assigned_usertasks = current_user.tasks.where(:assigned => true)
     @pending_usertasks = current_user.tasks.where(:assigned => false)
+    @unassigned_tasks = @tasks.where(:assigned => false)
+    @assigned_tasks = @tasks.where(:assigned => true)
   end
 
   # GET /tasks/1
