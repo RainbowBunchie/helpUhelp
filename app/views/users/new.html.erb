@@ -43,7 +43,13 @@
     </div>
 
     <% random_password = Randomstring.generate(20) %>
-
+    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
+    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
+    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
+    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
+    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
+    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
+    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
     <div class="field">
       <%= form.label :passowrd, "Password" %>
       <%= form.password_field :password, id: :password %>
@@ -57,37 +63,6 @@
       <%= form.submit %>
     </div>
   <% end %>
-
-<<<<<<< HEAD
-  <div class="field">
-    <%= form.label :role_id, "Rolle" %>
-    <%= form.select :role_id, options_for_select(@roles.collect{ |r| [r.title, r.id]}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :first_name, "Vorname" %>
-    <%= form.text_field :first_name, id: :user_first_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name, "Nachname" %>
-    <%= form.text_field :last_name, id: :user_last_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email, "Email" %>
-    <%= form.text_field :email, id: :user_email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telephone, "Telefon" %>
-    <%= form.text_field :telephone, id: :user_telephone %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
 
   <%= link_to 'Back', users_path %>
 <% else %>
