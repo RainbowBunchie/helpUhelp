@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :add_user]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :add_user, :remove_user]
   before_action :require_login
 
   # GET /tasks
@@ -28,7 +28,16 @@ class TasksController < ApplicationController
   def add_user
     @task.users << @current_user
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Beworben!' }
+      format.html { redirect_to tasks_url, notice: 'Für die Aufgabe beworben!' }
+      format.json { head :no_content }
+    end
+  end
+
+  # remove user from task
+  def remove_user
+    @task.users.delete(@current_user)
+    respond_to do |format|
+      format.html { redirect_to tasks_url, notice: 'Bewerbung für Aufgabe abgesagt!' }
       format.json { head :no_content }
     end
   end
@@ -37,7 +46,6 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
