@@ -8,7 +8,7 @@
 			<%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), @task, method: :delete, data: { confirm: 'Are you sure?' } %>
 		</div>
 		<%end%>
-    <h1> title </h1>
+    <h1> <%= @task.title %> </h1>
 
       <p>
         <strong>Datum:</strong>
@@ -45,9 +45,7 @@
       <div class="task-card" >
         <p><%= user.first_name %> <%= user.last_name %></p>
         <p><%= user.telephone %></p>
-
-
-      </divclass>
+      </div>
     <% end %>
   </div>
 </div>

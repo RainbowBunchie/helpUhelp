@@ -28,7 +28,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @roles = Role.all
-    @user = User.new(user_params)
+    random_password = Randomstring.generate(20)
+    p = user_params
+    p[:password] = random_password;
+    @user = User.new(p)
 
     respond_to do |format|
       if @user.save

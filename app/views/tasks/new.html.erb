@@ -1,9 +1,17 @@
-<div class="form-edit">
-  <div class="form-container">
-    <h1>Neue Aufgabe</h1>
+<% if current_user.role.title == "admin" %>
 
-    <%= render 'form', task: @task %>
+  <div class="form-edit">
+    <div class="form-container">
+      <h1>Neue Aufgabe</h1>
 
-    <%= link_to 'Back', tasks_path %>
+      <%= render 'form', task: @task %>
+
+      <%= link_to 'Back', tasks_path %>
+    </div>
   </div>
-</div>
+
+<% else %>
+  <p class="notification">
+    Diese Seite ist nur dem Admin zugänglich.
+  </p>
+<%end %>

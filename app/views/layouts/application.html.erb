@@ -19,7 +19,11 @@
   <body>
     <nav class="navbar">
       <div class="navbar-container">
+        <% if current_user %>
         <a class="navbar-brand" href="/tasks">
+        <% else %>
+        <a class="navbar-brand" href="/login">
+        <% end %>
           <%= image_tag('help-U-help.png', size: "168x50", alt: "Aufgaben", class: 'd-inline-block') %>
         </a>
           <ul class="navbar-ul">

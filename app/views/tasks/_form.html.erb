@@ -12,12 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :description %>
+    Titel <br />
+    <%= form.text_field :title, id: :task_title %>
+  </div>
+
+  <div class="field">
+    Beschreibung <br />
     <%= form.text_area :description, id: :task_description %>
   </div>
 
   <div class="field">
-    <%= form.label :date %>
+    Datum <br />
     <%= form.date_select :date, id: :task_date %>
   </div>
 
