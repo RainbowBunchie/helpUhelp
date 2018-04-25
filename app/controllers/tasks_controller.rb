@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :addUser]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :add_user]
   before_action :require_login
 
   # GET /tasks
@@ -25,10 +25,12 @@ class TasksController < ApplicationController
   end
 
   # add user to task
-  def addUser
-    @task << @current_user
-    format.html { redirect_to tasks_url, notice: 'Beworben!' }
-    format.json { render :show, status: :created, location: @task }
+  def add_user
+    @task.users << @current_user
+    respond_to do |format|
+      format.html { redirect_to tasks_url, notice: 'Beworben!' }
+      format.json { head :no_content }
+    end
   end
 
   # POST /tasks

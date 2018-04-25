@@ -1,34 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
+<div class="form-edit user-page">
+	<div class="form-container">
+		<% if current_user && current_user.role.title == "admin" %>
+		<div class ="admin-options task-option">
+			<%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(@task) %>
+			<%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), @task, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</div>
+		<%end%>
+    <h1> title </h1>
 
-<p>
-  <strong>Date:</strong>
-  <%= @task.date %>
-</p>
+      <p>
+        <strong>Datum:</strong>
+        <%= @task.date.strftime("%d.%m.%y") %>
+      </p>
+			<p>
+				<strong>Beginnzeit:</strong>
+				<%= @task.time.strftime("%H:%M") %>
+			</p>
 
-<p>
-  <strong>Time:</strong>
-  <%= @task.time %>
-</p>
+      <p>
+        <strong>Ort:</strong>
+        <%= @task.place %>
+      </p>
 
-<p>
-  <strong>Place:</strong>
-  <%= @task.place %>
-</p>
+      <p>
+				wenn admin ->
+        <strong>Zugewiesen:</strong>
+        <% if (@task.assigned) %>
+						ja
+				<% else %>
+					nein
+				<% end %>
+      </p>
 
-<p>
-  <strong>Assigned:</strong>
-  <%= @task.assigned %>
-</p>
+			<p class="task-show-description">
+				<strong>Description:</strong>
+				<%= @task.description %>
+			</p>
+    </div>
+		<%= link_to 'Back', tasks_path %>
+</div>
 
-<p>
-  <strong>No of people:</strong>
-  <%= @task.no_of_people %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+  <%= link_to  image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(@task) %>
