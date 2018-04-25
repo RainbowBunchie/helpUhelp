@@ -10,7 +10,6 @@
 
     <% if current_user && current_user.role.title == "admin" %>
 
-
       <h1>This part can only be viewed by user. Delete this h1 later... just for orientation purposes</h1>
 
       <%# Users can view their assigned tasks here%>
@@ -72,7 +71,7 @@
       <%# Users can view unassigned tasks here and can apply for them %>
       <h1>Unzugewiesene Aufgaben</h1>
       <div class="tasks">
-        <% @tasks.each do |task| %>
+        <% @open_usertasks.each do |task| %>
           <% if !task.assigned %>
             <div class="task-card unassigned">
               <div class="info">

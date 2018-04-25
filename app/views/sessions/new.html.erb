@@ -10,9 +10,8 @@
     <h1>Einloggen</h1>
 
     <%= form_tag login_path do |f| %>
-        <%= text_field_tag     :email, session[:email], placeholder: 'E-Mail' %> <br>
+        <%= text_field_tag     :email, @email, placeholder: 'E-Mail' %> <br>
         <%= password_field_tag :password, nil, placeholder: 'Passwort' %> <br>
-
         <%= submit_tag 'Einloggen' %>
     <% end %>
 
