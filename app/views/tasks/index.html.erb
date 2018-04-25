@@ -9,6 +9,8 @@
     </div>
     <% end %>
 
+
+
     <h1>Meine bestätigten Aufgaben</h1>
 
       <% if @assigned_usertasks.size > 0 %>
@@ -82,8 +84,8 @@
         <% end %>
         </div>
 
+    <%# Only admin can view all the Tasks and Tasks should be colored for him %>
     <h1>Alle Aufgaben</h1>
-
     <div class="tasks">
       <% @tasks.each do |task| %>
         <% if task.assigned %>
@@ -108,7 +110,7 @@
               </div>
             <% end %>
           </div>
-  
+
           <div class ="admin-options">
           <% if current_user && current_user.role.title == "user" %>
             <div><%= link_to 'Edit', edit_task_path(task) %></div>

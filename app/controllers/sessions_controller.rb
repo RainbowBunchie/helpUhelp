@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
   def create
     reset_session # prevent session fixation
     par = login_params
+
     user = User.find_by(email: par[:email])
     if user && user.authenticate(par[:password])
       # Save the user id in the session
@@ -19,14 +20,14 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to tasks_path
     else
-      redirect_to login_path, alert: 'Log in failed'
+      redirect_to login_path, alert: 'Falsches Passwort und/oder falsche E-Mail Adresse'
     end
   end
 
   # deletes sesssion
   def destroy
     reset_session
-    redirect_to root_path, notice: 'Logged out'
+    redirect_to login_path, notice: 'Du wurdest ausgeloggt'
   end
 
 private

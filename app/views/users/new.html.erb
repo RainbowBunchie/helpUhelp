@@ -1,6 +1,6 @@
 <% require "randomstring"
 %>
-<% if current_user.role.title == "admin" %>
+<% if true #current_user.role.title == "admin" %>
 
   <h1>Neuen User anlegen</h1>
 
@@ -19,7 +19,7 @@
 
     <div class="field">
       <%= form.label :role_id, "Rolle" %>
-      <%= form.select :role_id, options_for_select(@roles.collect{ |r| [r.title, r.id]}) %>
+      <%= form.select :role_id, options_for_select(@roles.collect{ |r| [r.title.capitalize, r.id]}) %>
     </div>
 
     <div class="field">
