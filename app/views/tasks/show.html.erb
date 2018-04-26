@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
 <div class="form-edit user-page">
+
+	<% if notice %>
+		<p id="notice"><%= notice %></p>
+	<% end %>
 	<div class="form-container">
 		<% if current_user && current_user.role.title == "admin" %>
 		<div class ="admin-options task-option">
