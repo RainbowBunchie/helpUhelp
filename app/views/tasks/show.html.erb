@@ -8,7 +8,6 @@
 		</div>
 		<%end%>
     <h1> <%= @task.title %> </h1>
-
       <p>
         <strong>Datum:</strong>
         <%= @task.date.strftime("%d.%m.%y") %>
@@ -30,13 +29,18 @@
     </div>
 		<h1> Bewerber </h1>
 
-    <% @task_applicants.each do |applicant|%>
-    <div class="task-card assigned">
-      <p><%= applicant.first_name %> <%= applicant.last_name %></p>
-      <p><%= applicant.telephone %></p>
-      <%= link_to 'zuweisen', assign_user_task_path(@task, applicant_id: applicant.id), method: :post%>
+    <% @task_applicants.each do |applicant| %>
+    <% if applicant.status_id == 3 %>
+      <div class="task-card assigned">
+    <% else %>
+      <div class="task-card">
+    <% end %>
+      <p><%= User.find(applicant.user_id).first_name %> <%= User.find(applicant.user_id).last_name %></p>
+      <p><%= User.find(applicant.user_id).telephone %></p>
+      <%= link_to 'zuweisen', assign_user_task_path(@task, applicant_id: applicant.user_id), method: :post%>
     </div>
     <% end %>
+
 
 
 	<%= link_to 'Zurück', tasks_path %>

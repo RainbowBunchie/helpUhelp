@@ -47,7 +47,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @task_applicants = User.find(StatusTaskUser.where("task_id = ?", @task.id).pluck(:user_id))
+    @task_applicants = StatusTaskUser.where(task_id: @task.id)
   end
 
   # GET /tasks/new
