@@ -47,14 +47,6 @@ ActiveRecord::Schema.define(version: 20180425130231) do
     t.string "title"
   end
 
-  create_table "tasks_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "task_id", null: false
-    t.boolean "confirmed"
-    t.index ["task_id", "user_id"], name: "index_tasks_users_on_task_id_and_user_id"
-    t.index ["user_id", "task_id"], name: "index_tasks_users_on_user_id_and_task_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.integer "role_id"
     t.string "first_name"
