@@ -1,7 +1,10 @@
-<p id="notice"><%= notice %></p>
 
 <% if current_user.id == @user.id || current_user.role.title == "admin" %>
 <div class="form-edit user-page">
+
+	<% if notice %>
+		<p id="notice"><%= notice %></p>
+	<% end %>
 	<div class="form-container">
       <h1> <%= @user.first_name + " " + @user.last_name%>
         <%= link_to  image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_user_path(@user) %>
