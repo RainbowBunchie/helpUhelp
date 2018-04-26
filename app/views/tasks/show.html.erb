@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <div class="form-edit user-page">
 	<div class="form-container">
 		<% if current_user && current_user.role.title == "admin" %>
@@ -22,16 +21,6 @@
       <p>
         <strong>Ort:</strong>
         <%= @task.place %>
-      </p>
-
-      <p>
-				wenn admin ->
-        <strong>Zugewiesen:</strong>
-        <% if (@task.assigned) %>
-						ja
-				<% else %>
-					nein
-				<% end %>
       </p>
 
 			<p class="task-show-description">

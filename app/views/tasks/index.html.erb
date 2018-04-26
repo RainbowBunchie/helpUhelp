@@ -8,10 +8,6 @@
     </div>
     <% end %>
 
-
-
-    <%= @assigned_usertasks.count %>
-
     <% if current_user && current_user.role.title == "admin" %>
 
       <h1>This part can only be viewed by user. Delete this h1 later... just for orientation purposes</h1>
@@ -73,10 +69,10 @@
 
 
       <%# Users can view unassigned tasks here and can apply for them %>
-      <h1>Unzugewiesene Aufgaben</h1>
+      <h1>Offene Aufgaben</h1>
+      Du kannst dich für eine der folgenden Aufgaben bewerben.
       <div class="tasks">
         <% @open_usertasks.each do |task| %>
-          <% if !task.assigned %>
             <div class="task-card unassigned">
               <div class="info">
                 <div class="task-description"><%= task.title%></div>
@@ -92,7 +88,6 @@
                 <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
               </div>
             </div>
-          <% end %>
         <% end %>
       </div>
     <% end %>
@@ -104,11 +99,34 @@
 
     <%# Pending Tasks On The Top %>
     <h1>Aufgaben mit Bewerbern</h1>
+    <div class="tasks">
+      <% @tasks_with_applications.each do |task| %>
+        <div class="task-card unassigned">
+          <div class="info">
+            <div class ="admin-options task-option">
+              <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
+              <%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), task, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+
+            <div class="task-description"><%= task.title%></div>
+            <%= link_to task do%>
+              <div class="task-info">
+                <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
+                <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
+                <strong>Ort: </strong><%= task.place %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+
 
     <%# Unassigned tasks in the middle %>
-    <h1>Unzugewiesene Aufgaben</h1>
+    <h1>Aufgaben ohne Bewerber</h1>
     <div class="tasks">
-      <% @unassigned_tasks.each do |task| %>
+      <% @tasks_without_applications_and_not_pending.each do |task| %>
         <div class="task-card unassigned">
           <div class="info">
             <div class ="admin-options task-option">

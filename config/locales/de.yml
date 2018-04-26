@@ -9,7 +9,7 @@ de:
         email: 'E-Mail-Adresse'
         telephone: 'Telefonnummer'
       task:
-        titel: 'Titel'
+        title: 'Titel'
         description: 'Beschreibung'
         date: 'Datum'
         time: 'Zeit'

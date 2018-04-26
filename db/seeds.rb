@@ -5,8 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 Role.create(title: "admin")
-User.create(role: 1, first_name: "Alex", last_name: "Tischhart", email: "a@a.a", telephone: "1234", password: "bla")
+Role.create(title: "volunteer")
 Status.create(title: "pending")
 Status.create(title: "declined")
-Status.create(title: "accepted")
+Status.create(title: "confirmed")
+r = Role.find(1)
+User.create(role: r, first_name: "admin", last_name: "admin", email: "admin@admin.at", telephone: "12345", password: "admin")
+User.create(role: r, first_name: "volunteer", last_name: "volunteer", email: "volunteer@volunteer.at", telephone: "12345", password: "volunteer")
+

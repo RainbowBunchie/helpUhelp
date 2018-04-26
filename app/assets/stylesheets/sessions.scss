@@ -12,7 +12,7 @@
 }
 #alert{
     background-color: #d62121;
-    margin-top: -50px;
+    margin-top: 30px;
     color: white;
     margin-bottom: 1em;
     padding: 0.5em;
@@ -24,6 +24,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  #alert {
+    margin-top: -50px;
+  }
 }
 
 .form-container{

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425130231) do
+ActiveRecord::Schema.define(version: 20180426075343) do
 
   create_table "roles", force: :cascade do |t|
     t.string "title"
@@ -40,19 +40,10 @@ ActiveRecord::Schema.define(version: 20180425130231) do
     t.date "date"
     t.time "time"
     t.string "place"
-    t.boolean "assigned"
     t.integer "no_of_people"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-  end
-
-  create_table "tasks_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "task_id", null: false
-    t.boolean "confirmed"
-    t.index ["task_id", "user_id"], name: "index_tasks_users_on_task_id_and_user_id"
-    t.index ["user_id", "task_id"], name: "index_tasks_users_on_user_id_and_task_id"
   end
 
   create_table "users", force: :cascade do |t|
