@@ -50,6 +50,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @roles = Role.all
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'Benutzerdaten wurden aktualisiert.' }
