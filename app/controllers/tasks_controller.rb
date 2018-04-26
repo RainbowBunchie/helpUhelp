@@ -74,7 +74,7 @@ class TasksController < ApplicationController
 
   # remove user from task
   def remove_user
-    StatusTaskUser.where(user_id: current_user.id, task_id: @task.id)
+    StatusTaskUser.where(user_id: current_user.id, task_id: @task.id).delete_all
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Bewerbung für Aufgabe abgesagt!'}
       format.json { head :no_content }
