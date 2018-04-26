@@ -15,9 +15,9 @@
   <tbody>
     <% @status_task_users.each do |status_task_user| %>
       <tr>
-        <td><%= status_task_user.user %></td>
-        <td><%= status_task_user.task %></td>
-        <td><%= status_task_user.status %></td>
+        <td><%= status_task_user.user.first_name %> <%= status_task_user.user.last_name %></td>
+        <td><%= status_task_user.task.title %></td>
+        <td><%= status_task_user.status.title %></td>
         <td><%= link_to 'Show', status_task_user %></td>
         <td><%= link_to 'Edit', edit_status_task_user_path(status_task_user) %></td>
         <td><%= link_to 'Destroy', status_task_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
