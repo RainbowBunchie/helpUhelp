@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.border{
+  padding-top: 1em;
+  border-top: 2px solid black;
+
+}
 .new-task{
   margin-top: 1em;
   display: flex;

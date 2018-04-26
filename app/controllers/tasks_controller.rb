@@ -6,6 +6,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     #helper
+
       all_tasks_id = Task.all.pluck(:id)
 
       all_statustaskuser_entries = StatusTaskUser.all
@@ -31,6 +32,7 @@ class TasksController < ApplicationController
     @pending_usertasks= Task.find(pending_usertasks_id)
 
     @open_usertasks = Task.find(open_usertasks_id)
+
 
     #für admin:
 
