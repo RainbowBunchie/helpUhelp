@@ -14,19 +14,17 @@
       <div class="tasks">
       <% @assigned_usertasks.each do |task| %>
         <div class="task-card">
-          <div class="info">
-            <%= link_to task do%>
-              <div class="task-description"><%= task.title%></div>
-              <div class="task-info">
-                <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
-                <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
-                <strong>Ort: </strong><%= task.place %>
-                <div class ="card-button">
-                  <%= link_to 'absagen', remove_user_task_path(task), method: :post %>
-                </div>
-              </div>
-            <% end %>
-          </div>
+          <%= link_to task do%>
+            <div class="task-description"><%= task.title%></div>
+            <div class="task-info">
+              <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
+              <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
+              <strong>Ort: </strong><%= task.place %>
+            </div>
+            <div class ="card-button">
+              <%= link_to 'absagen', remove_user_task_path(task), method: :post %>
+            </div>
+          <% end %>
         </div>
       <% end %>
       </div>
@@ -42,20 +40,17 @@
       <div class="tasks">
       <% @pending_usertasks.each do |task| %>
         <div class="task-card">
-
-          <div class="info">
-            <%= link_to task do%>
-              <div class="task-description"><%= task.title%></div>
-              <div class="task-info">
-                <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
-                <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
-                <strong>Ort: </strong><%= task.place %>
-                <div class ="card-button">
-                  <%= link_to 'absagen', remove_user_task_path(task), method: :post %>
-                </div>
-              </div>
-            <% end %>
-          </div>
+          <%= link_to task do%>
+            <div class="task-description"><%= task.title%></div>
+            <div class="task-info">
+              <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
+              <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
+              <strong>Ort: </strong><%= task.place %>
+            </div>
+            <div class ="card-button">
+              <%= link_to 'absagen', remove_user_task_path(task), method: :post %>
+            </div>
+          <% end %>
         </div>
       <% end %>
       </div>
@@ -69,21 +64,19 @@
       Du kannst dich für einen der folgenden Aufgaben bewerben.
       <div class="tasks">
         <% @open_usertasks.each do |task| %>
-            <div class="task-card">
-              <div class="info">
-                <div class="task-description"><%= task.title%></div>
-                <%= link_to task do%>
-                  <div class="task-info">
-                    <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
-                    <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
-                    <strong>Ort: </strong><%= task.place %>
-                    <div class ="card-button">
-                      <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
-                    </div>
-                  </div>
-                <% end %>
+          <div class="task-card">
+            <div class="task-description"><%= task.title%></div>
+            <%= link_to task do%>
+              <div class="task-info">
+                <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
+                <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
+                <strong>Ort: </strong><%= task.place %>
               </div>
-            </div>
+              <div class ="card-button">
+                <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
+              </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>
@@ -96,14 +89,15 @@
     Klicke auf den Task um einen Bewerber den Task zuzuweisen.
     <div class="tasks">
       <% @tasks_with_applications.each do |task| %>
-        <div class="task-card pending">
+        <div class="task-card">
           <div class="info">
-            <div class ="admin-options task-option">
-              <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
-              <%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), task, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <div>
+              <div class ="admin-options task-option">
+                <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
+                <%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), task, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+              <div class="task-description"><%= task.title%></div>
             </div>
-
-            <div class="task-description"><%= task.title%></div>
             <%= link_to task do%>
               <div class="task-info">
                 <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
@@ -122,22 +116,21 @@
     <h1 class="border">Aufgaben ohne Bewerber</h1>
     <div class="tasks">
       <% @tasks_without_applications_and_not_pending.each do |task| %>
-        <div class="task-card unassigned">
-          <div class="info">
+        <div class="task-card">
+          <div>
             <div class ="admin-options task-option">
               <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
               <%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), task, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
-
             <div class="task-description"><%= task.title%></div>
-            <%= link_to task do%>
-              <div class="task-info">
-                <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
-                <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
-                <strong>Ort: </strong><%= task.place %>
-              </div>
-            <% end %>
           </div>
+          <%= link_to task do%>
+            <div class="task-info">
+              <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
+              <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
+              <strong>Ort: </strong><%= task.place %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -145,22 +138,21 @@
     <h1 class="border">Zugewiesene Aufgaben</h1>
     <div class="tasks">
       <% @assigned_tasks.each do |task| %>
-        <div class="task-card assigned">
-          <div class="info">
+        <div class="task-card">
+          <div>
             <div class ="admin-options task-option">
               <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
               <%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), task, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
-
             <div class="task-description"><%= task.title%></div>
-            <%= link_to task do%>
-            <div class="task-info">
-              <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
-              <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
-              <strong>Ort: </strong><%= task.place %>
-            </div>
-            <% end %>
           </div>
+          <%= link_to task do%>
+          <div class="task-info">
+            <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
+            <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
+            <strong>Ort: </strong><%= task.place %>
+          </div>
+          <% end %>
         </div>
       <% end %>
     </div>
