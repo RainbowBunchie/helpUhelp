@@ -30,7 +30,7 @@
 
             <% if current_user %>
               <% if current_user.role.title == "admin" %>
-                <li class="navbar-li"><%= link_to "Users", users_path %></li>
+                <li class="navbar-li"><%= link_to "Nutzer", users_path %></li>
               <% end %>
             <li class="navbar-li"><%= link_to "Aufgaben", tasks_path %></li>
             <li class="navbar-li">
