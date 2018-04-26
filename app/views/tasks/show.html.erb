@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
 <div class="form-edit user-page">
+
+	<% if notice %>
+		<p id="notice"><%= notice %></p>
+	<% end %>
 	<div class="form-container">
 		<% if current_user && current_user.role.title == "admin" %>
 		<div class ="admin-options task-option">
@@ -27,26 +30,37 @@
 				<%= @task.description %>
 			</p>
     </div>
-		<h1> Bewerber </h1>
 
-    <% @task_applicants.each do |applicant| %>
-    <% if applicant.status_id == 3 %>
-      <div class="task-card assigned">
-    <% else %>
-      <div class="task-card">
-    <% end %>
-      <p><%= User.find(applicant.user_id).first_name %> <%= User.find(applicant.user_id).last_name %></p>
-      <p><%= User.find(applicant.user_id).telephone %></p>
-      <%= link_to 'zuweisen', assign_user_task_path(@task, applicant_id: applicant.user_id), method: :post%>
+    <% if current_user && current_user.role.title == "admin" %>
+    <h1 class="i-need-some-space-here"> Bewerber </h1>
+    <div class="tasks">
+      <% @task_applicants.each do |applicant| %>
+        <% if applicant.status_id == 3 %>
+          <div class="task-card assigned">
+            <div class="info">
+              <div class="task-description"><%= User.find(applicant.user_id).first_name %> <%= User.find(applicant.user_id).last_name %></div>
+              <div class="task-info">
+                <p>Erreichbar unter: </p>
+                <p><%= User.find(applicant.user_id).telephone %></p>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="task-card pending">
+            <div class="info">
+              <div class="task-description"><%= User.find(applicant.user_id).first_name %> <%= User.find(applicant.user_id).last_name %></div>
+              <div class="task-info">
+                <p>Erreichbar unter: </p>
+                <p><%= User.find(applicant.user_id).telephone %></p>
+                <div class="card-button"><%= link_to 'zuweisen', assign_user_task_path(@task, applicant_id: applicant.user_id), method: :post%></div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
     <% end %>
-
-
 
 	<%= link_to 'Zurück', tasks_path %>
 
 </div>
-
-
-
-<%= link_to  image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(@task) %>
