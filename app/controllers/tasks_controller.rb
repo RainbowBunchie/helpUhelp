@@ -6,11 +6,20 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
-    @assigned_usertasks = current_user.tasks.where(:assigned => true)
-    @pending_usertasks = current_user.tasks.where(:assigned => false)
+
+    @all_statustaskuser_entries = StatusTaskUser.all
+
+    @assigned_usertasks = Task.find(@all_statustaskuser_entries.where("user_id = ? and status_id = 3", current_user.id).pluck(:task_id))
+
+    @pending_usertasks= Task.find(@all_statustaskuser_entries.where("user_id = ? and status_id = 1", current_user.id).pluck(:task_id))
+
+
     @open_usertasks = Task.all
+
     @unassigned_tasks = @tasks.where(:assigned => false)
-    @assigned_tasks = @tasks.where(:assigned => true)
+    # -> wird assigned umgespeichert??? -> soll m
+    @assigned_tasks = Task.find(@all_statustaskuser_entries.where("status_id = 2").pluck(:task_id))
+
   end
 
   # GET /tasks/1
@@ -29,10 +38,15 @@ class TasksController < ApplicationController
 
   # add user to task
   def add_user
-    @task.users << @current_user
+    @stu = StatusTaskUser.new({:user_id => current_user.id, :task_id => @task.id, :status_id => 1})
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Für die Aufgabe beworben!' }
-      format.json { head :no_content }
+      if @stu.save
+        format.html { redirect_to tasks_url, notice: 'Für die Aufgabe beworben!' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to tasks_url, notice: 'Nix Passiert!' }
+        format.json { head :no_content }
+      end
     end
   end
 

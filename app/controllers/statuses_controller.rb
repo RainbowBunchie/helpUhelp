@@ -5,6 +5,9 @@ class StatusesController < ApplicationController
   # GET /statuses.json
   def index
     @statuses = Status.all
+    @pending = Status.find(1)
+    @declined = Status.find(2)
+    @accepted = Status.find(3)
   end
 
   # GET /statuses/1
