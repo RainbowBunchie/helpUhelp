@@ -47,8 +47,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @all_statustaskuser_entries = StatusTaskUser.all
-    @task_applicants = User.find(@all_statustaskuser_entries.where("task_id = ?", @task.id).pluck(:user_id))
+    @task_applicants = User.find(StatusTaskUser.where("task_id = ?", @task.id).pluck(:user_id))
   end
 
   # GET /tasks/new
@@ -84,12 +83,25 @@ class TasksController < ApplicationController
   end
 
   def assign_user
+    #assigned_candidate = StatusTaskUser.where(user_id: params[:applicant_id], task_id: @task.id).first
+    #assigned_candidate.status_id = 3
+    #assigned_candidate.save
+    #StatusTaskUser.update(assigned_candidate, :status_id => 3)
+
+    task_applicants = StatusTaskUser.where(task_id: @task.id)
+
+    task_applicants.each do |a|
+      if a.user_id == params[:applicant_id]
+      a.status_id = 3
+      a.save
+      else
+      a.status_id = 2
+      a.save
+      end
+    end
+
     assigned_candidate = StatusTaskUser.where(user_id: params[:applicant_id], task_id: @task.id).first
     assigned_candidate.status_id = 3
-    assigned_candidate.update(:status_id => 3)
-
-    assigned_candidate.save
-    #StatusTaskUser.update(assigned_candidate, :status_id => 3)
 
     if assigned_candidate.save
       respond_to do |format|

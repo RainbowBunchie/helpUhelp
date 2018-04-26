@@ -31,7 +31,7 @@
 		<h1> Bewerber </h1>
 
     <% @task_applicants.each do |applicant|%>
-    <div class="task-card">
+    <div class="task-card assigned">
       <p><%= applicant.first_name %> <%= applicant.last_name %></p>
       <p><%= applicant.telephone %></p>
       <%= link_to 'zuweisen', assign_user_task_path(@task, applicant_id: applicant.id), method: :post%>
