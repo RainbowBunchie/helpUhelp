@@ -62,13 +62,6 @@
   color: black;
 }
 
-.info{
-}
-
-.info :hover{
-  //color: black;
-}
-
 .task-show-description{
   width: 100%;
   border-top: #333232 0.2em solid;
@@ -79,7 +72,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  word-break:break-all;
+  word-break: break-all;
 }
 
 .task-info{
@@ -127,7 +120,7 @@
   border-radius: 4px;
   display: flex;
   justify-content: center;
-  margin-top: 0.5em;
+  margin: 0.5em;
 }
 .card-button:hover{
   background-color: #333232;
