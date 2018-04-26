@@ -41124,6 +41124,7 @@ Processing by TasksController#index as HTML
 Completed 200 OK in 83ms (Views: 68.2ms | ActiveRecord: 1.9ms)
 
 
+<<<<<<< HEAD
 Started GET "/tasks/1/remove_user" for 127.0.0.1 at 2018-04-26 12:02:55 +0200
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   
@@ -41390,10 +41391,20 @@ Processing by TasksController#remove_user as HTML
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
 Redirected to http://localhost:3000/tasks
 Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+=======
+Started POST "/tasks/1/remove_user" for 127.0.0.1 at 2018-04-26 12:03:53 +0200
+Processing by TasksController#remove_user as HTML
+  Parameters: {"authenticity_token"=>"d6sAkHKWeIhsQW7rxl+CzxXhEXe11JfoUt1LW0R87lZNGv5qlHHHPi2FwZCdASPOPTPd/9shJmnVr6slkoDJKg==", "id"=>"1"}
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://0.0.0.0:3000/tasks
+Completed 302 Found in 29ms (ActiveRecord: 1.7ms)
+>>>>>>> 86412142fdd162829dac53b90d8f3728c7973622
 
 
 Started GET "/tasks" for 127.0.0.1 at 2018-04-26 12:03:53 +0200
 Processing by TasksController#index as HTML
+<<<<<<< HEAD
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "tasks"."id" FROM "tasks"[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (status_id = 3)[0m
@@ -41651,10 +41662,44 @@ Processing by TasksController#index as HTML
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (status_id = 3)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (status_id = 1)[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (user_id = 1 and status_id = 1)[0m
+=======
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "tasks"."id" FROM "tasks"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (status_id = 3)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (status_id = 1)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (user_id = 1 and status_id = 1)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (user_id = 1 and status_id = 3)[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered tasks/index.html.erb within layouts/application (30.7ms)
+Completed 200 OK in 122ms (Views: 110.9ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/tasks/1/remove_user" for 127.0.0.1 at 2018-04-26 12:04:41 +0200
+Processing by TasksController#remove_user as HTML
+  Parameters: {"authenticity_token"=>"LOec8dTaOLAIasIb/T6+e8P7Ltim+pvO9J+WLe+mmSYWVmILMj2HBkmubWCmYB966yniUMgPKk9z7XZTOVq+Wg==", "id"=>"1"}
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[31mDELETE FROM "status_task_users" WHERE "status_task_users"."user_id" = ? AND "status_task_users"."task_id" = ?[0m  [["user_id", 1], ["task_id", 1]]
+Redirected to http://0.0.0.0:3000/tasks
+Completed 302 Found in 56ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-04-26 12:04:41 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "tasks"."id" FROM "tasks"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (status_id = 3)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (status_id = 1)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (user_id = 1 and status_id = 1)[0m
+>>>>>>> 86412142fdd162829dac53b90d8f3728c7973622
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (user_id = 1 and status_id = 3)[0m
   [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   Rendering tasks/index.html.erb within layouts/application
+<<<<<<< HEAD
   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   Rendered tasks/index.html.erb within layouts/application (7.6ms)
 Completed 200 OK in 48ms (Views: 41.0ms | ActiveRecord: 1.2ms)
@@ -41671,5 +41716,10 @@ Processing by TasksController#show as HTML
   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
   Rendered tasks/show.html.erb within layouts/application (6.8ms)
 Completed 200 OK in 56ms (Views: 47.8ms | ActiveRecord: 1.1ms)
+=======
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered tasks/index.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 81ms (Views: 67.5ms | ActiveRecord: 2.2ms)
+>>>>>>> 86412142fdd162829dac53b90d8f3728c7973622
 
 
