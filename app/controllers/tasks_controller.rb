@@ -6,6 +6,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     #helper
+      all_future_tasks = Task.where("date >= ?", Date.today)
 
       all_tasks_id = Task.all.pluck(:id)
 
@@ -23,24 +24,25 @@ class TasksController < ApplicationController
 
       open_usertasks_id = tasks_not_assigned_id - pending_usertasks_id || pending_usertasks_id - tasks_not_assigned_id
 
+
     #helper-end
 
     #für user
 
-    @assigned_usertasks = Task.find(all_statustaskuser_entries.where("user_id = ? and status_id = 3", current_user.id).pluck(:task_id))
+    @assigned_usertasks = all_future_tasks & Task.order(:date).find(all_statustaskuser_entries.where("user_id = ? and status_id = 3", current_user.id).pluck(:task_id))
 
-    @pending_usertasks= Task.find(pending_usertasks_id)
+    @pending_usertasks = all_future_tasks & Task.order(:date).find(pending_usertasks_id)
 
-    @open_usertasks = Task.find(open_usertasks_id)
+    @open_usertasks = all_future_tasks & Task.order(:date).find(open_usertasks_id)
 
 
     #für admin:
 
-    @tasks_with_applications = Task.find(all_pending_tasks_id)
+    @tasks_with_applications = all_future_tasks & Task.order(:date).find(all_pending_tasks_id)
 
-    @tasks_without_applications_and_not_pending = Task.find(tasks_without_application_and_not_pending_id)
+    @tasks_without_applications_and_not_pending = all_future_tasks & Task.order(:date).find(tasks_without_application_and_not_pending_id)
 
-    @assigned_tasks = Task.find(all_assigned_tasks_id )
+    @assigned_tasks = all_future_tasks & Task.order(:date).find(all_assigned_tasks_id )
 
   end
 
