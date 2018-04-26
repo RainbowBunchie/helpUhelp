@@ -63,9 +63,6 @@
 .task-show-description{
   width: 100%;
   border-top: #333232 0.2em solid;
-}
-
-.task-show-description{
   padding-top: 1em;
   line-height: 1.4em;
   display: flex;
@@ -73,6 +70,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  word-break:break-all;
 }
 
 .task-info{
