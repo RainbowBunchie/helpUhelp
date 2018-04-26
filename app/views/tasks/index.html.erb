@@ -96,7 +96,7 @@
     Klicke auf den Task um einen Bewerber den Task zuzuweisen.
     <div class="tasks">
       <% @tasks_with_applications.each do |task| %>
-        <div class="task-card">
+        <div class="task-card pending">
           <div class="info">
             <div class ="admin-options task-option">
               <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
@@ -122,7 +122,7 @@
     <h1 class="border">Aufgaben ohne Bewerber</h1>
     <div class="tasks">
       <% @tasks_without_applications_and_not_pending.each do |task| %>
-        <div class="task-card">
+        <div class="task-card unassigned">
           <div class="info">
             <div class ="admin-options task-option">
               <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
@@ -145,7 +145,7 @@
     <h1 class="border">Zugewiesene Aufgaben</h1>
     <div class="tasks">
       <% @assigned_tasks.each do |task| %>
-        <div class="task-card">
+        <div class="task-card assigned">
           <div class="info">
             <div class ="admin-options task-option">
               <%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(task) %>
