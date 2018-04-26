@@ -50,31 +50,13 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    def check_password(user)
-      if user[:password] == user[:password_confirmation]
-        return true
-      else
-        return false
-      end
-    end
     respond_to do |format|
-      if check_password(user_params) && @user.update(user_params)
+      if @user.update(user_params)
         format.html { redirect_to @user, notice: 'Benutzerdaten wurden aktualisiert.' }
         format.json { render :show, status: :ok, location: @user }
       else
-        if check_password(user_params)
-          format.html { 
-            @alert = "test"
-            render :edit
-          }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        else
-          format.html { 
-            @alert = 'Das Passwort muss mit der Bestätigung übereinstimmen!'
-            render :edit 
-          }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
