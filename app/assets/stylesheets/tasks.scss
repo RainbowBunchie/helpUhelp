@@ -82,6 +82,7 @@
   display: flex;
   justify-content: flex-end;
   background-color: #333232;
+  word-break:break-all;
 }
 
 .task-option img{
@@ -100,6 +101,7 @@
   line-height: 1.4em;
   font-size: 1.4em;
   padding: 0 0.5em 0.5em 0.5em;
+  word-break:break-all;
 }
 
 .tasks{
