@@ -31,6 +31,12 @@
 			</p>
     </div>
 
+    <% if current_user && current_user.role.title == "volunteer" %>
+    <div class ="card-button">
+      <%= link_to 'bewerben', add_user_task_path(), method: :post %>
+    </div>
+    <% end %>
+
     <% if current_user && current_user.role.title == "admin" %>
     <h1 class="i-need-some-space-here"> Bewerber </h1>
     <div class="tasks">
