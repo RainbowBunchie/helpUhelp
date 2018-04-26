@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  #before_action :require_login
+  before_action :require_login
 
   # GET /users
   # GET /users.json
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       if @user.save
         # Deliver the signup email
         ApplicationMailer.send_signup_email(@user).deliver_now
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: 'Benutzer wurde angelegt.' }
         format.json { render :show, status: :created, location: @user }
 
       else
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Benutzerdaten wurden aktualisiert.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -64,7 +64,9 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    if(StatusTaskUser.where(user_id: @user.id) != nil) 
+    task_ids = StatusTaskUser.where(user_id: 1).where(status_id: 3).pluck(:task_id)
+    relevant = Task.where(id: task_ids).where("date > ?", Date.today)
+    if(!relevant.empty?()) 
       respond_to do |format|
         format.html { redirect_to users_url, alert: 'Benutzer kann nicht gelöscht werden, wenn ihm noch Aufgaben zugewiesen sind!' }
         format.json { head :no_content }
@@ -72,7 +74,7 @@ class UsersController < ApplicationController
     else
       @user.destroy
       respond_to do |format|
-        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.html { redirect_to users_url, notice: 'Benutzer wurde gelöscht.' }
         format.json { head :no_content }
       end
     end
