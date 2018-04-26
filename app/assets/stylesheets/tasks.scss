@@ -110,6 +110,27 @@
   flex-wrap: wrap;
 }
 
+.card-button{
+  padding: 0.5em;
+  border-color: #333232;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+.card-button:hover{
+  background-color: #333232;
+}
+.card-button:hover *{
+  color: #FFFFFF;
+}
+
+.i-need-some-space-here{
+  padding-top: 3em;
+}
+
 .assigned{
   background-color: #8fe57b;
 }

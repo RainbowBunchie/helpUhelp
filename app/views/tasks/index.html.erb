@@ -21,11 +21,11 @@
                 <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
                 <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
                 <strong>Ort: </strong><%= task.place %>
+                <div class ="card-button">
+                  <%= link_to 'absagen', remove_user_task_path(task), method: :post %>
+                </div>
               </div>
             <% end %>
-          </div>
-          <div class ="admin-options">
-            <%= link_to 'absagen', remove_user_task_path(task), method: :post %>
           </div>
         </div>
       <% end %>
@@ -50,11 +50,11 @@
                 <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
                 <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
                 <strong>Ort: </strong><%= task.place %>
+                <div class ="card-button">
+                  <%= link_to 'absagen', remove_user_task_path(task), method: :post %>
+                </div>
               </div>
             <% end %>
-          </div>
-          <div class ="admin-options">
-            <%= link_to 'absagen', remove_user_task_path(task), method: :post %>
           </div>
         </div>
       <% end %>
@@ -77,11 +77,11 @@
                     <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
                     <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
                     <strong>Ort: </strong><%= task.place %>
+                    <div class ="card-button">
+                      <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
+                    </div>
                   </div>
                 <% end %>
-              </div>
-              <div class ="admin-options">
-                <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
               </div>
             </div>
         <% end %>
