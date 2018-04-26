@@ -6,17 +6,20 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
-    @assigned_usertasks = current_user.tasks.where(:assigned => true)
-
 
     @all_statustaskuser_entries = StatusTaskUser.all
+
+    @assigned_usertasks = Task.find(@all_statustaskuser_entries.where("user_id = ? and status_id = 3", current_user.id).pluck(:task_id))
+
     @pending_usertasks= Task.find(@all_statustaskuser_entries.where("user_id = ? and status_id = 1", current_user.id).pluck(:task_id))
 
 
-    @pending_usertasks = current_user.tasks.where(:assigned => false)
     @open_usertasks = Task.all
+
     @unassigned_tasks = @tasks.where(:assigned => false)
-    @assigned_tasks = @tasks.where(:assigned => true)
+    # -> wird assigned umgespeichert??? -> soll m
+    @assigned_tasks = Task.find(@all_statustaskuser_entries.where("status_id = 2").pluck(:task_id))
+
   end
 
   # GET /tasks/1
@@ -35,9 +38,6 @@ class TasksController < ApplicationController
 
   # add user to task
   def add_user
-<<<<<<< HEAD
-
-=======
     @stu = StatusTaskUser.new({:user_id => current_user.id, :task_id => @task.id, :status_id => 1})
     respond_to do |format|
       if @stu.save
@@ -48,7 +48,6 @@ class TasksController < ApplicationController
         format.json { head :no_content }
       end
     end
->>>>>>> a5cd6eccb2101ad6a82d9a59dc6ce8c85cb88cab
   end
 
   # remove user from task
