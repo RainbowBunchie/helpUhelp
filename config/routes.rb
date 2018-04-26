@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       post 'add_user'
       post 'remove_user'
+      post 'assign_user'
     end
   end
   #root 'static_pages#home'

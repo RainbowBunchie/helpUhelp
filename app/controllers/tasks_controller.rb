@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :add_user, :remove_user]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :add_user, :remove_user, :assign_user]
   before_action :require_login
 
   # GET /tasks
@@ -47,6 +47,8 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @all_statustaskuser_entries = StatusTaskUser.all
+    @task_applicants = User.find(@all_statustaskuser_entries.where("task_id = ?", @task.id).pluck(:user_id))
   end
 
   # GET /tasks/new
@@ -60,9 +62,9 @@ class TasksController < ApplicationController
 
   # add user to task
   def add_user
-    @stu = StatusTaskUser.new({:user_id => current_user.id, :task_id => @task.id, :status_id => 1})
+    stu = StatusTaskUser.new({:user_id => current_user.id, :task_id => @task.id, :status_id => 1})
     respond_to do |format|
-      if @stu.save
+      if stu.save
         format.html { redirect_to tasks_url, notice: 'Für die Aufgabe beworben!' }
         format.json { head :no_content }
       else
@@ -74,10 +76,31 @@ class TasksController < ApplicationController
 
   # remove user from task
   def remove_user
-    @task.users.delete(@current_user)
+    StatusTaskUser.where(user_id: current_user.id, task_id: @task.id)
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Bewerbung für Aufgabe abgesagt!' }
+      format.html { redirect_to tasks_url, notice: 'Bewerbung für Aufgabe abgesagt!'}
       format.json { head :no_content }
+    end
+  end
+
+  def assign_user
+    assigned_candidate = StatusTaskUser.where(user_id: params[:applicant_id], task_id: @task.id).first
+    assigned_candidate.status_id = 3
+    assigned_candidate.update(:status_id => 3)
+
+    assigned_candidate.save
+    #StatusTaskUser.update(assigned_candidate, :status_id => 3)
+
+    if assigned_candidate.save
+      respond_to do |format|
+        format.html { redirect_to @task, notice: 'something works here!'}
+        format.json { render :show, status: :ok, location: @task }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @task, notice: 'something stinks here!'}
+        format.json { render :show, status: :ok, location: @task }
+      end
     end
   end
 

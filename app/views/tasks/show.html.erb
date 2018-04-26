@@ -29,14 +29,15 @@
 			</p>
     </div>
 		<h1> Bewerber </h1>
-  <div class="tasks">
-    <% @task.users.each do |user| %>
-      <div class="task-card" >
-        <p><%= user.first_name %> <%= user.last_name %></p>
-        <p><%= user.telephone %></p>
-      </div>
+
+    <% @task_applicants.each do |applicant|%>
+    <div class="task-card">
+      <p><%= applicant.first_name %> <%= applicant.last_name %></p>
+      <p><%= applicant.telephone %></p>
+      <%= link_to 'zuweisen', assign_user_task_path(@task, applicant_id: applicant.id), method: :post%>
+    </div>
     <% end %>
-  </div>
+
 
 	<%= link_to 'Zurück', tasks_path %>
 
