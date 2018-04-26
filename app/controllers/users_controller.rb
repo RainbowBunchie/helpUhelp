@@ -64,8 +64,8 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    task_ids = StatusTaskUser.where(user_id: 1).where(status_id: 3).pluck(:task_id)
-    relevant = Task.where(id: task_ids).where("date > ?", Date.today)
+    task_ids = StatusTaskUser.where(user_id: @user.id).where(status_id: 3).pluck(:task_id)
+    relevant = Task.where(id: task_ids).where("date >= ?", Date.today)
     if(!relevant.empty?()) 
       respond_to do |format|
         format.html { redirect_to users_url, alert: 'Benutzer kann nicht gelöscht werden, wenn ihm noch Aufgaben zugewiesen sind!' }
