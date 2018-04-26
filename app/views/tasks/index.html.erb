@@ -76,7 +76,6 @@
       <h1>Unzugewiesene Aufgaben</h1>
       <div class="tasks">
         <% @open_usertasks.each do |task| %>
-          <% if !task.assigned %>
             <div class="task-card unassigned">
               <div class="info">
                 <div class="task-description"><%= task.title%></div>
@@ -92,7 +91,6 @@
                 <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
               </div>
             </div>
-          <% end %>
         <% end %>
       </div>
     <% end %>

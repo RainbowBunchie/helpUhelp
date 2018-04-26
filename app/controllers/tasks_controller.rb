@@ -16,7 +16,7 @@ class TasksController < ApplicationController
 
     @open_usertasks = Task.all
 
-    @unassigned_tasks = @tasks.where(:assigned => false)
+    @unassigned_tasks = @tasks
     # -> wird assigned umgespeichert??? -> soll m
     @assigned_tasks = Task.find(@all_statustaskuser_entries.where("status_id = 2").pluck(:task_id))
 
