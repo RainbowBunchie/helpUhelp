@@ -1,21 +1,31 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :add_user, :remove_user]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :add_user, :remove_user, :assign_user]
   before_action :require_login
 
   # GET /tasks
   # GET /tasks.json
   def index
     @tasks = Task.all
-    @assigned_usertasks = current_user.tasks.where(:assigned => true)
-    @pending_usertasks = current_user.tasks.where(:assigned => false)
+
+    @all_statustaskuser_entries = StatusTaskUser.all
+
+    @assigned_usertasks = Task.find(@all_statustaskuser_entries.where("user_id = ? and status_id = 3", current_user.id).pluck(:task_id))
+
+    @pending_usertasks= Task.find(@all_statustaskuser_entries.where("user_id = ? and status_id = 1", current_user.id).pluck(:task_id))
+
     @open_usertasks = Task.all
+
     @unassigned_tasks = @tasks.where(:assigned => false)
-    @assigned_tasks = @tasks.where(:assigned => true)
+    # -> wird assigned umgespeichert??? -> soll m
+    @assigned_tasks = Task.find(@all_statustaskuser_entries.where("status_id = 2").pluck(:task_id))
+
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @all_statustaskuser_entries = StatusTaskUser.all
+    @task_applicants = User.find(@all_statustaskuser_entries.where("task_id = ?", @task.id).pluck(:user_id))
   end
 
   # GET /tasks/new
@@ -29,9 +39,9 @@ class TasksController < ApplicationController
 
   # add user to task
   def add_user
-    @stu = StatusTaskUser.new({:user_id => current_user.id, :task_id => @task.id, :status_id => 1})
+    stu = StatusTaskUser.new({:user_id => current_user.id, :task_id => @task.id, :status_id => 1})
     respond_to do |format|
-      if @stu.save
+      if stu.save
         format.html { redirect_to tasks_url, notice: 'Für die Aufgabe beworben!' }
         format.json { head :no_content }
       else
@@ -43,11 +53,31 @@ class TasksController < ApplicationController
 
   # remove user from task
   def remove_user
-    #StatusTaskUser.where(:user_id => current_user.id && :task_id => @task.id).destroy
-    @task.users.delete(@current_user)
+    StatusTaskUser.where(user_id: current_user.id, task_id: @task.id)
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Bewerbung für Aufgabe abgesagt!'}
       format.json { head :no_content }
+    end
+  end
+
+  def assign_user
+    assigned_candidate = StatusTaskUser.where(user_id: params[:applicant_id], task_id: @task.id).first
+    assigned_candidate.status_id = 3
+    assigned_candidate.update(:status_id => 3)
+
+    assigned_candidate.save
+    #StatusTaskUser.update(assigned_candidate, :status_id => 3)
+
+    if assigned_candidate.save
+      respond_to do |format|
+        format.html { redirect_to @task, notice: 'something works here!'}
+        format.json { render :show, status: :ok, location: @task }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @task, notice: 'something stinks here!'}
+        format.json { render :show, status: :ok, location: @task }
+      end
     end
   end
 

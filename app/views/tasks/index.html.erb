@@ -8,13 +8,17 @@
     </div>
     <% end %>
 
+
+
+    <%= @assigned_usertasks.count %>
+
     <% if current_user && current_user.role.title == "admin" %>
 
       <h1>This part can only be viewed by user. Delete this h1 later... just for orientation purposes</h1>
 
       <%# Users can view their assigned tasks here%>
       <h1>Meine bestätigten Aufgaben</h1>
-      <% if @assigned_usertasks.size > 0 %>
+      <% if @assigned_usertasks.count > 0 %>
       <div class="tasks">
       <% @assigned_usertasks.each do |task| %>
         <div class="task-card assigned">
