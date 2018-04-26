@@ -2,8 +2,6 @@
   <div class="tasks-container">
     <p id="notice"><%= notice %></p>
 
-
-    <%= @tasks_without_application_and_not_pending_id.count %>
     <% if current_user && current_user.role.title == "admin" %>
     <div class ="new-task">
       <%= link_to 'Neue Aufgabe erstellen', new_task_path %>

@@ -1,11 +1,11 @@
 <% if current_user.id == @user.id || current_user.role.title == "admin" %>
 	<div class="form-edit">
-		<% if @task.errors.any? %>
+		<% if @user.errors.any? %>
 	      <div id="error_explanation_own">
 	        <h2 id="error-title">Bitte beachten Sie folgende Anforderungen!</h2>
 
 	        <ul id="error-message">
-	        <% @task.errors.full_messages.each do |message| %>
+	        <% @user.errors.full_messages.each do |message| %>
 	          <li><%= message %></li>
 	        <% end %>
 	        </ul>
