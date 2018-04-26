@@ -5,20 +5,42 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    #helper
+      @all_tasks = Task.all
 
-    @all_statustaskuser_entries = StatusTaskUser.all
+      @all_tasks_id = Task.all.pluck(:id)
+
+      @all_statustaskuser_entries = StatusTaskUser.all
+
+      @all_assigned_tasks_id =  @all_statustaskuser_entries.where("status_id = 3").pluck(:task_id)
+
+      @all_pending_tasks_id = @all_statustaskuser_entries.where("status_id = 1").pluck(:task_id)
+
+      @tasks_not_assigned_id = @all_tasks_id - @all_assigned_tasks_id || @all_assigned_tasks_id - @all_tasks_id
+
+      @tasks_without_application_and_not_pending_id = @tasks_not_assigned_id - @all_pending_tasks_id || @all_pending_tasks_id - @tasks_not_assigned_id
+
+      @pending_usertasks_id = @all_statustaskuser_entries.where("user_id = ? and status_id = 1", current_user.id).pluck(:task_id)
+
+      @open_usertasks_id = @tasks_not_assigned_id - @pending_usertasks_id || @pending_usertasks_id - @tasks_not_assigned_id
+
+    #helper-end
+
+    #für user
 
     @assigned_usertasks = Task.find(@all_statustaskuser_entries.where("user_id = ? and status_id = 3", current_user.id).pluck(:task_id))
 
-    @pending_usertasks= Task.find(@all_statustaskuser_entries.where("user_id = ? and status_id = 1", current_user.id).pluck(:task_id))
+    @pending_usertasks= Task.find(@pending_usertasks_id)
 
+    @open_usertasks = Task.find(@open_usertasks_id)
 
-    @open_usertasks = Task.all
+    #für admin:
 
-    @unassigned_tasks = @tasks.where(:assigned => false)
-    # -> wird assigned umgespeichert??? -> soll m
-    @assigned_tasks = Task.find(@all_statustaskuser_entries.where("status_id = 2").pluck(:task_id))
+    @tasks_with_applications = Task.find(@all_pending_tasks_id)
+
+    @tasks_without_applications_and_not_pending = Task.find(@tasks_without_application_and_not_pending_id)
+
+    @assigned_tasks = Task.find(@all_assigned_tasks_id)
 
   end
 
