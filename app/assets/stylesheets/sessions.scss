@@ -19,7 +19,15 @@
   padding: 0.5em;
   margin-bottom: 1em;
   border-radius: 0.3em;
+  animation: fadeout 3.0s forwards;
 }
+
+@keyframes fadeout {
+    0%   {opacity: 1;}
+    30% { opacity: 1;}
+    100% {opacity: 0;}
+}
+
 #alert{
     background-color: #d62121;
     margin-top: 30px;
