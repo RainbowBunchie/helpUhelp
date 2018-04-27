@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<div class ="back-button">
+  <%= link_to '< Zurück', tasks_path%>
+</div>
+
 <div class="form-edit user-page">
 	<div class="form-container">
 		<% if current_user && current_user.role.title == "admin" %>
@@ -70,9 +74,6 @@
       <h1 class="i-need-some-space-here">Es gibt noch keine Bewerber.</h1>
       <% end %>
     <% end %>
-
-	<%= link_to 'Zurück', tasks_path %>
-
 </div>
 
 
