@@ -1,4 +1,16 @@
 <% if current_user.id == @user.id || current_user.role.title == "admin" %>
+
+<%if current_user.role.title == "admin" %>
+
+	<div class ="back-button">
+			<%= link_to '< Zurück', users_path%>
+	</div>
+	<% else %>
+		<div class ="back-button">
+				<%= link_to '< Zurück', user_path(@user.id) %>
+		</div>
+	<% end %>
+
 	<div class="form-edit">
 		<% if @alert %>
       		<p id="alert"><%= @alert %></p>
@@ -18,8 +30,6 @@
 			<h1>Benutzer bearbeiten</h1>
 
 			<%= render 'form', user: @user %>
-
-			<%= link_to 'Zurück', user_path(@user.id) %>
 			<br>
 		</div>
 	</div>
