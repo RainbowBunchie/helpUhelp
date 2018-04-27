@@ -17,11 +17,25 @@
   border-radius: 0.3em;
 }
 .new-task{
-  padding: 1em;
-  margin-top: 1em;
-  color: #45ac35;
-  //justify-content: flex-end;
+  padding-bottom: 2em;
+  display: flex;
+  justify-content: flex-end;
 }
+.new-task-button{
+  padding: 1em;
+  color: #45ac35;
+  size: 2em;
+  border-color: #333232;
+  border-style: solid;
+  border-top: none;
+  border-width: 2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.new-task-button:hover{
+  background-color: #333232;
+}
+
 .tasks-page{
   display: flex;
   flex-direction: column;
