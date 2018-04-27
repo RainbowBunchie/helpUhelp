@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   before_action :require_login
   before_action :require_admin, only: [:index]
 
+  def password_required?
+    return false if @skip_password_validation
+    super
+  end
+
   # GET /users
   # GET /users.json
   def index
@@ -31,13 +36,15 @@ class UsersController < ApplicationController
     @roles = Role.all
     random_password = Randomstring.generate(20)
     p = user_params
-    p[:password] = random_password;
-    @user = User.new(user_params)
+    p[:password] = random_password
+    p[:password_confirmation] = random_password
+    @user = User.new(p)
+    @skip_password_validation = true
 
     respond_to do |format|
       if @user.save
         # Deliver the signup email
-        ApplicationMailer.send_signup_email(@user).deliver_now
+        ApplicationMailer.send_signup_email(@user, random_password).deliver_now
         format.html { redirect_to @user, notice: 'Benutzer wurde angelegt.' }
         format.json { render :show, status: :created, location: @user }
 
