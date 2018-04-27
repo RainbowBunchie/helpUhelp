@@ -1,6 +1,8 @@
 <section class="tasks-page">
   <div class="tasks-container">
-    <p id="notice"><%= notice %></p>
+    <% if notice %>
+      <p id="notice"><%= notice %></p>
+    <% end %>
 
     <% if current_user && current_user.role.title == "admin" %>
     <div class="new-task">
