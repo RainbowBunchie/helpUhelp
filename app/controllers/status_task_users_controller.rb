@@ -1,5 +1,7 @@
 class StatusTaskUsersController < ApplicationController
   before_action :set_status_task_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
+  before_action :require_admin
 
   # GET /status_task_users
   # GET /status_task_users.json

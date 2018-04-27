@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :add_user, :remove_user, :assign_user]
   before_action :require_login
+  before_action :require_admin, only: [:edit, :update, :destroy, :new, :assign_user]
 
   # GET /tasks
   # GET /tasks.json

@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin
+    unless current_user.role.title == "admin"
+      redirect_to tasks_path
+    end
+  end
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end 
