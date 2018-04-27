@@ -1,5 +1,11 @@
 <section class="tasks-page">
+
+
+
   <div class="tasks-container">
+    <div class="new-task">
+      <%= link_to '+ Neuen Nutzer Anlegen', new_user_path, class: "new-task-button" %>
+    </div>
     <% if notice %>
       <p id="notice"><%= notice %></p>
     <% end %>
@@ -39,7 +45,6 @@
 
       <br>
 
-      <%= link_to 'Neuen Nutzer anlegen', new_user_path %>
     </div>
   </div>
 </section>
