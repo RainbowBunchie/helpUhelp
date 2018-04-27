@@ -4,7 +4,11 @@
 
   <div class="field">
     <%= form.label :role_id, "Rolle" %>
-    <%= form.select :role_id, options_for_select(@roles.collect{ |r| [r.title, r.id]}) %>
+    <div class ="select-box-style">
+
+    <%= form.select :role_id, options_for_select(@roles.collect{ |r| [r.title.capitalize, r.id]}) %>
+  </div>
+
   </div>
 
   <% end %>
