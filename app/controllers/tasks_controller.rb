@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :add_user, :remove_user, :assign_user]
   before_action :require_login
+  before_action :require_admin, only: [:edit, :update, :destroy, :new, :assign_user]
 
   # GET /tasks
   # GET /tasks.json
@@ -44,12 +45,15 @@ class TasksController < ApplicationController
 
     @assigned_tasks = all_future_tasks & Task.order(:date).find(all_assigned_tasks_id )
 
+    @status_task_users = StatusTaskUser.all
+
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
     @task_applicants = StatusTaskUser.where(task_id: @task.id)
+    @assigned_applicant = User.find(StatusTaskUser.where(task_id: @task.id, status_id: 3).pluck(:user_id))
   end
 
   # GET /tasks/new
@@ -66,10 +70,10 @@ class TasksController < ApplicationController
     stu = StatusTaskUser.new({:user_id => current_user.id, :task_id => @task.id, :status_id => 1})
     respond_to do |format|
       if stu.save
-        format.html { redirect_to tasks_url, notice: 'Für die Aufgabe beworben!' }
+        format.html { redirect_to tasks_url, notice: 'Du hast dich für die Aufgabe beworben!' }
         format.json { head :no_content }
       else
-        format.html { redirect_to tasks_url, notice: 'Nix Passiert!' }
+        format.html { redirect_to tasks_url, notice: 'Da hat etwas nicht funktioniert!' }
         format.json { head :no_content }
       end
     end
@@ -79,7 +83,7 @@ class TasksController < ApplicationController
   def remove_user
     StatusTaskUser.where(user_id: current_user.id, task_id: @task.id).delete_all
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Bewerbung für Aufgabe abgesagt!'}
+      format.html { redirect_to tasks_url, notice: 'Du hast deine Bewerbung für die Aufgabe zurückgezogen!'}
       format.json { head :no_content }
     end
   end
@@ -102,12 +106,12 @@ class TasksController < ApplicationController
 
     if assigned_candidate.save
       respond_to do |format|
-        format.html { redirect_to @task, notice: 'something works here!'}
+        format.html { redirect_to @task, notice: 'Eine neue Person wurde der Aufgabe zugewiesen!'}
         format.json { render :show, status: :ok, location: @task }
       end
     else
       respond_to do |format|
-        format.html { redirect_to @task, notice: 'something stinks here!'}
+        format.html { redirect_to @task, notice: 'Da hat etwas nicht funktioniert!'}
         format.json { render :show, status: :ok, location: @task }
       end
     end
@@ -119,7 +123,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to @task, notice: 'Aufgabe wurde erfolgreich erstellt!' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -133,7 +137,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to @task, notice: 'Aufgabe wurde erfolgreich erstellt!' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -147,7 +151,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to tasks_url, notice: 'Aufgabe wurde erfolgreich gelöscht!' }
       format.json { head :no_content }
     end
   end

@@ -49,25 +49,8 @@
       <%= form.text_field :telephone, id: :user_telephone %>
     </div>
 
-    <% random_password = Randomstring.generate(20) %>
-    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
-    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
-    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
-    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
-    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
-    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
-    <!-- LÖÖÖÖÖÖÖÖÖSCHEN -->
-    <div class="field">
-      <%= form.label :passowrd, "Password" %>
-      <%= form.password_field :password, id: :password %>
-    </div>
-
-    <% form.hidden_field :password
-      hidden_field_tag 'selected', random_password
-    %>
-
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit "Benutzer anlegen", data: { confirm: "Bitte überprüfen Sie die Benutzerdaten. \nUm den User anzulegen, klicken Sie auf 'OK' " } %>
     </div>
   <% end %>
 

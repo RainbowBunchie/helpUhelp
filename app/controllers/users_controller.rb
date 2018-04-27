@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_login
+  before_action :require_admin, only: [:index]
 
   # GET /users
   # GET /users.json
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @roles = Role.all
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'Benutzerdaten wurden aktualisiert.' }
@@ -88,6 +90,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:role_id, :first_name, :last_name, :email, :telephone, :password)
+      params.require(:user).permit(:role_id, :first_name, :last_name, :email, :telephone, :password, :password_confirmation)
     end
 end

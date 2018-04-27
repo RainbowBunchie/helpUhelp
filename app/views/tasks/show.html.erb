@@ -1,16 +1,15 @@
-<div class="form-edit user-page">
+<p id="notice"><%= notice %></p>
 
-	<% if notice %>
-		<p id="notice"><%= notice %></p>
-	<% end %>
+<div class="form-edit user-page">
 	<div class="form-container">
 		<% if current_user && current_user.role.title == "admin" %>
 		<div class ="admin-options task-option">
 			<%= link_to image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(@task) %>
-			<%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), @task, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), @task, method: :delete, data: { confirm: 'Sind Sie sicher, dass Sie die Aufgabe löschen möchten?' } %>
 		</div>
 		<%end%>
     <h1> <%= @task.title %> </h1>
+
       <p>
         <strong>Datum:</strong>
         <%= @task.date.strftime("%d.%m.%y") %>
@@ -26,35 +25,43 @@
       </p>
 
 			<p class="task-show-description">
-				<strong>Description:</strong>
+				<strong>Beschreibung:</strong>
 				<%= @task.description %>
 			</p>
     </div>
 
+    <% if current_user && current_user.role.title == "volunteer" %>
+    <div class ="card-button">
+      <%= link_to 'bewerben', add_user_task_path(), method: :post %>
+    </div>
+    <% end %>
+
     <% if current_user && current_user.role.title == "admin" %>
-    <h1 class="i-need-some-space-here"> Bewerber </h1>
+    <h1 class="i-need-some-space-here"> Ausgewählter Bewerber </h1>
     <div class="tasks">
       <% @task_applicants.each do |applicant| %>
         <% if applicant.status_id == 3 %>
           <div class="task-card assigned">
-            <div class="info">
-              <div class="task-description"><%= User.find(applicant.user_id).first_name %> <%= User.find(applicant.user_id).last_name %></div>
-              <div class="task-info">
-                <p>Erreichbar unter: </p>
-                <p><%= User.find(applicant.user_id).telephone %></p>
-              </div>
+            <div class="task-description"><%= User.find(applicant.user_id).first_name %> <%= User.find(applicant.user_id).last_name %></div>
+            <div class="task-info">
+              <p>Erreichbar unter: </p>
+              <p><%= User.find(applicant.user_id).telephone %></p>
             </div>
           </div>
-        <% else %>
-          <div class="task-card pending">
-            <div class="info">
-              <div class="task-description"><%= User.find(applicant.user_id).first_name %> <%= User.find(applicant.user_id).last_name %></div>
-              <div class="task-info">
-                <p>Erreichbar unter: </p>
-                <p><%= User.find(applicant.user_id).telephone %></p>
-                <div class="card-button"><%= link_to 'zuweisen', assign_user_task_path(@task, applicant_id: applicant.user_id), method: :post%></div>
-              </div>
+        <% end %>
+      <% end %>
+    </div>
+    <h1 class="i-need-some-space-here"> Bewerber </h1>
+    <div class="tasks">
+      <% @task_applicants.each do |applicant| %>
+        <% if applicant.status_id == 1 || applicant.status_id == 2 %>
+          <div class="task-card">
+            <div class="task-description"><%= User.find(applicant.user_id).first_name %> <%= User.find(applicant.user_id).last_name %></div>
+            <div class="task-info">
+              <p>Erreichbar unter: </p>
+              <p><%= User.find(applicant.user_id).telephone %></p>
             </div>
+            <div class="card-button"><%= link_to 'zuweisen', assign_user_task_path(@task, applicant_id: applicant.user_id), method: :post%></div>
           </div>
         <% end %>
       <% end %>
@@ -64,3 +71,7 @@
 	<%= link_to 'Zurück', tasks_path %>
 
 </div>
+
+
+
+<%= link_to  image_tag('edit-pen.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), edit_task_path(@task) %>

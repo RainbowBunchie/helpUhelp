@@ -21,11 +21,25 @@
   height: 15em;
 }
 .new-task{
-  margin-top: 1em;
+  padding-bottom: 2em;
   display: flex;
-  color: #45ac35;
-  //justify-content: flex-end;
+  justify-content: flex-end;
 }
+.new-task-button{
+  padding: 1em;
+  color: #45ac35;
+  size: 2em;
+  border-color: #333232;
+  border-style: solid;
+  border-top: none;
+  border-width: 2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.new-task-button:hover{
+  background-color: #333232;
+}
+
 .tasks-page{
   display: flex;
   flex-direction: column;
@@ -66,13 +80,6 @@
   color: black;
 }
 
-.info{
-}
-
-.info :hover{
-  //color: black;
-}
-
 .task-show-description{
   width: 100%;
   border-top: #333232 0.2em solid;
@@ -83,7 +90,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  word-break:break-all;
+  word-break: break-word;
 }
 
 .task-info{
@@ -95,6 +102,7 @@
   display: flex;
   justify-content: flex-end;
   background-color: #333232;
+  word-break:break-word;
 }
 
 .task-option img{
@@ -113,6 +121,7 @@
   line-height: 1.4em;
   font-size: 1.4em;
   padding: 0 0.5em 0.5em 0.5em;
+  word-break:break-word;
 }
 
 .tasks{
@@ -129,7 +138,7 @@
   border-radius: 4px;
   display: flex;
   justify-content: center;
-  margin-top: 0.5em;
+  margin: 0.5em;
 }
 .card-button:hover{
   background-color: #333232;
