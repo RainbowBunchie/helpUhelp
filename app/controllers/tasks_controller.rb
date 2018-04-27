@@ -89,10 +89,6 @@ class TasksController < ApplicationController
   end
 
   def assign_user
-    #assigned_candidate = StatusTaskUser.where(user_id: params[:applicant_id], task_id: @task.id).first
-    #assigned_candidate.status_id = 3
-    #assigned_candidate.save
-    #StatusTaskUser.update(assigned_candidate, :status_id => 3)
 
     task_applicants = StatusTaskUser.where(task_id: @task.id)
 
