@@ -34,12 +34,12 @@
 
   <% if current_user.id == user.id %>
     <div class="field">
-      <%= form.label :password, "Passwort" %>
+      <%= form.label :password, "Neues Passwort" %>
       <%= form.password_field :password, id: :password %>
     </div>
 
     <div class="field">
-      <%= form.label :password_confirmation, "Passwort bestätigen" %>
+      <%= form.label :password_confirmation, "Neues Passwort bestätigen" %>
       <%= form.password_field :password_confirmation %>
     </div>
   <% end %>
