@@ -86,7 +86,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .task-info{
@@ -98,7 +98,7 @@
   display: flex;
   justify-content: flex-end;
   background-color: #333232;
-  word-break:break-all;
+  word-break:break-word;
 }
 
 .task-option img{
@@ -117,7 +117,7 @@
   line-height: 1.4em;
   font-size: 1.4em;
   padding: 0 0.5em 0.5em 0.5em;
-  word-break:break-all;
+  word-break:break-word;
 }
 
 .tasks{
