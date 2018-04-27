@@ -1,5 +1,7 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
+  before_action :require_admin
 
   # GET /statuses
   # GET /statuses.json
