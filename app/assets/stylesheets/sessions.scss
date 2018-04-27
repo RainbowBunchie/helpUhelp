@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.infobox{
+  margin-top: 2em;
+  width: 70vw;
+  line-height: 1.4em;
+  text-align: center;
+}
+
+.infobox a{
+  text-decoration: underline;
+}
 .form-login #notice{
   margin-top: -50px;
   background-color: #45ac35;
