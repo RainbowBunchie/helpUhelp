@@ -88,7 +88,6 @@
 }
 
 .task-show-description{
-  width: 100%;
   border-top: #333232 0.2em solid;
   padding-top: 1em;
   line-height: 1.4em;
@@ -98,6 +97,8 @@
   align-items: center;
   text-align: center;
   word-break: break-word;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 .task-info{
