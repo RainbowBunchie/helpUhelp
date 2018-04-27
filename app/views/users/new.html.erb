@@ -55,6 +55,10 @@
       <%= form.text_field :telephone, id: :user_telephone %>
     </div>
 
+    <div class="field">
+      <% form.hidden_field :password, id: :password %>
+    </div>
+
     <div class="actions">
       <%= form.submit "Benutzer anlegen", data: { confirm: "Bitte überprüfen Sie die Benutzerdaten. \nUm den User anzulegen, klicken Sie auf 'OK' " } %>
     </div>
