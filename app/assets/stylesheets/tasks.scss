@@ -110,7 +110,8 @@
   display: flex;
   justify-content: flex-end;
   background-color: #333232;
-  word-break:break-word;
+  word-break: break-word;
+  padding-right: 1px;
 }
 
 .task-option img{
@@ -128,7 +129,7 @@
   color: white;
   line-height: 1.4em;
   font-size: 1.4em;
-  padding: 0 0.5em 0.5em 0.5em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
   word-break:break-word;
 }
 

@@ -3,11 +3,6 @@ class UsersController < ApplicationController
   before_action :require_login
   before_action :require_admin, only: [:index]
 
-  def password_required?
-    return false if @skip_password_validation
-    super
-  end
-
   # GET /users
   # GET /users.json
   def index
@@ -39,7 +34,6 @@ class UsersController < ApplicationController
     p[:password] = random_password
     p[:password_confirmation] = random_password
     @user = User.new(p)
-    @skip_password_validation = true
 
     respond_to do |format|
       if @user.save
@@ -59,8 +53,28 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     @roles = Role.all
+
+    role = user_params[:role_id] ? user_params[:role_id] : @user.role_id
+    if user_params[:password].empty?
+      new_params = {:role_id => role,
+                    :first_name => user_params[:first_name], 
+                    :last_name => user_params[:last_name], 
+                    :email => user_params[:email],
+                    :telephone => user_params[:telephone]
+                   }
+    else 
+      new_params = {:role_id => role,
+                    :first_name => user_params[:first_name], 
+                    :last_name => user_params[:last_name], 
+                    :email => user_params[:email],
+                    :telephone => user_params[:telephone],
+                    :password => user_params[:password],
+                    :password_confirmation => user_params[:password_confirmation]
+                  }
+    end
+    p = new_params
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(p)
         format.html { redirect_to @user, notice: 'Benutzerdaten wurden aktualisiert.' }
         format.json { render :show, status: :ok, location: @user }
       else
