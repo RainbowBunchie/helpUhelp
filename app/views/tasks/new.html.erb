@@ -1,7 +1,12 @@
 <% if current_user.role.title == "admin" %>
 
+<div class ="back-button">
+    <%= link_to '< Zurück', tasks_path %>
+</div>
+
   <div class="form-edit">
-    
+
+
       <% if @task.errors.any? %>
       <div id="error_explanation_own">
         <h2 id="error-title">Bitte beachten Sie folgende Anforderungen!</h2>
@@ -18,9 +23,8 @@
       <h1>Neue Aufgabe</h1>
 
       <%= render 'form', task: @task %>
-
-      <%= link_to 'Back', tasks_path %>
     </div>
+
   </div>
 
 <% else %>

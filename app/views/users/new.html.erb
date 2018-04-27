@@ -1,6 +1,12 @@
 <% require "randomstring"
 %>
 <% if true #current_user.role.title == "admin" %>
+
+
+<div class ="back-button">
+    <%= link_to '< Zurück', users_path %>
+</div>
+
 <div class="form-edit">
 
     <% if @user.errors.any? %>
@@ -23,7 +29,10 @@
 
     <div class="field">
       <%= form.label :role_id, "Rolle" %>
-      <%= form.select :role_id, options_for_select(@roles.collect{ |r| [r.title.capitalize, r.id]}) %>
+      <div class = "select-box-style">
+              <%= form.select :role_id, options_for_select(@roles.collect{ |r| [r.title.capitalize, r.id]}) %>
+      </div>
+
     </div>
 
     <div class="field">
@@ -54,8 +63,6 @@
       <%= form.submit "Benutzer anlegen", data: { confirm: "Bitte überprüfen Sie die Benutzerdaten. \nUm den User anzulegen, klicken Sie auf 'OK' " } %>
     </div>
   <% end %>
-
-  <%= link_to 'Back', users_path %>
 <% else %>
   <p class="notification">
     Diese Seite ist nur dem Admin zugänglich.
@@ -63,4 +70,3 @@
 <%end %>
 </div>
 </div>
-

@@ -1,23 +1,27 @@
 <%= form_with(model: task, local: true) do |form| %>
 
   <div class="field">
-    Titel <br />
+    <%= form.label :title %>
     <%= form.text_field :title, id: :task_title %>
   </div>
 
-  <div class="field">
-    Beschreibung <br />
+  <div class="field form-description">
+    <%= form.label :description %>
     <%= form.text_area :description, id: :task_description %>
   </div>
 
   <div class="field">
-    Datum <br />
-    <%= form.date_select :date, id: :task_date %>
+    <%= form.label :date %>
+    <div class =" select-box-inline">
+      <%= form.date_select :date, id: :task_date %>
+    </div>
   </div>
 
   <div class="field">
     <%= form.label :time %>
-    <%= form.time_select :time, id: :task_time %>
+    <div class =" select-box-inline">
+      <%= form.time_select :time, id: :task_time %>
+    </div>
   </div>
 
   <div class="field">
@@ -27,7 +31,7 @@
 
   <div class="field">
     <%= form.label :no_of_people %>
-    <%= form.number_field :no_of_people, id: :task_no_of_people %>
+    <%= form.number_field :no_of_people, id: :task_no_of_people, :value => 1 %>
   </div>
 
   <div class="actions">

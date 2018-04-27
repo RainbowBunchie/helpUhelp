@@ -133,3 +133,65 @@ table {
   @extend .control-group;
   @extend .error;
  }
+
+ textarea {
+   resize: none;
+}
+.select-box-inline{
+  display: flex;
+  justify-content: center;
+}
+
+
+ .select-box-style select{
+   height: 100%;
+   text-align: center;
+   padding: 5px 8px;
+   width: 130%;
+   border: none;
+   box-shadow: none;
+   background: transparent;
+   background-image: none;
+   -webkit-appearance: none;
+ }
+
+ .select-box-style select option{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+ }
+
+ select:focus {
+     outline: none;
+ }
+
+ label{
+   display: flex;
+   justify-content: center;
+   margin-bottom: 0.2em;
+   margin-top: 0.5em;
+ }
+
+ input:focus, textarea:focus{
+   outline: #45ac35 solid;
+ }
+
+ .field{
+   width: 70%;
+ }
+
+.back-button{
+  margin-top: 1em;
+  margin-left: 10vw;
+}
+ .back-button a{
+   padding: 0.4em 1em;
+   border-radius: 0.3em;
+   background-color: #333232;
+   color: #f0f0f0;
+ }
+
+ input{
+   box-shadow: none;
+ }

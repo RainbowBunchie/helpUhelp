@@ -3,8 +3,8 @@
     <p id="notice"><%= notice %></p>
 
     <% if current_user && current_user.role.title == "admin" %>
-    <div class ="new-task-button">
-      <%= link_to 'Neue Aufgabe erstellen', new_task_path %>
+    <div class="new-task">
+      <%= link_to '+ Neue Aufgabe Erstellen', new_task_path, class: "new-task-button" %>
     </div>
     <% end %>
 
@@ -21,8 +21,8 @@
               <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
               <strong>Ort: </strong><%= task.place %>
             </div>
-            <div class ="card-button">
-              <%= link_to 'absagen', remove_user_task_path(task), method: :post %>
+            <div>
+              <%= link_to 'absagen', remove_user_task_path(task), method: :post , class: "card-button"%>
             </div>
           <% end %>
         </div>
@@ -47,8 +47,8 @@
               <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
               <strong>Ort: </strong><%= task.place %>
             </div>
-            <div class ="card-button">
-              <%= link_to 'absagen', remove_user_task_path(task), method: :post %>
+            <div >
+              <%= link_to 'absagen', remove_user_task_path(task), method: :post, class: "card-button" %>
             </div>
           <% end %>
         </div>
@@ -72,8 +72,8 @@
                 <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
                 <strong>Ort: </strong><%= task.place %>
               </div>
-              <div class ="card-button">
-                <%= link_to 'bewerben', add_user_task_path(task), method: :post %>
+              <div>
+                <%= link_to 'bewerben', add_user_task_path(task), method: :post , class: "card-button"%>
               </div>
             <% end %>
           </div>

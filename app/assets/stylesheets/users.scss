@@ -4,6 +4,30 @@
 
 //--------OVERVIEW---------
 
+
+
+.select-box-inline select{
+  height: 2.5em;
+  text-align: center;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 0.3em;
+  box-shadow: none;
+  background: white asset-data-url("arrow-down.png") no-repeat 94% 50%;
+  background: transparent;
+  margin: 0 0.7em;
+  padding: 0.5em 10em;
+}
+
+.select-box-style{
+  border: 1px solid #ccc;
+   width: 100%;
+   height: 1.8em;
+   border-radius: 0.3em;
+   overflow: hidden;
+   background: white asset-data-url("arrow-down.png") no-repeat 94% 50%;
+   background-size: 6%;
+}
 .user-page{
   flex-direction: column;
   align-items: center;
@@ -85,7 +109,7 @@ a {
   border-radius: 0.3em;
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 400px;
   box-sizing:border-box;
   h1{
     font-size: 1.7rem;
