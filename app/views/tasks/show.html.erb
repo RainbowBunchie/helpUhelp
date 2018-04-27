@@ -38,7 +38,7 @@
     <% end %>
 
     <% if current_user && current_user.role.title == "admin" %>
-    <h1 class="i-need-some-space-here"> Bewerber </h1>
+    <h1 class="i-need-some-space-here"> Ausgewählter Bewerber </h1>
     <div class="tasks">
       <% @task_applicants.each do |applicant| %>
         <% if applicant.status_id == 3 %>
@@ -49,7 +49,13 @@
               <p><%= User.find(applicant.user_id).telephone %></p>
             </div>
           </div>
-        <% else %>
+        <% end %>
+      <% end %>
+    </div>
+    <h1 class="i-need-some-space-here"> Bewerber </h1>
+    <div class="tasks">
+      <% @task_applicants.each do |applicant| %>
+        <% if applicant.status_id == 1 || applicant.status_id == 2 %>
           <div class="task-card">
             <div class="task-description"><%= User.find(applicant.user_id).first_name %> <%= User.find(applicant.user_id).last_name %></div>
             <div class="task-info">

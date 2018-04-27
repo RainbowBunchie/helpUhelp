@@ -44,12 +44,15 @@ class TasksController < ApplicationController
 
     @assigned_tasks = all_future_tasks & Task.order(:date).find(all_assigned_tasks_id )
 
+    @status_task_users = StatusTaskUser.all
+
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
     @task_applicants = StatusTaskUser.where(task_id: @task.id)
+    @assigned_applicant = User.find(StatusTaskUser.where(task_id: @task.id, status_id: 3).pluck(:user_id))
   end
 
   # GET /tasks/new

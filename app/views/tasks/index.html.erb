@@ -3,7 +3,7 @@
     <p id="notice"><%= notice %></p>
 
     <% if current_user && current_user.role.title == "admin" %>
-    <div class ="new-task">
+    <div class ="new-task-button">
       <%= link_to 'Neue Aufgabe erstellen', new_task_path %>
     </div>
     <% end %>
