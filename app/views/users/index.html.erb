@@ -35,8 +35,7 @@
               <td><%= user.last_name %></td>
               <td><%= user.email %></td>
               <td><%= user.telephone %></td>
-              <td>  <%= link_to  image_tag('edit-pen-dark.png', size: "50x51", alt: "User", class: 'd-inline-block'), edit_user_path(user) %>
-</td>
+              <td>  <%= link_to  image_tag('edit-pen-dark.png', size: "50x51", alt: "User", class: 'd-inline-block'), edit_user_path(user) %></td>
               <td><%= link_to image_tag('delete-dark.png', size: "50x51", alt: "User", class: 'd-inline-block'), user, method: :delete, data: { confirm: 'Sind Sie sicher, dass Sie den Benutzer löschen möchten?' } %></td>
             </tr>
           <% end %>

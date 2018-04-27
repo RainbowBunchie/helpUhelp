@@ -1,6 +1,8 @@
 <section class="tasks-page">
   <div class="tasks-container">
-    <p id="notice"><%= notice %></p>
+    <% if notice %>
+      <p id="notice"><%= notice %></p>
+    <% end %>
 
     <% if current_user && current_user.role.title == "admin" %>
     <div class="new-task">
@@ -150,7 +152,11 @@
           <div class="task-info">
             <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
             <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
-            <strong>Ort: </strong><%= task.place %>
+            <strong>Ort: </strong><%= task.place %> <br />
+            <strong>Wird erledigt von:</strong>
+            <% User.find(@status_task_users.where(task_id: task.id, status_id: 3).pluck(:user_id)).each do |assigned_user|%>
+              <%= assigned_user.first_name %> <%= assigned_user.last_name %>
+            <% end %>
           </div>
           <% end %>
         </div>
