@@ -1,0 +1,125 @@
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."title" = ? LIMIT ?[0m  [["title", "admin"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."title" = ? LIMIT ?[0m  [["title", "volunteer"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "statuses" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "pending"], ["created_at", "2018-04-27 10:45:24.358061"], ["updated_at", "2018-04-27 10:45:24.358061"]]
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "statuses" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "declined"], ["created_at", "2018-04-27 10:45:24.365683"], ["updated_at", "2018-04-27 10:45:24.365683"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "statuses" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "confirmed"], ["created_at", "2018-04-27 10:45:24.368208"], ["updated_at", "2018-04-27 10:45:24.368208"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin.at"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "volunteer@volunteer.at"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "volunteer2@volunteer.at"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "volunteer3@volunteer.at"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "volunteer4@volunteer.at"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "volunteer5@volunteer.at"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Dringend gesuchter Babysitter gesucht für zwei Kinder bei Familie Salonovic in Lehen. Die beiden müssen aufs Arbeitsamt und deshalb brauchen die Kinder für ungefähr drei Stunden eine Betreuung. Die Kinder sind drei und sieben Jahre alt und sind sehr leise. Am besten Spielzeug selber mitnehmen oder bei schönem Wetter auf den Spielplatz gehen."], ["date", "2018-05-26"], ["time", "2000-01-01 09:15:00"], ["place", "Maxglan"], ["no_of_people", 1], ["created_at", "2018-04-27 10:45:24.849374"], ["updated_at", "2018-04-27 10:45:24.849374"], ["title", "Babysitter gesucht"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Es wird eine Persongesucht, die mit zwei Flüchtling des Flüchtlingheims zu einer Wohnungsbesichtigung in Lehen geht. Die Flüchtlinge sollen im Heim abgeholt werden und dort auch wieder abgeliefert werden. Es handelt sich um ein Pärchen mit zwei Kindern. "], ["date", "2018-05-28"], ["time", "2000-01-01 13:00:00"], ["place", "Lehen"], ["no_of_people", 1], ["created_at", "2018-04-27 10:45:24.852657"], ["updated_at", "2018-04-27 10:45:24.852657"], ["title", "Wohnungsbesichtigung"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Wir suchen eine Person, die für fünf Stunden Zeit hat um mit drei Flüchtlichen zur Polizei zu gehen um einige Daten abzuklären "], ["date", "2018-05-22"], ["time", "2000-01-01 16:15:00"], ["place", "Itzling"], ["no_of_people", 1], ["created_at", "2018-04-27 10:45:24.854777"], ["updated_at", "2018-04-27 10:45:24.854777"], ["title", "Beamtengang"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Es wird eine Persongesucht, die mit zwei Flüchtling des Flüchtlingheims zu einer Wohnungsbesichtigung in Lehen geht. Die Flüchtlinge sollen im Heim abgeholt werden und dort auch wieder abgeliefert werden. Es handelt sich um ein Pärchen mit zwei Kindern. "], ["date", "2018-05-28"], ["time", "2000-01-01 13:00:00"], ["place", "Parsch"], ["no_of_people", 1], ["created_at", "2018-04-27 10:45:24.858813"], ["updated_at", "2018-04-27 10:45:24.858813"], ["title", "Wohnungsbesichtigung"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Es wird eine Persongesucht, die mit zwei Flüchtling des Flüchtlingheims zu einer Wohnungsbesichtigung in Lehen geht. Die Flüchtlinge sollen im Heim abgeholt werden und dort auch wieder abgeliefert werden. Es handelt sich um ein Pärchen mit zwei Kindern. "], ["date", "2018-04-28"], ["time", "2000-01-01 13:00:00"], ["place", "Lehen"], ["no_of_people", 1], ["created_at", "2018-04-27 10:45:24.861258"], ["updated_at", "2018-04-27 10:45:24.861258"], ["title", "Beamtengang"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Es wird eine Persongesucht, die mit zwei Flüchtling des Flüchtlingheims zu einer Wohnungsbesichtigung in Lehen geht. Die Flüchtlinge sollen im Heim abgeholt werden und dort auch wieder abgeliefert werden. Es handelt sich um ein Pärchen mit zwei Kindern. "], ["date", "2018-05-28"], ["time", "2000-01-01 13:00:00"], ["place", "Liefering"], ["no_of_people", 1], ["created_at", "2018-04-27 10:45:24.866475"], ["updated_at", "2018-04-27 10:45:24.866475"], ["title", "Wohnungsbesichtigung"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Es wird eine Persongesucht, die mit zwei Flüchtling des Flüchtlingheims zu einer Wohnungsbesichtigung in Lehen geht. Die Flüchtlinge sollen im Heim abgeholt werden und dort auch wieder abgeliefert werden. Es handelt sich um ein Pärchen mit zwei Kindern. "], ["date", "2018-05-28"], ["time", "2000-01-01 13:00:00"], ["place", "Mülln"], ["no_of_people", 1], ["created_at", "2018-04-27 10:45:24.870142"], ["updated_at", "2018-04-27 10:45:24.870142"], ["title", "Beamtengang"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-05-02 10:08:29 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 800ms (Views: 778.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-02 10:08:33 +0200
+Processing by SessionsController#create as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 42ms (Views: 39.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-05-02 10:08:36 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 33ms (Views: 30.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-05-02 10:13:45 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZNCvaB/DbAJBnpBwWLGR/KNS0r6y9i6VD4/vq50AFMNXN9IMi8YLkzTiZDDeZ3juqCXbAO4tIAYNolRaFlB3TA==", "email"=>"admin@admin.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin.at"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 114ms (Views: 33.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-05-02 10:13:49 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LzVBn+RJedN4KVJXocOXuSKIBFp8rKPBMfeHfTZ1pjD7x0yNmHbi87XprkuMJva1mixV1Sh96Otj5MSwWE/FUQ==", "email"=>"admin@admin.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin.at"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 67ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-05-02 10:13:49 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "tasks"."id" FROM "tasks"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (status_id = 3)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (status_id = 1)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (user_id = 11 and status_id = 1)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "status_task_users"."task_id" FROM "status_task_users" WHERE (user_id = 11 and status_id = 3)[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-02')[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" IN (7, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27) ORDER BY "tasks"."date" ASC[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" IN (8, 7) ORDER BY "tasks"."date" ASC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" IN (11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27) ORDER BY "tasks"."date" ASC[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" IN (4, 5, 6, 10) ORDER BY "tasks"."date" ASC[0m
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered tasks/index.html.erb within layouts/application (34.8ms)
+Completed 200 OK in 93ms (Views: 61.6ms | ActiveRecord: 3.4ms)
+
+
