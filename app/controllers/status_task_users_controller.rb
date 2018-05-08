@@ -3,11 +3,16 @@ class StatusTaskUsersController < ApplicationController
   before_action :require_login
   before_action :require_admin
 
+
+
+
   # GET /status_task_users
   # GET /status_task_users.json
   def index
     @status_task_users = StatusTaskUser.all
   end
+
+
 
   # GET /status_task_users/1
   # GET /status_task_users/1.json
