@@ -1,4 +1,6 @@
 Rails.application.configure do
+  require 'active_support/core_ext/numeric/bytes'
+   config.cache_store = :memory_store, { size: 64.megabytes }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

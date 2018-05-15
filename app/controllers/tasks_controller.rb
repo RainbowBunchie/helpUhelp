@@ -9,17 +9,17 @@ class TasksController < ApplicationController
 
     #für user
 
-    @assigned_usertasks = Task.user_assigned(@current_user).future
+    @assigned_usertasks = @current_user.tasks.distinct.confirmed.future
 
-    @pending_usertasks = Task.user_pending(@current_user).future
+    @pending_usertasks = @current_user.tasks.distinct.pending.future
 
-    @open_usertasks = Task.user_open_future(@current_user)
+    @open_usertasks = Task.includes(:status_task_users).where(:status_task_users => { :status_id => [nil, 1]}).future - @pending_usertasks
 
     #für admin:
 
-    @tasks_with_applications = Task.pending_future
+    @tasks_with_applications = Task.distinct.pending.future
 
-    @tasks_without_applications_and_not_pending = Task.not_pending_and_no_application_future
+    @tasks_without_applications_and_not_pending = Task.includes(:status_task_users).where(:status_task_users => { :status_id => nil}).future
 
     @assigned_tasks = Task.confirmed.future
 
