@@ -5,6 +5,10 @@ class Task < ApplicationRecord
   scope :future, -> {where("date >= ?", Date.today)}
   scope :past, -> {where("date < ?", Date.today)}
 
+  scope :with_status, lambda {|status_id| joins(:status_task_users).where('status_task_users.status_id=?', status_id) }
+  scope :pending, -> { joins(:status_task_users).where('status_task_users.status_id=?', 1) }
+  scope :declined, -> { where(status_id: 2) }
+  #scope :confirmed, -> { where(status_id: 3) }
 
   scope :pending_future, -> {Task
     .joins("INNER JOIN status_task_users ON status_task_users.task_id = tasks.id")
