@@ -6,44 +6,22 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    #helper
-      all_future_tasks = Task.where("date >= ?", Date.today)
-
-      all_tasks_id = Task.all.pluck(:id)
-
-      all_statustaskuser_entries = StatusTaskUser.all
-
-      all_assigned_tasks_id  =  all_statustaskuser_entries.where("status_id = 3").pluck(:task_id)
-
-      all_pending_tasks_id = all_statustaskuser_entries.where("status_id = 1").pluck(:task_id)
-
-      tasks_not_assigned_id = all_tasks_id - all_assigned_tasks_id  || all_assigned_tasks_id  - all_tasks_id
-
-      tasks_without_application_and_not_pending_id = tasks_not_assigned_id - all_pending_tasks_id || all_pending_tasks_id - tasks_not_assigned_id
-
-      pending_usertasks_id = all_statustaskuser_entries.where("user_id = ? and status_id = 1", current_user.id).pluck(:task_id)
-
-      open_usertasks_id = tasks_not_assigned_id - pending_usertasks_id || pending_usertasks_id - tasks_not_assigned_id
-
-
-    #helper-end
 
     #für user
 
-    @assigned_usertasks = all_future_tasks & Task.order(:date).find(all_statustaskuser_entries.where("user_id = ? and status_id = 3", current_user.id).pluck(:task_id))
+    @assigned_usertasks = Task.user_assigned(@current_user).future
 
-    @pending_usertasks = all_future_tasks & Task.order(:date).find(pending_usertasks_id)
+    @pending_usertasks = Task.user_pending(@current_user).future
 
-    @open_usertasks = all_future_tasks & Task.order(:date).find(open_usertasks_id)
-
+    @open_usertasks = Task.user_open_future(@current_user)
 
     #für admin:
 
-    @tasks_with_applications = all_future_tasks & Task.order(:date).find(all_pending_tasks_id)
+    @tasks_with_applications = Task.pending_future
 
-    @tasks_without_applications_and_not_pending = all_future_tasks & Task.order(:date).find(tasks_without_application_and_not_pending_id)
+    @tasks_without_applications_and_not_pending = Task.not_pending_and_no_application_future
 
-    @assigned_tasks = all_future_tasks & Task.order(:date).find(all_assigned_tasks_id )
+    @assigned_tasks = Task.confirmed.future
 
     @status_task_users = StatusTaskUser.all
 
