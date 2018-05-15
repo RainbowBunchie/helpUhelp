@@ -21,7 +21,7 @@ class TasksController < ApplicationController
 
     @tasks_without_applications_and_not_pending = Task.includes(:status_task_users).where(:status_task_users => { :status_id => nil}).future
 
-    @assigned_tasks = Task.confirmed.future
+    @assigned_tasks = Task.distinct.confirmed.future
 
     @status_task_users = StatusTaskUser.all
 
