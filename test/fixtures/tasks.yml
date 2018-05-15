@@ -5,13 +5,13 @@ one:
   date: 2018-04-23
   time: 2018-04-23 10:39:35
   place: MyString
-  assigned: false
   no_of_people: 1
+  title: MyString
 
 two:
   description: MyText
   date: 2018-04-23
   time: 2018-04-23 10:39:35
   place: MyString
-  assigned: false
   no_of_people: 1
+  title: MyString
