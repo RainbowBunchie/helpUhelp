@@ -7817,3 +7817,379 @@ Unpermitted parameters: :utf8, :authenticity_token, :commit
 Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 0.1ms)
 
 
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "roles"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "status_task_users"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "status_task_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "task_id" integer, "status_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX "index_status_task_users_on_status_id" ON "status_task_users" ("status_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_status_task_users_on_status_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_status_task_users_on_status_id' AND type='index'
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX "index_status_task_users_on_task_id" ON "status_task_users" ("task_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_status_task_users_on_task_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_status_task_users_on_task_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_status_task_users_on_status_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_status_task_users_on_status_id' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_status_task_users_on_user_id" ON "status_task_users" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "statuses"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "tasks"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" text, "date" date, "time" time, "place" varchar, "no_of_people" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "title" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" integer, "first_name" varchar, "last_name" varchar, "email" varchar, "telephone" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_users_on_role_id" ON "users" ("role_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180426075343)[0m
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180423102221),
+(20180423083935),
+(20180425093345),
+(20180421175429),
+(20180425130231),
+(20180425115514);
+
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-05-15 13:18:15.395670"], ["updated_at", "2018-05-15 13:18:15.395670"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (2.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "roles"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "status_task_users"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "status_task_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "task_id" integer, "status_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_status_task_users_on_status_id" ON "status_task_users" ("status_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_status_task_users_on_status_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_status_task_users_on_status_id' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_status_task_users_on_task_id" ON "status_task_users" ("task_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_status_task_users_on_task_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_status_task_users_on_task_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_status_task_users_on_status_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_status_task_users_on_status_id' AND type='index'
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_status_task_users_on_user_id" ON "status_task_users" ("user_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "statuses"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "statuses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "tasks"[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" text, "date" date, "time" time, "place" varchar, "no_of_people" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "title" varchar)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" integer, "first_name" varchar, "last_name" varchar, "email" varchar, "telephone" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_users_on_role_id" ON "users" ("role_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."title" = ? LIMIT ?[0m  [["title", "admin"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "roles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "admin"], ["created_at", "2018-05-15 13:18:15.465686"], ["updated_at", "2018-05-15 13:18:15.465686"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."title" = ? LIMIT ?[0m  [["title", "volunteer"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "volunteer"], ["created_at", "2018-05-15 13:18:15.468904"], ["updated_at", "2018-05-15 13:18:15.468904"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "statuses" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "pending"], ["created_at", "2018-05-15 13:18:15.482909"], ["updated_at", "2018-05-15 13:18:15.482909"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "statuses" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "declined"], ["created_at", "2018-05-15 13:18:15.485255"], ["updated_at", "2018-05-15 13:18:15.485255"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "statuses" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "confirmed"], ["created_at", "2018-05-15 13:18:15.487277"], ["updated_at", "2018-05-15 13:18:15.487277"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin.at"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("role_id", "first_name", "last_name", "email", "telephone", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["role_id", 1], ["first_name", "Clara"], ["last_name", "Huber"], ["email", "admin@admin.at"], ["telephone", "0664/9527493"], ["password_digest", "$2a$10$jWdIJwVsvv6PkXIGdwTfFOExjPVF3sZTLDQ.QOJlEUSrz/XJywCT2"], ["created_at", "2018-05-15 13:18:15.579257"], ["updated_at", "2018-05-15 13:18:15.579257"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "volunteer@volunteer.at"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("role_id", "first_name", "last_name", "email", "telephone", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["role_id", 2], ["first_name", "Marc"], ["last_name", "Peter"], ["email", "volunteer@volunteer.at"], ["telephone", "0699/9627793"], ["password_digest", "$2a$10$gBGxbqkmFhKoCKOJhGvXEujeM8932.9lLT/QJdajmdSv5HLz4cXny"], ["created_at", "2018-05-15 13:18:15.642286"], ["updated_at", "2018-05-15 13:18:15.642286"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "volunteer2@volunteer.at"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("role_id", "first_name", "last_name", "email", "telephone", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["role_id", 2], ["first_name", "Claudia"], ["last_name", "Gruber"], ["email", "volunteer2@volunteer.at"], ["telephone", "0699/962291"], ["password_digest", "$2a$10$LPloPoiHryWWbM1LXYTKNOZSqqUcj.4ceMYOq7adcxYMvOhdoCY92"], ["created_at", "2018-05-15 13:18:15.711995"], ["updated_at", "2018-05-15 13:18:15.711995"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "volunteer3@volunteer.at"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("role_id", "first_name", "last_name", "email", "telephone", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["role_id", 2], ["first_name", "Hermann"], ["last_name", "Gruber"], ["email", "volunteer3@volunteer.at"], ["telephone", "0699/546241"], ["password_digest", "$2a$10$VzrKvfTwCntHZ./ALaz4ge0cdxUDBI7627WQ5sQQ8VCbbbOni.ssK"], ["created_at", "2018-05-15 13:18:15.780650"], ["updated_at", "2018-05-15 13:18:15.780650"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "volunteer4@volunteer.at"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("role_id", "first_name", "last_name", "email", "telephone", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["role_id", 2], ["first_name", "Florian"], ["last_name", "Schuster"], ["email", "volunteer4@volunteer.at"], ["telephone", "0699/482683"], ["password_digest", "$2a$10$XNbyG8NcbWxe0ipYlW2uwukt9j0ENQOuwUhfguyWBPGrPVJ1hC6z."], ["created_at", "2018-05-15 13:18:15.842843"], ["updated_at", "2018-05-15 13:18:15.842843"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "volunteer5@volunteer.at"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("role_id", "first_name", "last_name", "email", "telephone", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["role_id", 2], ["first_name", "Susanne"], ["last_name", "Haumann"], ["email", "volunteer5@volunteer.at"], ["telephone", "0699/857583"], ["password_digest", "$2a$10$hK6EP2H2JB3BMHHOFQlvTe1CtcEfH2q9LmHm.E1UIA.nzNs26kHdO"], ["created_at", "2018-05-15 13:18:15.910306"], ["updated_at", "2018-05-15 13:18:15.910306"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Dringend gesuchter Babysitter gesucht für zwei Kinder bei Familie Salonovic in Lehen. Die beiden müssen aufs Arbeitsamt und deshalb brauchen die Kinder für ungefähr drei Stunden eine Betreuung. Die Kinder sind drei und sieben Jahre alt und sind sehr leise. Am besten Spielzeug selber mitnehmen oder bei schönem Wetter auf den Spielplatz gehen."], ["date", "2018-05-26"], ["time", "2000-01-01 09:15:00"], ["place", "Maxglan"], ["no_of_people", 1], ["created_at", "2018-05-15 13:18:15.927244"], ["updated_at", "2018-05-15 13:18:15.927244"], ["title", "Babysitter gesucht"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Es wird eine Persongesucht, die mit zwei Flüchtling des Flüchtlingheims zu einer Wohnungsbesichtigung in Lehen geht. Die Flüchtlinge sollen im Heim abgeholt werden und dort auch wieder abgeliefert werden. Es handelt sich um ein Pärchen mit zwei Kindern. "], ["date", "2018-05-28"], ["time", "2000-01-01 13:00:00"], ["place", "Lehen"], ["no_of_people", 1], ["created_at", "2018-05-15 13:18:15.930410"], ["updated_at", "2018-05-15 13:18:15.930410"], ["title", "Wohnungsbesichtigung"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Wir suchen eine Person, die für fünf Stunden Zeit hat um mit drei Flüchtlichen zur Polizei zu gehen um einige Daten abzuklären "], ["date", "2018-05-22"], ["time", "2000-01-01 16:15:00"], ["place", "Itzling"], ["no_of_people", 1], ["created_at", "2018-05-15 13:18:15.933604"], ["updated_at", "2018-05-15 13:18:15.933604"], ["title", "Beamtengang"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Es wird eine Persongesucht, die mit zwei Flüchtling des Flüchtlingheims zu einer Wohnungsbesichtigung in Lehen geht. Die Flüchtlinge sollen im Heim abgeholt werden und dort auch wieder abgeliefert werden. Es handelt sich um ein Pärchen mit zwei Kindern. "], ["date", "2018-05-28"], ["time", "2000-01-01 13:00:00"], ["place", "Parsch"], ["no_of_people", 1], ["created_at", "2018-05-15 13:18:16.308471"], ["updated_at", "2018-05-15 13:18:16.308471"], ["title", "Wohnungsbesichtigung"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Es wird eine Persongesucht, die mit zwei Flüchtling des Flüchtlingheims zu einer Wohnungsbesichtigung in Lehen geht. Die Flüchtlinge sollen im Heim abgeholt werden und dort auch wieder abgeliefert werden. Es handelt sich um ein Pärchen mit zwei Kindern. "], ["date", "2018-04-28"], ["time", "2000-01-01 13:00:00"], ["place", "Lehen"], ["no_of_people", 1], ["created_at", "2018-05-15 13:18:16.312153"], ["updated_at", "2018-05-15 13:18:16.312153"], ["title", "Beamtengang"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Es wird eine Persongesucht, die mit zwei Flüchtling des Flüchtlingheims zu einer Wohnungsbesichtigung in Lehen geht. Die Flüchtlinge sollen im Heim abgeholt werden und dort auch wieder abgeliefert werden. Es handelt sich um ein Pärchen mit zwei Kindern. "], ["date", "2018-05-28"], ["time", "2000-01-01 13:00:00"], ["place", "Liefering"], ["no_of_people", 1], ["created_at", "2018-05-15 13:18:16.316964"], ["updated_at", "2018-05-15 13:18:16.316964"], ["title", "Wohnungsbesichtigung"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("description", "date", "time", "place", "no_of_people", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["description", "Es wird eine Persongesucht, die mit zwei Flüchtling des Flüchtlingheims zu einer Wohnungsbesichtigung in Lehen geht. Die Flüchtlinge sollen im Heim abgeholt werden und dort auch wieder abgeliefert werden. Es handelt sich um ein Pärchen mit zwei Kindern. "], ["date", "2018-05-28"], ["time", "2000-01-01 13:00:00"], ["place", "Mülln"], ["no_of_people", 1], ["created_at", "2018-05-15 13:18:16.322602"], ["updated_at", "2018-05-15 13:18:16.322602"], ["title", "Beamtengang"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/login" for 127.0.0.1 at 2018-05-15 15:18:33 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 250ms (Views: 241.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-05-15 15:18:38 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/N9XQmIHc1Wbe4b8Va2mxnn2nJ6TYxihBWyzTPO/R2ryUVevtgRTCzzhD5xwNLy3CE4GI093ilqHGcIRr61o7g==", "email"=>"admin@admin.at", "password"=>"[FILTERED]", "commit"=>"Einloggen"}
+Unpermitted parameters: :utf8, :authenticity_token, :commit
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin.at"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 86ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-05-15 15:18:38 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (user_id = 1 AND status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) AND (date >= '2018-05-15') ORDER BY "tasks"."time" ASC[0m
+  Rendered tasks/index.html.erb within layouts/application (25.3ms)
+Completed 200 OK in 97ms (Views: 66.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-05-15 15:21:22 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (user_id = 1 AND status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Task Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) AND (date >= '2018-05-15') ORDER BY "tasks"."time" ASC[0m
+  Rendered tasks/index.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 83ms (Views: 70.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-05-15 15:21:24 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered users/index.html.erb within layouts/application (26.3ms)
+Completed 200 OK in 65ms (Views: 56.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-05-15 15:22:05 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 39ms (Views: 32.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-05-15 15:22:37 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 25.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-05-15 15:22:39 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (user_id = 1 AND status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Task Load (1.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) AND (date >= '2018-05-15') ORDER BY "tasks"."time" ASC[0m
+  Rendered tasks/index.html.erb within layouts/application (26.8ms)
+Completed 200 OK in 83ms (Views: 65.3ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/tasks/2" for 127.0.0.1 at 2018-05-15 15:22:41 +0200
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (5.9ms)[0m  [1m[34mSELECT "status_task_users"."user_id" FROM "status_task_users" WHERE "status_task_users"."task_id" = ? AND "status_task_users"."status_id" = ?[0m  [["task_id", 2], ["status_id", 3]]
+  Rendering tasks/show.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "status_task_users" WHERE "status_task_users"."task_id" = ?[0m  [["task_id", 2]]
+  Rendered tasks/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 55ms (Views: 35.7ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-05-15 15:23:19 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (user_id = 1 AND status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) AND (date >= '2018-05-15') ORDER BY "tasks"."time" ASC[0m
+  Rendered tasks/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 56ms (Views: 40.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-05-15 15:23:25 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (user_id = 1 AND status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) AND (date >= '2018-05-15') ORDER BY "tasks"."time" ASC[0m
+  Rendered tasks/index.html.erb within layouts/application (24.3ms)
+Completed 200 OK in 81ms (Views: 67.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-05-15 15:23:26 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (7.7ms)
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 82ms (Views: 73.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-05-15 15:23:28 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Role Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Role Load (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered users/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 75ms (Views: 67.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2018-05-15 15:23:31 +0200
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (user_id = 1 AND status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE (date >= '2018-05-15') ORDER BY "tasks"."time" DESC[0m
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) ORDER BY "tasks"."time" ASC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Task Load (0.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 1) ORDER BY "tasks"."time" DESC[0m
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" INNER JOIN status_task_users ON status_task_users.task_id = tasks.id WHERE (status_id = 3) AND (date >= '2018-05-15') ORDER BY "tasks"."time" ASC[0m
+  Rendered tasks/index.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 79ms (Views: 64.8ms | ActiveRecord: 2.2ms)
+
+
