@@ -14,7 +14,7 @@ Status.create(title: "confirmed")
 r = Role.find(1)
 r2 = Role.find(2)
 
-User.create(role: r, first_name: "Clara", last_name: "Huber", email: "admin@admin.at", telephone: "0664/9527493", password: "admin")
+User.create(role: r, first_name: Clara, last_name: "Huber", email: "admin@admin.at", telephone: "0664/9527493", password: "admin")
 User.create(role: r2, first_name: "Marc", last_name: "Peter", email: "volunteer@volunteer.at", telephone: "0699/9627793", password: "volunteer")
 User.create(role: r2, first_name: "Claudia", last_name: "Gruber", email: "volunteer2@volunteer.at", telephone: "0699/962291", password: "volunteer")
 User.create(role: r2, first_name: "Hermann", last_name: "Gruber", email: "volunteer3@volunteer.at", telephone: "0699/546241", password: "volunteer")

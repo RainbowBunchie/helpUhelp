@@ -1,0 +1,19 @@
+# Metrics cops deal with properties of the source code that can be measured, such as class length, method length, etc.
+# Disabled
+Metrics:
+  Enabled: false
+
+# Style cops check for stylistic consistency of your code. Many of the them are based on the Ruby Style Guide.
+# Disabled
+Style:
+  Enabled: false
+
+# Layout cops inspect your code for consistent use of indentation, alignment, and white space.
+# Disabled
+Layout:
+  Enabled: false
+
+# Bundler cops check for style or bad practices in Bundler files, e.g. Gemfile. Here alphabetical order of gems.
+# Disabled
+Bundler/OrderedGems:
+  Enabled: false
