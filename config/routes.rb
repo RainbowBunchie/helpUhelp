@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :status_task_users
   resources :statuses
   resources :users
@@ -10,8 +9,8 @@ Rails.application.routes.draw do
       post 'assign_user'
     end
   end
-  #root 'static_pages#home'
-	root 'sessions#create'
+  # root 'static_pages#home'
+  root 'sessions#create'
   resources :roles
 
   get  '/login',  to: 'sessions#new'

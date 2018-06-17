@@ -56,21 +56,19 @@ class UsersController < ApplicationController
 
     role = user_params[:role_id] ? user_params[:role_id] : @user.role_id
     if user_params[:password].empty?
-      new_params = {:role_id => role,
-                    :first_name => user_params[:first_name], 
-                    :last_name => user_params[:last_name], 
-                    :email => user_params[:email],
-                    :telephone => user_params[:telephone]
-                   }
-    else 
-      new_params = {:role_id => role,
-                    :first_name => user_params[:first_name], 
-                    :last_name => user_params[:last_name], 
-                    :email => user_params[:email],
-                    :telephone => user_params[:telephone],
-                    :password => user_params[:password],
-                    :password_confirmation => user_params[:password_confirmation]
-                  }
+      new_params = { :role_id => role,
+                     :first_name => user_params[:first_name],
+                     :last_name => user_params[:last_name],
+                     :email => user_params[:email],
+                     :telephone => user_params[:telephone] }
+    else
+      new_params = { :role_id => role,
+                     :first_name => user_params[:first_name],
+                     :last_name => user_params[:last_name],
+                     :email => user_params[:email],
+                     :telephone => user_params[:telephone],
+                     :password => user_params[:password],
+                     :password_confirmation => user_params[:password_confirmation] }
     end
     p = new_params
     respond_to do |format|
@@ -89,7 +87,7 @@ class UsersController < ApplicationController
   def destroy
     task_ids = StatusTaskUser.where(user_id: @user.id).where(status_id: 3).pluck(:task_id)
     relevant = Task.where(id: task_ids).where("date >= ?", Date.today)
-    if(!relevant.empty?()) 
+    if (!relevant.empty?())
       respond_to do |format|
         format.html { redirect_to users_url, alert: 'Benutzer kann nicht gelöscht werden, wenn ihm noch Aufgaben zugewiesen sind!' }
         format.json { head :no_content }
@@ -104,13 +102,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:role_id, :first_name, :last_name, :email, :telephone, :password, :password_confirmation)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:role_id, :first_name, :last_name, :email, :telephone, :password, :password_confirmation)
+  end
 end

@@ -1,6 +1,6 @@
 Rails.application.configure do
   require 'active_support/core_ext/numeric/bytes'
-   config.cache_store = :memory_store, { size: 64.megabytes }
+  config.cache_store = :memory_store, { size: 64.megabytes }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -54,7 +54,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store

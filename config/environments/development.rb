@@ -27,7 +27,7 @@ Rails.application.configure do
   end
 
   config.action_controller.perform_caching = true
-  config.cache_store = :file_store, "#{Rails.root}/tmp/file_store"  
+  config.cache_store = :file_store, "#{Rails.root}/tmp/file_store"
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
