@@ -14,9 +14,7 @@
 		</div>
 		<%end%>
     <% cache @task do %>
-
     <h1> <%= @task.title %> </h1>
-
       <p>
         <strong>Datum:</strong>
         <%= @task.date.strftime("%d.%m.%y") %>
@@ -25,12 +23,10 @@
 				<strong>Beginnzeit:</strong>
 				<%= @task.time.strftime("%H:%M") %>
 			</p>
-
       <p>
         <strong>Ort:</strong>
         <%= @task.place %>
       </p>
-
 			<p class="task-show-description">
 				<strong>Beschreibung:</strong>
 				<%= @task.description %>
@@ -79,7 +75,6 @@
       <% else %>
       <h1 class="i-need-some-space-here">Es gibt noch keine Bewerber.</h1>
       <% end %>
-      <% end %>
-
     <% end %>
+  <% end %>
 </div>

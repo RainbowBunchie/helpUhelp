@@ -1,0 +1,10 @@
+# Metrics cops deal with properties of the source code that can be measured, such as class length, method length, etc.
+# Disabled
+Metrics:
+  Enabled: false
+
+# Style cops check for stylistic consistency of your code. Many of the them are based on the Ruby Style Guide.
+# Disabled
+Style:
+  Enabled: false
+
