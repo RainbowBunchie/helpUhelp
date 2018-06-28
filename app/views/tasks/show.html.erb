@@ -1,4 +1,3 @@
-
 <div class ="back-button">
   <%= link_to '< Zurück', tasks_path%>
 </div>
@@ -14,8 +13,8 @@
 			<%= link_to link_to image_tag('delete.png', size: "50x51", alt: "Aufgaben", class: 'd-inline-block'), @task, method: :delete, data: { confirm: 'Sind Sie sicher, dass Sie die Aufgabe löschen möchten?' } %>
 		</div>
 		<%end%>
+    <% cache @task do %>
     <h1> <%= @task.title %> </h1>
-
       <p>
         <strong>Datum:</strong>
         <%= @task.date.strftime("%d.%m.%y") %>
@@ -24,17 +23,16 @@
 				<strong>Beginnzeit:</strong>
 				<%= @task.time.strftime("%H:%M") %>
 			</p>
-
       <p>
         <strong>Ort:</strong>
         <%= @task.place %>
       </p>
-
 			<p class="task-show-description">
 				<strong>Beschreibung:</strong>
 				<%= @task.description %>
 			</p>
     </div>
+    <% end %>
 
     <% if current_user && current_user.role.title == "volunteer" %>
     <div class ="card-button">
@@ -42,6 +40,8 @@
     </div>
     <% end %>
     <% if current_user && current_user.role.title == "admin" %>
+    <% cache @task_applicants do %>
+
       <% if @task_applicants.count != 0 %>
       <h1 class="i-need-some-space-here"> Ausgewählter Bewerber </h1>
       <div class="tasks">
@@ -76,4 +76,5 @@
       <h1 class="i-need-some-space-here">Es gibt noch keine Bewerber.</h1>
       <% end %>
     <% end %>
+  <% end %>
 </div>

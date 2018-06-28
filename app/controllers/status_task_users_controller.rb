@@ -3,16 +3,11 @@ class StatusTaskUsersController < ApplicationController
   before_action :require_login
   before_action :require_admin
 
-
-
-
   # GET /status_task_users
   # GET /status_task_users.json
   def index
     @status_task_users = StatusTaskUser.all
   end
-
-
 
   # GET /status_task_users/1
   # GET /status_task_users/1.json
@@ -69,13 +64,14 @@ class StatusTaskUsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_status_task_user
-      @status_task_user = StatusTaskUser.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def status_task_user_params
-      params.require(:status_task_user).permit(:user_id, :task_id, :status_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_status_task_user
+    @status_task_user = StatusTaskUser.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def status_task_user_params
+    params.require(:status_task_user).permit(:user_id, :task_id, :status_id)
+  end
 end

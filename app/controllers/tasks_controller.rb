@@ -6,25 +6,23 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-
-    #für user
+    # für user
 
     @assigned_usertasks = @current_user.tasks.distinct.confirmed.future
 
     @pending_usertasks = @current_user.tasks.distinct.pending.future
 
-    @open_usertasks = Task.includes(:status_task_users).where(:status_task_users => { :status_id => [nil, 1]}).future - @pending_usertasks
+    @open_usertasks = Task.includes(:status_task_users).where(:status_task_users => { :status_id => [nil, 1] }).future - @pending_usertasks
 
-    #für admin:
+    # für admin:
 
     @tasks_with_applications = Task.distinct.pending.future
 
-    @tasks_without_applications_and_not_pending = Task.includes(:status_task_users).where(:status_task_users => { :status_id => nil}).future
+    @tasks_without_applications_and_not_pending = Task.includes(:status_task_users).where(:status_task_users => { :status_id => nil }).future
 
     @assigned_tasks = Task.distinct.confirmed.future
 
     @status_task_users = StatusTaskUser.all
-
   end
 
   # GET /tasks/1
@@ -45,7 +43,7 @@ class TasksController < ApplicationController
 
   # add user to task
   def add_user
-    stu = StatusTaskUser.new({:user_id => current_user.id, :task_id => @task.id, :status_id => 1})
+    stu = StatusTaskUser.new({ :user_id => current_user.id, :task_id => @task.id, :status_id => 1 })
     respond_to do |format|
       if stu.save
         format.html { redirect_to tasks_url, notice: 'Du hast dich für die Aufgabe beworben!' }
@@ -61,13 +59,12 @@ class TasksController < ApplicationController
   def remove_user
     StatusTaskUser.where(user_id: current_user.id, task_id: @task.id).delete_all
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Du hast deine Bewerbung für die Aufgabe zurückgezogen!'}
+      format.html { redirect_to tasks_url, notice: 'Du hast deine Bewerbung für die Aufgabe zurückgezogen!' }
       format.json { head :no_content }
     end
   end
 
   def assign_user
-
     task_applicants = StatusTaskUser.where(task_id: @task.id)
 
     task_applicants.each do |a|
@@ -80,12 +77,12 @@ class TasksController < ApplicationController
 
     if assigned_candidate.save
       respond_to do |format|
-        format.html { redirect_to @task, notice: 'Eine neue Person wurde der Aufgabe zugewiesen!'}
+        format.html { redirect_to @task, notice: 'Eine neue Person wurde der Aufgabe zugewiesen!' }
         format.json { render :show, status: :ok, location: @task }
       end
     else
       respond_to do |format|
-        format.html { redirect_to @task, notice: 'Da hat etwas nicht funktioniert!'}
+        format.html { redirect_to @task, notice: 'Da hat etwas nicht funktioniert!' }
         format.json { render :show, status: :ok, location: @task }
       end
     end
@@ -131,13 +128,14 @@ class TasksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = Task.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def task_params
-      params.require(:task).permit(:description, :date, :time, :place, :assigned, :no_of_people, :title)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def task_params
+    params.require(:task).permit(:description, :date, :time, :place, :assigned, :no_of_people, :title)
+  end
 end

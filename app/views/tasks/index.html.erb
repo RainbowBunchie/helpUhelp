@@ -112,8 +112,6 @@
       <% end %>
     </div>
 
-
-
     <%# Unassigned tasks in the middle %>
     <h1 class="border">Aufgaben ohne Bewerber</h1>
     <div class="tasks">
@@ -130,7 +128,7 @@
             <div class="task-info">
               <strong>Datum: </strong><%= task.date.strftime("%d.%m.%y") %> <br />
               <strong>Beginn: </strong>  <%= task.time.strftime("%H:%M")%> <br />
-              <strong>Ort: </strong><%= task.place %>
+              <strong>Ort: </strong> <%= task.place %>
             </div>
           <% end %>
         </div>

@@ -1,11 +1,10 @@
 class SessionsController < ApplicationController
-# displays login form
-
+  # displays login form
 
   def new
-  	if current_user
-  		redirect_to tasks_path
-  	end
+    if current_user
+      redirect_to tasks_path
+    end
   end
 
   # checks login data and starts session
@@ -23,8 +22,8 @@ class SessionsController < ApplicationController
     else
       @alert = "Falsche E-Mail Adresse und/oder Passwort"
       render :new
-      #session[:email] = @email
-      #redirect_to login_path, alert: 'Falsches Passwort und/oder falsche E-Mail Adresse'
+      # session[:email] = @email
+      # redirect_to login_path, alert: 'Falsches Passwort und/oder falsche E-Mail Adresse'
     end
   end
 
@@ -34,7 +33,7 @@ class SessionsController < ApplicationController
     redirect_to login_path, notice: 'Du wurdest ausgeloggt'
   end
 
-private
+  private
 
   def login_params
     params.permit(:email, :password)
