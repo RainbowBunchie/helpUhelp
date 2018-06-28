@@ -1,27 +1,32 @@
 # require 'test_helper'
 
-# class TasksControllerTest < ActionDispatch::IntegrationTest
+# class TasksControllerTest < ActionController::TestCase
 #   setup do
 #     @task = tasks(:one)
+#     @user = users(:two)
+#     session[:user_id] = @user.id
 #   end
 
 #   test "should get index" do
+#     # get :new
 #     get tasks_url
 #     assert_response :success
 #   end
 
 #   test "should get new" do
+#     # get :new
 #     get new_task_url
 #     assert_response :success
 #   end
 
-#   test "should create task" do
-#     assert_difference('Task.count') do
-#       post tasks_url, params: { task: { date: @task.date, description: @task.description, no_of_people: @task.no_of_people, place: @task.place, title: @task.title, time: @task.time } }
-#     end
+    # test "should create task" do
+    #   get :new
+    #   assert_difference('Task.count') do
+    #     post tasks_url, params: { task: { date: @task.date, description: @task.description, no_of_people: @task.no_of_people, place: @task.place, title: @task.title, time: @task.time } }
+    #   end
 
-#     assert_redirected_to task_url(Task.last)
-#   end
+    #   assert_redirected_to task_url(Task.last)
+    # end
 
 #   test "should show task" do
 #     get task_url(@task)

@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  role: one
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  telephone: MyString
+  role: volunteer
+  first_name: Hermann
+  last_name: Gruber
+  email: volunteer3@volunteer.at
+  telephone: "0699/546241"
   password_digest: MyString
 
 two:
-  role: two
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  telephone: MyString
+  role: admin
+  first_name: Alex
+  last_name: Tischhart
+  email: admin@helpyouhelp.com
+  telephone: 8111
   password_digest: MyString

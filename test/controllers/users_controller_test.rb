@@ -1,6 +1,6 @@
-# require 'test_helper'
+require 'test_helper'
 
-# class UsersControllerTest < ActionDispatch::IntegrationTest
+class UsersControllerTest < ActionDispatch::IntegrationTest
 #   setup do
 #     @user = users(:one)
 #   end
@@ -45,4 +45,4 @@
 
 #     assert_redirected_to users_url
 #   end
-# end
+end

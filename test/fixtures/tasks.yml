@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  description: MyText
-  date: 2018-04-23
-  time: 2018-04-23 10:39:35
-  place: MyString
+  description: Super long long long long long Description
+  date: 2019-04-23
+  time: 2019-04-23 10:39:35
+  place: Puch bei Hallein
   no_of_people: 1
-  title: MyString
+  title: Need Help 1
 
 two:
-  description: MyText
-  date: 2018-04-23
-  time: 2018-04-23 10:39:35
-  place: MyString
+  description: Super long long long long long Description
+  date: 2019-04-23
+  time: 2019-04-23 10:39:35
+  place: Salzburg Maxglan
   no_of_people: 1
-  title: MyString
+  title: Need Help 2

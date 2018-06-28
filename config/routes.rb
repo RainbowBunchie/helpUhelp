@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   #root 'static_pages#home'
 	root 'sessions#create'
-  resources :roles
+  # resources :roles
 
   get  '/login',  to: 'sessions#new'
   post '/login',  to: 'sessions#create'
